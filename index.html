@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TableTalk AI — The AI Reservation Agent for Restaurants</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0f1e35;
+      --navy2:  #162844;
+      --gold:   #c9a84c;
+      --gold2:  #e8c56a;
+      --cream:  #fdf8f0;
+      --white:  #ffffff;
+      --gray:   #6b7280;
+      --light:  #f4f4f6;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,30,53,0.97);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+    }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 700; color: var(--gold);
+      text-decoration: none; letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold2); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 8px;
+      padding: 9px 20px; font-weight: 700; font-size: 0.9rem;
+      cursor: pointer; text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy2) 60%, #1a3a5c 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: .5;
+    }
+    .hero-inner { position: relative; max-width: 820px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold2); border-radius: 50px;
+      padding: 6px 16px; font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 1.8rem; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.18; margin-bottom: 1.4rem; letter-spacing: -0.5px;
+    }
+    .hero h1 em { color: var(--gold2); font-style: normal; }
+    .hero p {
+      font-size: 1.15rem; color: #94a3b8;
+      max-width: 600px; margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 10px;
+      padding: 15px 32px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.2); border-radius: 10px;
+      padding: 15px 32px; font-size: 1rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: border-color .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold2); transform: translateY(-2px); }
+    .hero-stats {
+      margin-top: 4rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--gold2); }
+    .stat-label { font-size: 0.82rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+    /* ── Section commons ── */
+    section { padding: 90px 5%; }
+    .section-tag {
+      display: inline-block; background: rgba(201,168,76,0.12);
+      color: var(--gold); border-radius: 50px;
+      padding: 4px 14px; font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.4px;
+    }
+    .section-sub { font-size: 1.05rem; color: var(--gray); max-width: 540px; margin: 0 auto; }
+    .center { text-align: center; }
+
+    /* ── Problem ── */
+    .problem { background: var(--cream); }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .problem-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.8rem; box-shadow: var(--shadow);
+      border-left: 4px solid var(--gold);
+    }
+    .problem-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+    .problem-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray); }
+
+    /* ── How it works ── */
+    .how { background: var(--white); }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3.5rem; position: relative;
+    }
+    .step {
+      text-align: center; padding: 2rem 1.5rem;
+      border-radius: var(--radius); background: var(--light);
+      position: relative;
+    }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--navy); color: var(--gold);
+      font-size: 1.2rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
+    .step p { font-size: 0.88rem; color: var(--gray); }
+
+    /* ── Features ── */
+    .features { background: var(--navy); color: var(--white); }
+    .features h2 { color: var(--white); }
+    .features .section-tag { color: var(--gold2); background: rgba(201,168,76,0.15); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: 2rem;
+      transition: background .2s, border-color .2s;
+    }
+    .feature-card:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: rgba(201,168,76,0.3);
+    }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: var(--white); }
+    .feature-card p { font-size: 0.88rem; color: #94a3b8; }
+
+    /* ── Integrations ── */
+    .integrations { background: var(--cream); }
+    .int-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .int-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.6rem 1.2rem; text-align: center; box-shadow: var(--shadow);
+      border: 2px solid transparent; transition: border-color .2s, transform .15s;
+    }
+    .int-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .int-logo { font-size: 2.2rem; margin-bottom: .8rem; }
+    .int-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: .3rem; }
+    .int-card p { font-size: 0.8rem; color: var(--gray); }
+
+    /* ── Pricing ── */
+    .pricing { background: var(--white); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;
+    }
+    .price-card {
+      border-radius: var(--radius); padding: 2.2rem;
+      border: 2px solid var(--light); position: relative;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .price-card.featured {
+      background: var(--navy); color: var(--white);
+      border-color: var(--gold);
+    }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: var(--navy);
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.5px; padding: 4px 14px; border-radius: 50px;
+    }
+    .price-tier { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: .5rem; }
+    .price-card.featured .price-tier { color: var(--gold2); }
+    .price-amount { font-size: 2.8rem; font-weight: 800; line-height: 1; }
+    .price-period { font-size: 0.88rem; color: var(--gray); }
+    .price-card.featured .price-period { color: #94a3b8; }
+    .price-desc { font-size: 0.88rem; color: var(--gray); margin: .8rem 0 1.5rem; }
+    .price-card.featured .price-desc { color: #94a3b8; }
+    .price-features { list-style: none; margin-bottom: 2rem; }
+    .price-features li {
+      font-size: 0.88rem; padding: 6px 0;
+      display: flex; align-items: flex-start; gap: 8px;
+      color: var(--gray);
+    }
+    .price-card.featured .price-features li { color: #cbd5e1; }
+    .price-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .price-btn {
+      display: block; text-align: center; width: 100%;
+      padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; cursor: pointer; border: none;
+      background: var(--light); color: var(--navy);
+      transition: background .2s;
+    }
+    .price-card.featured .price-btn { background: var(--gold); color: var(--navy); }
+    .price-btn:hover { opacity: .85; }
+
+    /* ── Testimonials ── */
+    .testimonials { background: var(--cream); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 2rem; box-shadow: var(--shadow);
+    }
+    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+    .testi-text { font-size: 0.92rem; color: #374151; line-height: 1.65; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: .8rem; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.9rem; }
+    .testi-role { font-size: 0.8rem; color: var(--gray); }
+
+    /* ── Contact/CTA ── */
+    .contact { background: var(--navy); color: var(--white); }
+    .contact h2 { color: var(--white); }
+    .contact .section-sub { color: #94a3b8; }
+    .contact-form {
+      max-width: 560px; margin: 3rem auto 0;
+      display: grid; gap: 1rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: #94a3b8; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 11px 14px;
+      color: var(--white); font-size: 0.92rem;
+      outline: none; transition: border-color .2s;
+      font-family: inherit;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #475569; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group select option { background: var(--navy2); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .submit-btn {
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 10px;
+      padding: 14px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .15s;
+      margin-top: .5rem;
+    }
+    .submit-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      background: #080f1c;
+      color: #475569; font-size: 0.85rem;
+      padding: 2.5rem 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+    .footer-logo span { color: #64748b; }
+    footer p { color: #475569; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: #475569; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Table<span>Talk</span> AI</a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#integrations">Integrations</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🤖 AI-Powered · Available 24/7</div>
+      <h1>Your Restaurant Deserves an AI That <em>Never Misses a Call</em></h1>
+      <p>TableTalk AI answers every incoming call, books reservations, handles modifications and cancellations — and syncs directly with your existing reservation software.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Free Demo</a>
+        <a href="#how-it-works" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Calls Answered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Availability</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">&lt;2 min</div>
+          <div class="stat-label">Avg Handle Time</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Platforms Supported</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="center">
+      <span class="section-tag">The Problem</span>
+      <h2>Restaurants Lose Revenue Every Day<br>From Missed Calls</h2>
+      <p class="section-sub">Your staff are busy serving guests. Calls go to voicemail. Reservations get lost. Guests book elsewhere.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">📵</div>
+        <h3>Calls go unanswered during peak hours</h3>
+        <p>Front-of-house staff can't simultaneously serve tables and answer phones. Potential guests hang up and call a competitor.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🌙</div>
+        <h3>No one available after closing</h3>
+        <p>A huge portion of reservation requests happen outside business hours. Without 24/7 coverage, those bookings disappear.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">📋</div>
+        <h3>Reservation systems stay siloed</h3>
+        <p>Staff manually cross-check multiple platforms — OpenTable, Resy, Google — leading to double-bookings and errors.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">💸</div>
+        <h3>Every missed call is lost revenue</h3>
+        <p>The average restaurant table turns $200–$600 per seating. Missing even a few calls a week adds up to thousands each month.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how-it-works">
+    <div class="center">
+      <span class="section-tag">How It Works</span>
+      <h2>Up and Running in Three Simple Steps</h2>
+      <p class="section-sub">No technical team required. We handle the entire setup.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Connect Your Reservation System</h3>
+        <p>We integrate with your existing tools — OpenTable, Resy, Reserve with Google, or your in-house software — using read/write API access.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Configure Your AI Agent</h3>
+        <p>Your agent is trained on your menu, hours, policies, and voice style. It sounds natural and on-brand, not robotic.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Forward Your Phone Number</h3>
+        <p>Point your existing restaurant number to your AI agent. It handles calls end-to-end, logs everything, and escalates to a human when needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Review &amp; Optimize</h3>
+        <p>Access your dashboard to see call transcripts, reservation trends, and customer sentiment. Continuously improve over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="center">
+      <span class="section-tag">Features</span>
+      <h2>Everything Your Restaurant Needs</h2>
+      <p class="section-sub" style="color:#94a3b8">Built specifically for the challenges restaurants face every day.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Book, Modify & Cancel Reservations</h3>
+        <p>Handles the full reservation lifecycle over the phone, writing directly to your reservation platform in real time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Multi-Platform Sync</h3>
+        <p>Reads live availability across all your connected platforms before confirming any booking — no double-bookings ever.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗣️</div>
+        <h3>Natural, Human-Like Voice</h3>
+        <p>Powered by state-of-the-art voice AI — guests often can't tell they're speaking to an agent. Customizable accent and tone.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <h3>Smart Escalation</h3>
+        <p>Automatically transfers to a staff member for complex requests, complaints, or VIP guests — with full context handed off.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Multilingual Support</h3>
+        <p>Serves guests in their preferred language. Supports English, Spanish, French, Mandarin, and more on request.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Call Analytics Dashboard</h3>
+        <p>See every call transcript, reservation outcome, and customer sentiment score in one clean dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏰</div>
+        <h3>24/7 Availability</h3>
+        <p>Handles calls during rush hour, after closing, on holidays — whenever your team is unavailable or overwhelmed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Secure & Compliant</h3>
+        <p>All calls are encrypted. Customer data is stored securely and never shared with third parties.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast Setup, No IT Team Needed</h3>
+        <p>Most restaurants are live within 48–72 hours. We handle all integration and testing on your behalf.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section class="integrations" id="integrations">
+    <div class="center">
+      <span class="section-tag">Integrations</span>
+      <h2>Works With the Platforms You Already Use</h2>
+      <p class="section-sub">No need to switch systems. TableTalk AI connects directly to your existing reservation tools.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="int-logo">🍽️</div>
+        <h4>OpenTable</h4>
+        <p>Full read/write access to availability, bookings, guest notes, and party sizes.</p>
+      </div>
+      <div class="int-card">
+        <div class="int-logo">📱</div>
+        <h4>Resy</h4>
+        <p>Real-time sync with Resy's booking engine, including waitlist management.</p>
+      </div>
+      <div class="int-card">
+        <div class="int-logo">🌐</div>
+        <h4>Reserve with Google</h4>
+        <p>Captures bookings originating from Google Maps and Google Search seamlessly.</p>
+      </div>
+      <div class="int-card">
+        <div class="int-logo">🏠</div>
+        <h4>In-House Software</h4>
+        <p>Custom integration available for proprietary POS and reservation management systems.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2.5rem;font-size:0.9rem;color:var(--gray)">
+      Don't see your platform? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> — we likely support it or can build the integration.
+    </p>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="center">
+      <span class="section-tag">Pricing</span>
+      <h2>Simple Monthly Pricing, No Surprises</h2>
+      <p class="section-sub">All plans include full setup, onboarding, and ongoing support. Cancel any time.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">$199</div>
+        <div class="price-period">/ month per location</div>
+        <div class="price-desc">Perfect for small restaurants and cafés just getting started.</div>
+        <ul class="price-features">
+          <li>Up to 300 calls/month</li>
+          <li>1 reservation platform</li>
+          <li>Book, modify & cancel</li>
+          <li>Call transcripts</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="price-btn">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-tier">Professional</div>
+        <div class="price-amount" style="color:var(--gold2)">$399</div>
+        <div class="price-period">/ month per location</div>
+        <div class="price-desc">Built for busy restaurants that need full coverage around the clock.</div>
+        <ul class="price-features">
+          <li>Unlimited calls</li>
+          <li>Up to 3 reservation platforms</li>
+          <li>Book, modify & cancel</li>
+          <li>Smart escalation to staff</li>
+          <li>Analytics dashboard</li>
+          <li>Priority phone &amp; chat support</li>
+        </ul>
+        <a href="#contact" class="price-btn">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-amount">Custom</div>
+        <div class="price-period">&nbsp;</div>
+        <div class="price-desc">Multi-location groups, hotel restaurants, and custom integrations.</div>
+        <ul class="price-features">
+          <li>Unlimited calls</li>
+          <li>All reservation platforms</li>
+          <li>Custom voice & branding</li>
+          <li>Multilingual support</li>
+          <li>Dedicated account manager</li>
+          <li>SLA guarantees</li>
+        </ul>
+        <a href="#contact" class="price-btn">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="center">
+      <span class="section-tag">Testimonials</span>
+      <h2>Restaurants Love TableTalk AI</h2>
+      <p class="section-sub">Hear from the owners and managers who've made the switch.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We used to lose 10–15 calls every Friday night during service. TableTalk handles them all now. Our reservation book is fuller than ever."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Marco R.</div>
+            <div class="testi-role">Owner, Trattoria Marco · Chicago, IL</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Setup was painless — we were live in two days. The AI connects to our OpenTable and sounds completely natural. Guests don't know it's an AI."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SL</div>
+          <div>
+            <div class="testi-name">Sarah L.</div>
+            <div class="testi-role">GM, The Harbor Room · San Diego, CA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We run three locations and managing reservations across Resy and Google was a nightmare. TableTalk AI unified everything. I wish we'd done this sooner."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JK</div>
+          <div>
+            <div class="testi-name">James K.</div>
+            <div class="testi-role">Director of Ops, Kinfolk Group · NYC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="center">
+      <span class="section-tag" style="color:var(--gold2);background:rgba(201,168,76,0.15)">Get Started</span>
+      <h2>Ready to Fill Every Table?</h2>
+      <p class="section-sub">Tell us about your restaurant and we'll set up a free 30-minute demo call, tailored to your platforms and team size.</p>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Marco" required />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Rossi" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Restaurant Name</label>
+        <input type="text" placeholder="Trattoria Marco" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="marco@trattoriamarco.com" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+1 (312) 555-0100" />
+      </div>
+      <div class="form-group">
+        <label>Current Reservation Platform(s)</label>
+        <select>
+          <option value="">Select your platform…</option>
+          <option>OpenTable</option>
+          <option>Resy</option>
+          <option>Reserve with Google</option>
+          <option>In-house / custom system</option>
+          <option>Multiple platforms</option>
+          <option>None yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything else? (optional)</label>
+        <textarea placeholder="Tell us about your restaurant — # of locations, call volume, biggest pain points…"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Book My Free Demo →</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">TableTalk <span>AI</span></div>
+    <p>© 2026 TableTalk AI. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.submit-btn');
+      btn.textContent = '✓ Demo Request Sent! We\'ll be in touch within 24 hours.';
+      btn.style.background = '#22c55e';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+    }
+
+    // Smooth active nav highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold2)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
