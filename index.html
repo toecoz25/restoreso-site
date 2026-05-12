@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TableTalk AI — The AI Reservation Agent for Restaurants</title>
+  <title>Resto-Reso — The AI Reservation Agent for Restaurants</title>
   <style>
     /* ── Reset & base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -204,7 +204,7 @@
     .pricing { background: var(--white); }
     .pricing-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;
+      gap: 1.5rem; margin-top: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;
     }
     .price-card {
       border-radius: var(--radius); padding: 2.2rem;
@@ -247,32 +247,19 @@
     .price-card.featured .price-btn { background: var(--gold); color: var(--navy); }
     .price-btn:hover { opacity: .85; }
 
-    /* ── Testimonials ── */
-    .testimonials { background: var(--cream); }
-    .testi-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
-    }
-    .testi-card {
-      background: var(--white); border-radius: var(--radius);
-      padding: 2rem; box-shadow: var(--shadow);
-    }
-    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
-    .testi-text { font-size: 0.92rem; color: #374151; line-height: 1.65; margin-bottom: 1.5rem; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: .8rem; }
-    .testi-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--navy); color: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1rem; flex-shrink: 0;
-    }
-    .testi-name { font-weight: 700; font-size: 0.9rem; }
-    .testi-role { font-size: 0.8rem; color: var(--gray); }
-
     /* ── Contact/CTA ── */
     .contact { background: var(--navy); color: var(--white); }
     .contact h2 { color: var(--white); }
     .contact .section-sub { color: #94a3b8; }
+    .contact-email-link {
+      display: inline-block;
+      color: var(--gold2);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    .contact-email-link:hover { text-decoration: underline; }
     .contact-form {
       max-width: 560px; margin: 3rem auto 0;
       display: grid; gap: 1rem;
@@ -330,14 +317,14 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">Table<span>Talk</span> AI</a>
+    <a href="#" class="nav-logo">Resto<span>-Reso</span></a>
     <ul class="nav-links">
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#integrations">Integrations</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get Started</a>
+    <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="nav-cta">Book a Demo</a>
   </nav>
 
   <!-- HERO -->
@@ -345,9 +332,9 @@
     <div class="hero-inner">
       <div class="hero-badge">🤖 AI-Powered · Available 24/7</div>
       <h1>Your Restaurant Deserves an AI That <em>Never Misses a Call</em></h1>
-      <p>TableTalk AI answers every incoming call, books reservations, handles modifications and cancellations — and syncs directly with your existing reservation software.</p>
+      <p>Resto-Reso answers every incoming call, books reservations, handles modifications and cancellations — and syncs directly with your existing reservation software.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Book a Free Demo</a>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="btn-primary">Book a Free Demo</a>
         <a href="#how-it-works" class="btn-outline">See How It Works</a>
       </div>
       <div class="hero-stats">
@@ -428,7 +415,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h3>Review &amp; Optimize</h3>
-        <p>Access your dashboard to see call transcripts, reservation trends, and customer sentiment. Continuously improve over time.</p>
+        <p>Access your dashboard to see reservation trends, busiest hours, and call outcomes. Continuously improve over time.</p>
       </div>
     </div>
   </section>
@@ -462,14 +449,14 @@
         <p>Automatically transfers to a staff member for complex requests, complaints, or VIP guests — with full context handed off.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🌐</div>
-        <h3>Multilingual Support</h3>
-        <p>Serves guests in their preferred language. Supports English, Spanish, French, Mandarin, and more on request.</p>
+        <div class="feature-icon">🔔</div>
+        <h3>No-Show Reminders</h3>
+        <p>Outbound reminder calls before each reservation reduce no-shows and keep your tables full. Available on the Pro plan.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📊</div>
-        <h3>Call Analytics Dashboard</h3>
-        <p>See every call transcript, reservation outcome, and customer sentiment score in one clean dashboard.</p>
+        <h3>Reservations Dashboard</h3>
+        <p>See today's bookings, upcoming reservations, busiest hours, and call outcomes in one clean dashboard.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⏰</div>
@@ -494,7 +481,7 @@
     <div class="center">
       <span class="section-tag">Integrations</span>
       <h2>Works With the Platforms You Already Use</h2>
-      <p class="section-sub">No need to switch systems. TableTalk AI connects directly to your existing reservation tools.</p>
+      <p class="section-sub">No need to switch systems. Resto-Reso connects directly to your existing reservation tools.</p>
     </div>
     <div class="int-grid">
       <div class="int-card">
@@ -533,94 +520,40 @@
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-tier">Starter</div>
-        <div class="price-amount">$199</div>
+        <div class="price-amount">$97</div>
         <div class="price-period">/ month per location</div>
-        <div class="price-desc">Perfect for small restaurants and cafés just getting started.</div>
+        <div class="price-desc">Perfect for independent restaurants ready to stop missing calls.</div>
         <ul class="price-features">
-          <li>Up to 300 calls/month</li>
+          <li>Up to 200 calls/month</li>
           <li>1 reservation platform</li>
-          <li>Book, modify & cancel</li>
-          <li>Call transcripts</li>
+          <li>Book, modify &amp; cancel</li>
+          <li>Reservations dashboard</li>
+          <li>Monthly summary report</li>
           <li>Email support</li>
         </ul>
-        <a href="#contact" class="price-btn">Get Started</a>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Get Started</a>
       </div>
       <div class="price-card featured">
         <div class="popular-badge">Most Popular</div>
-        <div class="price-tier">Professional</div>
-        <div class="price-amount" style="color:var(--gold2)">$399</div>
+        <div class="price-tier">Pro</div>
+        <div class="price-amount" style="color:var(--gold2)">$147</div>
         <div class="price-period">/ month per location</div>
-        <div class="price-desc">Built for busy restaurants that need full coverage around the clock.</div>
-        <ul class="price-features">
-          <li>Unlimited calls</li>
-          <li>Up to 3 reservation platforms</li>
-          <li>Book, modify & cancel</li>
-          <li>Smart escalation to staff</li>
-          <li>Analytics dashboard</li>
-          <li>Priority phone &amp; chat support</li>
-        </ul>
-        <a href="#contact" class="price-btn">Get Started</a>
-      </div>
-      <div class="price-card">
-        <div class="price-tier">Enterprise</div>
-        <div class="price-amount">Custom</div>
-        <div class="price-period">&nbsp;</div>
-        <div class="price-desc">Multi-location groups, hotel restaurants, and custom integrations.</div>
+        <div class="price-desc">For busy restaurants that need full coverage and want to reduce no-shows.</div>
         <ul class="price-features">
           <li>Unlimited calls</li>
           <li>All reservation platforms</li>
-          <li>Custom voice & branding</li>
-          <li>Multilingual support</li>
-          <li>Dedicated account manager</li>
-          <li>SLA guarantees</li>
+          <li>Book, modify &amp; cancel</li>
+          <li>Outbound no-show reminders</li>
+          <li>Missed call text recovery</li>
+          <li>Weekly reports</li>
+          <li>Priority support</li>
         </ul>
-        <a href="#contact" class="price-btn">Talk to Sales</a>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Get Started</a>
       </div>
     </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="center">
-      <span class="section-tag">Testimonials</span>
-      <h2>Restaurants Love TableTalk AI</h2>
-      <p class="section-sub">Hear from the owners and managers who've made the switch.</p>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"We used to lose 10–15 calls every Friday night during service. TableTalk handles them all now. Our reservation book is fuller than ever."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">MR</div>
-          <div>
-            <div class="testi-name">Marco R.</div>
-            <div class="testi-role">Owner, Trattoria Marco · Chicago, IL</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Setup was painless — we were live in two days. The AI connects to our OpenTable and sounds completely natural. Guests don't know it's an AI."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SL</div>
-          <div>
-            <div class="testi-name">Sarah L.</div>
-            <div class="testi-role">GM, The Harbor Room · San Diego, CA</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"We run three locations and managing reservations across Resy and Google was a nightmare. TableTalk AI unified everything. I wish we'd done this sooner."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">JK</div>
-          <div>
-            <div class="testi-name">James K.</div>
-            <div class="testi-role">Director of Ops, Kinfolk Group · NYC</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--gray)">
+      Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
+    </p>
   </section>
 
   <!-- CONTACT -->
@@ -628,30 +561,27 @@
     <div class="center">
       <span class="section-tag" style="color:var(--gold2);background:rgba(201,168,76,0.15)">Get Started</span>
       <h2>Ready to Fill Every Table?</h2>
-      <p class="section-sub">Tell us about your restaurant and we'll set up a free 30-minute demo call, tailored to your platforms and team size.</p>
+      <p class="section-sub">Tell us about your restaurant and we'll set up a free 30-minute demo, tailored to your platforms and team size.</p>
+      <p style="margin-top:1rem;color:#94a3b8;font-size:0.9rem;">Prefer email? Reach us at <a href="mailto:info@restoreso.ca" class="contact-email-link">info@restoreso.ca</a></p>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="Marco" required />
+          <input type="text" placeholder="Your first name" required />
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Rossi" required />
+          <input type="text" placeholder="Your last name" required />
         </div>
       </div>
       <div class="form-group">
         <label>Restaurant Name</label>
-        <input type="text" placeholder="Trattoria Marco" required />
+        <input type="text" placeholder="Your restaurant name" required />
       </div>
       <div class="form-group">
         <label>Email Address</label>
-        <input type="email" placeholder="marco@trattoriamarco.com" required />
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="+1 (312) 555-0100" />
+        <input type="email" placeholder="you@yourrestaurant.com" required />
       </div>
       <div class="form-group">
         <label>Current Reservation Platform(s)</label>
@@ -667,20 +597,20 @@
       </div>
       <div class="form-group">
         <label>Anything else? (optional)</label>
-        <textarea placeholder="Tell us about your restaurant — # of locations, call volume, biggest pain points…"></textarea>
+        <textarea placeholder="Tell us about your restaurant — number of seats, call volume, biggest pain points…"></textarea>
       </div>
-      <button type="submit" class="submit-btn">Book My Free Demo →</button>
+      <button type="submit" class="submit-btn">Send Message →</button>
     </form>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">TableTalk <span>AI</span></div>
-    <p>© 2026 TableTalk AI. All rights reserved.</p>
+    <div class="footer-logo">Resto<span>-Reso</span></div>
+    <p>© 2026 Resto-Reso. All rights reserved.</p>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Service</a>
-      <a href="#contact">Contact</a>
+      <a href="mailto:info@restoreso.ca">Contact</a>
     </div>
   </footer>
 
@@ -688,7 +618,7 @@
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('.submit-btn');
-      btn.textContent = '✓ Demo Request Sent! We\'ll be in touch within 24 hours.';
+      btn.textContent = '✓ Message sent! We\'ll be in touch within 24 hours.';
       btn.style.background = '#22c55e';
       btn.style.color = '#fff';
       btn.disabled = true;
