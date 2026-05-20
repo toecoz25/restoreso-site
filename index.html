@@ -39,7 +39,7 @@
     /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(15,30,53,0.97);
+      background: rgba(8,39,24,0.97);
       backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5%;
@@ -154,25 +154,32 @@
     .problem-card p { font-size: 0.9rem; color: var(--gray); }
 
     /* ── How it works ── */
-    .how { background: var(--white); }
+    .how { background: var(--navy2); color: var(--white); }
+    .how h2 { color: var(--white); }
+    .how .section-tag { color: var(--gold2); background: rgba(200,232,212,0.12); border: 1px solid rgba(200,232,212,0.2); }
+    .how .section-sub { color: #94a3b8; }
     .steps {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem; margin-top: 3.5rem; position: relative;
     }
     .step {
       text-align: center; padding: 2rem 1.5rem;
-      border-radius: var(--radius); background: var(--light);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
       position: relative;
+      transition: background .2s, border-color .2s;
     }
+    .step:hover { background: rgba(255,255,255,0.08); border-color: rgba(200,232,212,0.2); }
     .step-num {
       width: 48px; height: 48px; border-radius: 50%;
-      background: var(--navy); color: var(--gold);
+      background: var(--gold); color: var(--navy);
       font-size: 1.2rem; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 1.2rem;
     }
-    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
-    .step p { font-size: 0.88rem; color: var(--gray); }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; color: var(--white); }
+    .step p { font-size: 0.88rem; color: #94a3b8; }
 
     /* ── Features ── */
     .features { background: var(--navy); color: var(--white); }
@@ -491,42 +498,48 @@
   <section class="pricing" id="pricing">
     <div class="center">
       <span class="section-tag">Pricing</span>
-      <h2>Simple Monthly Pricing, No Surprises</h2>
-      <p class="section-sub">All plans include full setup, onboarding, and ongoing support. Cancel any time.</p>
+      <h2>One Plan. Everything Included.</h2>
+      <p class="section-sub">No tiers, no hidden fees. Full setup and onboarding included. Cancel any time.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-tier">Starter</div>
-        <div class="price-amount">$97</div>
+    <div style="display:flex;flex-direction:column;align-items:center;margin-top:3rem;gap:1.5rem;">
+
+      <!-- Main plan card -->
+      <div class="price-card featured" style="max-width:460px;width:100%;">
+        <div class="price-tier">Restaurant Plan</div>
+        <div class="price-amount" style="color:var(--gold2)">$145</div>
         <div class="price-period">/ month per location</div>
-        <div class="price-desc">Perfect for independent restaurants ready to stop missing calls.</div>
+        <div class="price-desc">Everything you need to never miss a reservation call again.</div>
         <ul class="price-features">
-          <li>Up to 200 calls/month</li>
-          <li>1 reservation platform</li>
-          <li>Book, modify &amp; cancel</li>
+          <li>Up to 120 calls/month <span style="color:#94a3b8;font-size:0.8rem;">($1.15/call after)</span></li>
+          <li>Book, modify &amp; cancel reservations</li>
+          <li>SMS confirmation to guests after booking</li>
+          <li>Owner/manager text alert on every reservation</li>
+          <li>Custom restaurant profile (hours, menu, specials)</li>
           <li>Reservations dashboard</li>
+          <li>Walk-in booking</li>
           <li>Monthly summary report</li>
           <li>Email support</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Get Started</a>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
       </div>
-      <div class="price-card featured">
-        <div class="popular-badge">Most Popular</div>
-        <div class="price-tier">Pro</div>
-        <div class="price-amount" style="color:var(--gold2)">$147</div>
-        <div class="price-period">/ month per location</div>
-        <div class="price-desc">For busy restaurants that need full coverage and want to reduce no-shows.</div>
+
+      <!-- Chatbot add-on -->
+      <div class="price-card" style="max-width:460px;width:100%;border-color:var(--gold);background:#fffdf5;">
+        <div class="price-tier" style="color:var(--gold)">Add-On</div>
+        <div style="display:flex;align-items:baseline;gap:0.5rem;">
+          <div class="price-amount" style="font-size:2rem;">+$15</div>
+          <div class="price-period">/ month</div>
+        </div>
+        <div class="price-desc" style="margin-top:0.5rem;">
+          <strong style="color:var(--navy);">Website Chatbot</strong> — Add an AI reservation chatbot to your restaurant's website. Captures bookings from guests who prefer typing over calling.
+        </div>
         <ul class="price-features">
-          <li>Unlimited calls</li>
-          <li>All reservation platforms</li>
-          <li>Book, modify &amp; cancel</li>
-          <li>Outbound no-show reminders</li>
-          <li>Missed call text recovery</li>
-          <li>Weekly reports</li>
-          <li>Priority support</li>
+          <li>Embeddable chat widget for your website</li>
+          <li>Same AI — books, modifies &amp; cancels</li>
+          <li>Works alongside your phone agent</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Get Started</a>
       </div>
+
     </div>
     <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--gray)">
       Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
@@ -536,13 +549,49 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="center">
-      <span class="section-tag" style="color:var(--gold2);background:rgba(201,168,76,0.15)">Get Started</span>
+      <span class="section-tag" style="color:var(--gold2);background:rgba(200,232,212,0.12);border:1px solid rgba(200,232,212,0.2)">Get Started</span>
       <h2>Ready to Fill Every Table?</h2>
-      <p class="section-sub">Tell us about your restaurant and we'll set up a free 30-minute demo, tailored to your platforms and team size.</p>
-      <p style="margin-top:1rem;color:#94a3b8;font-size:0.9rem;">Prefer email? Reach us at <a href="mailto:info@restoreso.ca" class="contact-email-link">info@restoreso.ca</a></p>
+      <p class="section-sub">Tell us about your restaurant and we'll set up a free 30-minute demo, tailored to your setup.</p>
+      <p style="margin-top:1rem;color:#94a3b8;font-size:0.9rem;">Prefer email? <a href="mailto:info@restoreso.ca" class="contact-email-link">info@restoreso.ca</a></p>
     </div>
-    <div style="display:flex; justify-content:center; margin-top:3rem;">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfozKlIAWe25yk_kRVWFF6VBg_Y6CuRms-QXR_o_g-6Pt682A/viewform?embedded=true" width="640" height="1272" frameborder="0" marginheight="0" marginwidth="0" style="max-width:100%; border-radius:12px;">Loading…</iframe>
+
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" name="name" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="restaurant">Restaurant Name</label>
+          <input type="text" id="restaurant" name="restaurant" placeholder="The Blue Bistro" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@yourbistro.ca" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="416-555-0100" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="platforms">Current reservation platforms (if any)</label>
+        <input type="text" id="platforms" name="platforms" placeholder="e.g. OpenTable, Resy, or none" />
+      </div>
+      <div class="form-group">
+        <label for="message">Anything else we should know?</label>
+        <textarea id="message" name="message" placeholder="Busy Friday nights, two locations, etc."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Book My Free Demo →</button>
+    </form>
+
+    <div id="formSuccess" style="display:none;text-align:center;margin-top:3rem;padding:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;background:rgba(255,255,255,0.06);border:1px solid rgba(200,232,212,0.2);border-radius:16px;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+      <h3 style="color:var(--white);font-size:1.4rem;margin-bottom:0.75rem;">You're on the list!</h3>
+      <p style="color:#94a3b8;margin-bottom:1.5rem;">We'll reach out within one business day to schedule your demo. Can't wait? Book a time right now.</p>
+      <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="submit-btn" style="display:inline-block;width:auto;padding:12px 28px;text-decoration:none;">Pick a Demo Time →</a>
     </div>
   </section>
 
@@ -570,6 +619,37 @@
         a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold2)' : '';
       });
     });
+
+    // Contact form submission
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      const btn = form.querySelector('.submit-btn');
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('https://formspree.io/f/meedareb', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    }
   </script>
 </body>
 </html>
