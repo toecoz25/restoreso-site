@@ -270,6 +270,24 @@
     .price-card.featured .price-btn { background: var(--gold); color: var(--navy); }
     .price-btn:hover { opacity: .85; }
 
+    /* ── Why Switch / comparison ── */
+    .compare { background: var(--cream); }
+    .cmp-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .cmp-table th, .cmp-table td { padding: 15px 16px; text-align: center; font-size: 0.92rem; border-bottom: 1px solid var(--border); }
+    .cmp-table thead th { background: var(--cream); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); }
+    .cmp-table tbody tr:last-child td { border-bottom: none; }
+    .cmp-table .row-label { text-align: left; font-weight: 500; color: var(--ink); }
+    .cmp-table .us-col { background: rgba(74,140,99,0.07); font-weight: 700; color: var(--forest); }
+    .cmp-table thead .us-col { background: var(--forest); color: var(--white); }
+    .cmp-table .yes { color: var(--gold); font-weight: 700; }
+    .cmp-table .them { color: #a86b6b; }
+    .split-grid { max-width: 1040px; margin: 2.5rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: stretch; }
+    .split-col { display: flex; flex-direction: column; }
+    .split-title { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.9rem; text-align: center; color: var(--navy); }
+    .split-col .cmp-table { flex: 1; }
+    .cmp-foot { max-width: 1040px; margin: 1.1rem auto 0; font-size: 0.78rem; color: #94a3b8; text-align: center; }
+    @media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } .cmp-table th, .cmp-table td { padding: 12px 10px; font-size: 0.85rem; } }
+
     /* ── Contact/CTA ── */
     .contact { background: var(--navy); color: var(--white); }
     .contact h2 { color: var(--white); }
@@ -345,6 +363,7 @@
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#why-switch">Why Switch</a></li>
     </ul>
     <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="nav-cta">Book a Demo</a>
   </nav>
@@ -568,6 +587,52 @@
     <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--gray)">
       All plans include full setup &amp; onboarding — <strong>$75 one-time</strong>. Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
     </p>
+  </section>
+
+  <!-- WHY SWITCH -->
+  <section class="compare" id="why-switch">
+    <div class="center">
+      <span class="section-tag">Why Switch</span>
+      <h2>Flat Fees. No Commissions. No Surprises.</h2>
+      <p class="section-sub">Compare us against the delivery apps and the booking platforms — head to head.</p>
+    </div>
+
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="split-title">vs. Delivery Apps</div>
+        <table class="cmp-table">
+          <thead>
+            <tr><th></th><th class="us-col">Resto-Reso</th><th>DoorDash / Uber Eats</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">Pickup commission</td><td class="us-col">$1 flat / order</td><td class="them">7–15%</td></tr>
+            <tr><td class="row-label">Delivery commission</td><td class="us-col">$1 flat / order</td><td class="them">up to ~30%</td></tr>
+            <tr><td class="row-label">Own ordering page</td><td class="us-col"><span class="yes">✓</span> Included</td><td class="them">Not included</td></tr>
+            <tr><td class="row-label">Own your customer data</td><td class="us-col"><span class="yes">✓</span> Yes</td><td class="them">Theirs</td></tr>
+            <tr><td class="row-label">Canadian company</td><td class="us-col"><span class="yes">✓</span> Canadian-owned</td><td class="them">U.S.-based</td></tr>
+            <tr><td class="row-label">Contract</td><td class="us-col">Cancel anytime</td><td class="them">Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split-col">
+        <div class="split-title">vs. Booking Platforms</div>
+        <table class="cmp-table">
+          <thead>
+            <tr><th></th><th class="us-col">Resto-Reso</th><th>OpenTable / Resy</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label">Reservation pricing</td><td class="us-col">Flat monthly</td><td class="them">Monthly + ~$1.50 / cover</td></tr>
+            <tr><td class="row-label">"Success tax" per cover</td><td class="us-col"><span class="yes">✓</span> None</td><td class="them">Per-cover fee</td></tr>
+            <tr><td class="row-label">Phone + walk-in booking</td><td class="us-col"><span class="yes">✓</span> Included</td><td class="them">Add-on / varies</td></tr>
+            <tr><td class="row-label">Own your customer data</td><td class="us-col"><span class="yes">✓</span> Yes</td><td class="them">Limited</td></tr>
+            <tr><td class="row-label">Canadian company</td><td class="us-col"><span class="yes">✓</span> Canadian-owned</td><td class="them">U.S.-based</td></tr>
+            <tr><td class="row-label">Contract</td><td class="us-col">Cancel anytime</td><td class="them">Often annual</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="cmp-foot">Competitor fees vary by plan, region and order size; figures are typical published ranges as of 2026. Check each provider for current rates.</p>
   </section>
 
   <!-- CONTACT -->
