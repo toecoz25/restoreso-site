@@ -272,7 +272,13 @@
     /* ── Pickup Profit Calculator ── */
     .calc { max-width: 760px; margin: 3.5rem auto 0; background: var(--warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); }
     .calc h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3.2vw, 1.6rem); text-align: center; margin-bottom: .4rem; }
-    .calc-sub { text-align: center; font-size: .92rem; color: var(--gray); margin: 0 auto 1.8rem; max-width: 520px; }
+    .calc-sub { text-align: center; font-size: .92rem; color: var(--gray); margin: 0 auto 1.6rem; max-width: 520px; }
+    .calc-toggle { display: flex; gap: .4rem; background: var(--light); border-radius: 12px; padding: .35rem; margin: 0 auto 1.6rem; max-width: 420px; }
+    .calc-toggle input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .calc-toggle label { flex: 1; text-align: center; padding: .6rem .5rem; border-radius: 9px; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: background .2s, color .2s; }
+    .calc-toggle input:checked + label { background: var(--white); color: var(--forest); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    .calc-toggle input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .calc-field[hidden] { display: none; }
     .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.4rem; }
     @media (max-width: 620px) { .calc-inputs { grid-template-columns: 1fr; } }
     .calc-field label { display: block; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
@@ -733,26 +739,48 @@
 
     <!-- Pickup Profit Calculator -->
     <div class="calc" id="calculator">
-      <h3>How Much Are Delivery Apps Taking From Your Pickup Orders?</h3>
-      <p class="calc-sub">Enter your monthly pickup volume to see what you could keep by moving pickup orders direct.</p>
+      <h3 id="calcH3">How Much Are Delivery Apps Taking From Your Pickup Orders?</h3>
+      <p class="calc-sub" id="calcSub">Enter your monthly pickup volume to see what you could keep by moving pickup orders direct.</p>
+
+      <div class="calc-toggle" role="radiogroup" aria-label="What would you like to estimate?">
+        <input type="radio" name="calcMode" id="modePickup" value="pickup" checked>
+        <label for="modePickup">Pickup savings</label>
+        <input type="radio" name="calcMode" id="modeResv" value="reservations">
+        <label for="modeResv">Reservation savings</label>
+      </div>
 
       <div class="calc-inputs">
-        <div class="calc-field">
+        <!-- Pickup inputs -->
+        <div class="calc-field" data-mode="pickup">
           <label for="calcD">Pickup orders through delivery apps each month</label>
           <input type="number" class="calc-num" id="calcD" min="0" step="1" value="100" inputmode="numeric">
         </div>
-        <div class="calc-field">
+        <div class="calc-field" data-mode="pickup">
           <label for="calcA">Average pickup order ($)</label>
           <input type="number" class="calc-num" id="calcA" min="0" step="0.01" value="38" inputmode="decimal">
         </div>
-        <div class="calc-field">
+        <div class="calc-field" data-mode="pickup">
           <label for="calcF">Delivery-app pickup fee (%)</label>
           <input type="number" class="calc-num" id="calcF" min="0" max="100" step="0.1" value="7.5" inputmode="decimal">
         </div>
-        <div class="calc-field">
+        <div class="calc-field" data-mode="pickup">
           <label for="calcV">Monthly completed phone orders</label>
           <input type="number" class="calc-num" id="calcV" min="0" step="1" value="80" inputmode="numeric" aria-describedby="helpV">
           <p class="calc-help" id="helpV">Estimate how many monthly orders the AI receptionist would complete by phone.</p>
+        </div>
+        <!-- Reservation inputs -->
+        <div class="calc-field" data-mode="reservations" hidden>
+          <label for="calcCov">Covers booked online each month</label>
+          <input type="number" class="calc-num" id="calcCov" min="0" step="1" value="200" inputmode="numeric">
+        </div>
+        <div class="calc-field" data-mode="reservations" hidden>
+          <label for="calcPC">Per-cover booking fee ($)</label>
+          <input type="number" class="calc-num" id="calcPC" min="0" step="0.01" value="1.50" inputmode="decimal">
+        </div>
+        <div class="calc-field" data-mode="reservations" hidden>
+          <label for="calcSW">Current monthly booking-software fee ($)</label>
+          <input type="number" class="calc-num" id="calcSW" min="0" step="1" value="50" inputmode="decimal" aria-describedby="helpSW">
+          <p class="calc-help" id="helpSW">Enter $0 if you don't pay a monthly base fee.</p>
         </div>
       </div>
 
@@ -766,11 +794,11 @@
         <div class="rz-body">
           <div class="rz-compare">
             <div class="rz-bar-row">
-              <div class="rz-bar-label"><span class="rz-bl">With delivery apps you pay</span><span class="rz-bv" id="rzCostVal">$0</span></div>
+              <div class="rz-bar-label"><span class="rz-bl" id="rzCostLbl">With delivery apps you pay</span><span class="rz-bv" id="rzCostVal">$0</span></div>
               <div class="rz-track"><div class="rz-fill rz-fill-cost" id="rzCostBar"></div></div>
             </div>
             <div class="rz-bar-row" id="rzPriceRow">
-              <div class="rz-bar-label"><span class="rz-bl">With Resto-Reso <span id="rzPlanInline">Starter</span> you pay</span><span class="rz-bv" id="rzPriceVal">$0</span></div>
+              <div class="rz-bar-label"><span class="rz-bl" id="rzPriceLbl">With Resto-Reso you pay</span><span class="rz-bv" id="rzPriceVal">$0</span></div>
               <div class="rz-track"><div class="rz-fill rz-fill-price" id="rzPriceBar"></div></div>
             </div>
             <div class="rz-keep" id="rzKeep">You keep the difference — every month.</div>
@@ -1049,89 +1077,136 @@
         })(t0);
       }
 
-      function compute() {
-        const D = Math.round(clampNum($('calcD'), 0, null));
-        const A = clampNum($('calcA'), 0, null);
-        const F = clampNum($('calcF'), 0, 100);
-        const v = Math.round(clampNum($('calcV'), 0, null));
+      // Render either config through the shared savings-first result card
+      function renderResult(cfg) {
+        const positive = !cfg.custom && cfg.monthly > 0;
 
-        const dap = D * A * (F / 100);
-
-        // Plan recommendation + price (Orders only: Starter / Growth / Custom)
-        let plan, price, custom = false;
-        if (v <= 150) { plan = 'Starter'; price = 55 + v * 0.95; }
-        else if (v <= 300) { plan = 'Growth'; price = 85 + v * 0.85; }
-        else { plan = 'Custom pricing'; custom = true; }
-
-        const monthly = custom ? null : (dap - price);
-        const positive = !custom && monthly > 0;
-
-        // ── Hero: lead with the win ──
+        // Hero — lead with the win
         if (positive) {
           $('rzEyebrow').textContent = 'Your potential savings';
           $('rzHero').hidden = false;
           $('rzYear').hidden = false;
           $('rzSoft').hidden = true;
-          animateSavings(monthly);
+          animateSavings(cfg.monthly);
         } else {
           if (animId) cancelAnimationFrame(animId);
           shown = 0;
           $('rzHero').hidden = true;
           $('rzYear').hidden = true;
           $('rzSoft').hidden = false;
-          if (custom) {
-            $('rzEyebrow').textContent = 'Growing fast';
-            $('rzSoft').innerHTML = "<strong>Above 300 completed phone orders, we build custom pricing with you.</strong> Book a demo for an exact quote at your volume.";
-          } else {
-            $('rzEyebrow').textContent = 'The bigger picture';
-            $('rzSoft').innerHTML = "<strong>At this pickup volume, delivery-app fee savings alone may not cover the full Resto-Reso price.</strong> Resto-Reso still delivers 24/7 phone answering, staff time returned and one dashboard for every direct order.";
-          }
+          $('rzEyebrow').textContent = cfg.custom ? 'Growing fast' : 'The bigger picture';
+          $('rzSoft').innerHTML = cfg.custom ? cfg.softCustom : cfg.softNeg;
         }
 
-        // ── Before / after bars ──
-        $('rzCostVal').textContent = money(dap);
-        if (custom) {
+        // Before / after bars
+        $('rzCostLbl').textContent = cfg.costLabel;
+        $('rzCostVal').textContent = money(cfg.cost);
+        if (cfg.custom) {
           $('rzPriceRow').hidden = true;
           $('rzKeep').hidden = true;
-          $('rzCostBar').style.width = dap > 0 ? '100%' : '0%';
+          $('rzCostBar').style.width = cfg.cost > 0 ? '100%' : '0%';
           $('rzPriceBar').style.width = '0%';
         } else {
           $('rzPriceRow').hidden = false;
-          $('rzPriceVal').textContent = money(price);
-          $('rzPlanInline').textContent = plan;
+          $('rzPriceLbl').textContent = cfg.priceLabel;
+          $('rzPriceVal').textContent = money(cfg.price);
           $('rzKeep').hidden = !positive;
-          const maxv = Math.max(dap, price, 1);
+          const maxv = Math.max(cfg.cost, cfg.price, 1);
           requestAnimationFrame(() => {
-            $('rzCostBar').style.width = (dap / maxv * 100) + '%';
-            $('rzPriceBar').style.width = (price / maxv * 100) + '%';
+            $('rzCostBar').style.width = (cfg.cost / maxv * 100) + '%';
+            $('rzPriceBar').style.width = (cfg.price / maxv * 100) + '%';
           });
         }
 
-        // ── Plan + inclusions ──
-        $('rzPlanName').textContent = plan;
-        $('rzPlanPrice').textContent = custom ? 'Custom pricing required' : money(price) + '/month';
-        $('rzIncl').innerHTML = [
-          'Unlimited direct online pickup orders',
-          v + ' completed AI phone orders',
-          'One pickup menu',
-          'One order dashboard',
-          '24/7 phone answering'
-        ].map(x => '<li>' + x + '</li>').join('');
+        // Plan + inclusions
+        $('rzPlanName').textContent = cfg.planName;
+        $('rzPlanPrice').textContent = cfg.planPrice;
+        $('rzIncl').innerHTML = cfg.incl.map(x => '<li>' + x + '</li>').join('');
 
-        // ── See calculation ──
-        $('rzCalc').innerHTML = custom
-          ? 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>Above 300 completed phone orders, Resto-Reso uses custom pricing.'
-          : 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>' +
-            'Resto-Reso ' + plan + ': ' + money(price) + '/month.<br>' +
-            'You keep: ' + money(dap) + ' − ' + money(price) + ' = ' + (monthly >= 0 ? '+' : '') + money(monthly) + '/month.';
-
-        // ── CTA ──
+        // See calculation + CTA
+        $('rzCalc').innerHTML = cfg.see;
         const cta = $('rzCta');
-        if (custom) { cta.textContent = 'Request Custom Pricing'; cta.href = '#contact'; cta.removeAttribute('target'); }
-        else { cta.textContent = 'Take Pickup Back'; cta.href = DEMO_URL; cta.setAttribute('target', '_blank'); }
+        cta.textContent = cfg.ctaText;
+        cta.href = cfg.ctaHref;
+        if (cfg.ctaTarget) cta.setAttribute('target', cfg.ctaTarget); else cta.removeAttribute('target');
       }
 
-      ['calcD', 'calcA', 'calcF', 'calcV'].forEach(id => $(id).addEventListener('input', compute));
+      // ── Pickup mode ──
+      function pickupCfg() {
+        const D = Math.round(clampNum($('calcD'), 0, null));
+        const A = clampNum($('calcA'), 0, null);
+        const F = clampNum($('calcF'), 0, 100);
+        const v = Math.round(clampNum($('calcV'), 0, null));
+        const dap = D * A * (F / 100);
+
+        let plan, price, custom = false;
+        if (v <= 150) { plan = 'Starter'; price = 55 + v * 0.95; }
+        else if (v <= 300) { plan = 'Growth'; price = 85 + v * 0.85; }
+        else { plan = 'Custom pricing'; custom = true; }
+
+        const monthly = custom ? null : (dap - price);
+        return {
+          custom, monthly,
+          cost: dap, costLabel: 'With delivery apps you pay',
+          price, priceLabel: 'With Resto-Reso ' + plan + ' you pay',
+          planName: plan, planPrice: custom ? 'Custom pricing required' : money(price) + '/month',
+          incl: ['Unlimited direct online pickup orders', v + ' completed AI phone orders', 'One pickup menu', 'One order dashboard', '24/7 phone answering'],
+          softCustom: "<strong>Above 300 completed phone orders, we build custom pricing with you.</strong> Book a demo for an exact quote at your volume.",
+          softNeg: "<strong>At this pickup volume, delivery-app fee savings alone may not cover the full Resto-Reso price.</strong> Resto-Reso still delivers 24/7 phone answering, staff time returned and one dashboard for every direct order.",
+          see: custom
+            ? 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>Above 300 completed phone orders, Resto-Reso uses custom pricing.'
+            : 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>Resto-Reso ' + plan + ': ' + money(price) + '/month.<br>You keep: ' + money(dap) + ' − ' + money(price) + ' = ' + (monthly >= 0 ? '+' : '') + money(monthly) + '/month.',
+          ctaText: custom ? 'Request Custom Pricing' : 'Take Pickup Back',
+          ctaHref: custom ? '#contact' : DEMO_URL,
+          ctaTarget: custom ? null : '_blank'
+        };
+      }
+
+      // ── Reservation mode: flat $199 vs per-cover booking fees ──
+      function resvCfg() {
+        const cov = Math.round(clampNum($('calcCov'), 0, null));
+        const pc = clampNum($('calcPC'), 0, null);
+        const sw = clampNum($('calcSW'), 0, null);
+        const current = cov * pc + sw;
+        const price = 199;
+        return {
+          custom: false, monthly: current - price,
+          cost: current, costLabel: 'With a booking platform you pay',
+          price, priceLabel: 'With Resto-Reso you pay',
+          planName: 'Reservations', planPrice: money(price) + '/month',
+          incl: ['Up to 120 eligible AI-handled reservation calls', 'Books, modifies &amp; cancels 24/7', 'Owner, manager &amp; front-of-house dashboard', 'Walk-in &amp; manual booking', 'No per-cover success fees'],
+          softCustom: '',
+          softNeg: "<strong>At this volume, booking-fee savings alone may not cover the flat $199 price.</strong> Resto-Reso still answers every booking call 24/7, charges no per-cover fees and keeps reservations and orders on one dashboard.",
+          see: cov + ' covers × ' + money(pc) + ' + ' + money(sw) + ' software = ' + money(current) + '.<br>Resto-Reso Reservations: ' + money(price) + '/month (flat, up to 120 eligible calls).<br>You keep: ' + money(current) + ' − ' + money(price) + ' = ' + ((current - price) >= 0 ? '+' : '') + money(current - price) + '/month.',
+          ctaText: 'Book a Free Demo', ctaHref: DEMO_URL, ctaTarget: '_blank'
+        };
+      }
+
+      const HEAD = {
+        pickup: ['How Much Are Delivery Apps Taking From Your Pickup Orders?', 'Enter your monthly pickup volume to see what you could keep by moving pickup orders direct.'],
+        reservations: ['How Much Are Booking Fees Costing Your Reservations?', 'Enter your reservation volume to see what a flat $199/month could keep versus per-cover booking fees.']
+      };
+
+      function mode() {
+        const el = document.querySelector('input[name=calcMode]:checked');
+        return el ? el.value : 'pickup';
+      }
+
+      function toggleMode() {
+        const m = mode();
+        document.querySelectorAll('.calc-field[data-mode]').forEach(f => { f.hidden = f.getAttribute('data-mode') !== m; });
+        $('calcH3').textContent = HEAD[m][0];
+        $('calcSub').textContent = HEAD[m][1];
+      }
+
+      function compute() {
+        renderResult(mode() === 'reservations' ? resvCfg() : pickupCfg());
+      }
+
+      ['calcD', 'calcA', 'calcF', 'calcV', 'calcCov', 'calcPC', 'calcSW'].forEach(id => $(id).addEventListener('input', compute));
+      document.querySelectorAll('input[name=calcMode]').forEach(el => el.addEventListener('change', () => { toggleMode(); compute(); }));
+
+      toggleMode();
       compute();
     })();
   </script>
