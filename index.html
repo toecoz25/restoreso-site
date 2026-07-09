@@ -214,8 +214,9 @@
     .pricing-note { text-align: center; font-size: 0.9rem; color: var(--gray); margin-top: .6rem; }
     .pricing-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 1.5rem; margin: 3rem auto 0; max-width: 1280px; align-items: start;
+      gap: 1.5rem; margin: 3rem auto 0; max-width: 1280px; align-items: stretch;
     }
+    .pricing-fineprint { max-width: 740px; margin: 1.4rem auto 0; text-align: center; font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
     .price-card {
       border-radius: var(--radius); padding: 2.2rem;
       border: 2px solid var(--light); position: relative;
@@ -616,21 +617,15 @@
         <div class="price-tier">Starter</div>
         <div class="price-amount">$50<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
         <div class="price-period">+ $1.10 per completed phone order</div>
-        <div class="price-desc">For restaurants receiving up to 150 completed phone orders per month.</div>
+        <div class="price-desc">For up to 150 completed phone orders per month.</div>
         <ul class="price-features">
           <li>AI answers and takes phone orders 24/7</li>
-          <li>Unlimited online pickup and delivery orders</li>
-          <li>No additional fee for online orders</li>
-          <li>Pickup and delivery order management</li>
-          <li>Live order dashboard</li>
-          <li>Customer SMS order confirmation</li>
-          <li>Restaurant alert for every order</li>
-          <li>Customers can request pickup-order changes by text</li>
-          <li>Order history and business summaries</li>
+          <li>Unlimited online orders — no additional order fee</li>
+          <li>Live order dashboard, history and summaries</li>
+          <li>Customer SMS confirmations and order alerts</li>
           <li>No percentage commissions</li>
         </ul>
-        <div class="price-limit">$215 at the 150-order plan limit</div>
-        <p class="price-add">You only pay the per-order fee when the AI successfully completes an order.</p>
+        <div class="price-limit">$215/mo at the 150-order plan limit</div>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
@@ -639,18 +634,15 @@
         <div class="price-tier">Growth</div>
         <div class="price-amount">$80<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
         <div class="price-period">+ $0.90 per completed phone order</div>
-        <div class="price-desc">For restaurants receiving between 151 and 300 completed phone orders per month.</div>
+        <div class="price-desc">For 151–300 completed phone orders per month.</div>
         <ul class="price-features">
           <li>Everything in Starter</li>
-          <li>Lower per-order pricing</li>
-          <li>AI phone ordering available 24/7</li>
-          <li>Unlimited online pickup and delivery orders</li>
+          <li>Lower $0.90 per-order rate</li>
+          <li>Unlimited online orders — no additional order fee</li>
           <li>Customer and restaurant SMS notifications</li>
-          <li>Order dashboard, history and business summaries</li>
           <li>No percentage commissions</li>
         </ul>
-        <div class="price-limit">$350 at the 300-order plan limit</div>
-        <p class="price-add">Custom high-volume pricing is available above 300 completed phone orders.</p>
+        <div class="price-limit">$350/mo at the 300-order plan limit</div>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
@@ -661,20 +653,13 @@
         <div class="price-period">per restaurant location</div>
         <div class="price-desc">Never miss another reservation call.</div>
         <ul class="price-features">
-          <li>Up to 120 eligible AI-handled reservation calls per month</li>
-          <li>$0.90 per additional eligible call</li>
-          <li>Books new reservations by phone</li>
-          <li>Modifies existing reservations</li>
-          <li>Processes cancellations</li>
+          <li>Up to 120 eligible reservation calls per month</li>
+          <li>Books, modifies and cancels reservations by phone</li>
           <li>Answers common restaurant questions</li>
-          <li>Sends reservation confirmations</li>
-          <li>Alerts the restaurant about new bookings</li>
-          <li>Reservation dashboard for owners, managers and front-of-house staff</li>
-          <li>Walk-in and manual booking support</li>
-          <li>Reservation history and business summaries</li>
-          <li>Restaurant hours, tables and policies configured for the restaurant</li>
+          <li>Reservation dashboard + walk-in and manual booking</li>
+          <li>Confirmations and new-booking alerts</li>
         </ul>
-        <p class="price-add">Spam, wrong numbers and clearly unsuccessful calls are not counted as eligible reservation calls.</p>
+        <div class="price-limit">$0.90 per additional eligible call</div>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
@@ -683,25 +668,21 @@
         <div class="price-tier">Complete</div>
         <div class="price-amount">$249<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
         <div class="price-period">+ $0.90 per completed phone order</div>
-        <div class="price-desc">Reservations, phone ordering and online ordering in one system.</div>
+        <div class="price-desc">Reservations and ordering in one system.</div>
         <ul class="price-features">
-          <li>Everything included with Reservations</li>
-          <li>Everything included with Orders</li>
-          <li>Up to 120 eligible AI-handled reservation calls per month</li>
-          <li>$0.90 per additional eligible reservation call</li>
+          <li>Everything in Reservations + Orders</li>
+          <li>Up to 120 eligible reservation calls per month</li>
           <li>Completed phone orders at $0.90 each</li>
-          <li>Unlimited online pickup and delivery orders</li>
-          <li>No additional fee for online orders</li>
+          <li>Unlimited online orders — no additional order fee</li>
           <li>One dashboard for reservations and orders</li>
-          <li>Combined reservation, order and business summaries</li>
-          <li>No percentage commissions</li>
         </ul>
-        <div class="price-limit">$519 at 300 completed phone orders and up to 120 eligible reservation calls</div>
-        <p class="price-add">Custom Complete pricing is available above 300 completed phone orders.</p>
+        <div class="price-limit">$519/mo at 300 orders + 120 calls</div>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
     </div>
+
+    <p class="pricing-fineprint">You're billed only for completed phone orders and eligible reservation calls — general questions, spam, wrong numbers and unsuccessful calls aren't counted. Above 300 completed phone orders per month, custom pricing applies.</p>
 
     <!-- Setup fee -->
     <div class="setup-box">
