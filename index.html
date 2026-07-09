@@ -279,25 +279,37 @@
     .calc-num { width: 100%; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; color: var(--ink); background: var(--white); text-align: left; }
     .calc-num:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
     .calc-help { font-size: .75rem; color: var(--gray); margin-top: .35rem; line-height: 1.4; }
-    /* single result card */
-    .calc-result { margin-top: 1.8rem; background: var(--white); border: 2px solid var(--mint-mid); border-radius: 12px; padding: 1.8rem; text-align: center; }
-    .calc-lead-label { font-size: .82rem; font-weight: 600; color: var(--gray); }
-    .calc-cost { font-size: clamp(2.2rem, 6vw, 2.8rem); font-weight: 800; color: var(--forest); line-height: 1.05; margin: .1rem 0 .2rem; }
-    .calc-cost span { font-size: 1rem; font-weight: 600; color: var(--gray); }
-    .calc-cost-sub { font-size: .85rem; color: var(--gray); }
-    .calc-seg2 { margin-top: 1.3rem; padding-top: 1.3rem; border-top: 1px solid var(--border); }
-    .calc-plan-name { font-size: 1rem; font-weight: 600; color: var(--ink); }
-    .calc-plan-name strong { color: var(--forest); }
-    .calc-plan-price { font-size: 1.05rem; font-weight: 700; margin-top: .2rem; color: var(--ink); }
-    .calc-incl { list-style: none; margin: 1rem 0 0; text-align: left; display: inline-block; }
-    .calc-incl li { font-size: .85rem; color: var(--gray); padding: 3px 0; display: flex; gap: 8px; }
-    .calc-incl li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
-    .calc-savings-label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--gray); }
-    .calc-save-month { font-size: clamp(2rem, 5.5vw, 2.6rem); font-weight: 800; color: var(--forest); line-height: 1.05; margin-top: .2rem; }
-    .calc-save-year { font-size: .95rem; color: var(--gray); margin-top: .1rem; }
-    .calc-soft { font-size: .9rem; color: var(--gray); line-height: 1.55; max-width: 460px; margin: .3rem auto 0; }
-    .calc-soft strong { color: var(--forest); }
-    .calc-see { margin-top: 1rem; }
+    /* single result card — savings first */
+    .calc-result { margin-top: 1.8rem; background: var(--white); border: 2px solid var(--mint-mid); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(26,92,58,0.10); }
+    .rz-hero-wrap { background: linear-gradient(160deg, var(--mint) 0%, #dcefe4 100%); padding: 1.9rem 1.5rem 1.7rem; text-align: center; border-bottom: 1px solid var(--mint-mid); }
+    .rz-eyebrow { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--forest); }
+    .rz-hero { display: flex; align-items: baseline; justify-content: center; gap: .3rem; margin-top: .35rem; }
+    .rz-save { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.9rem, 11vw, 4.4rem); color: var(--forest); line-height: 1; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; }
+    .rz-save-unit { font-size: 1.1rem; font-weight: 700; color: var(--forest); opacity: .8; }
+    .rz-year { font-size: 1rem; color: var(--forest); font-weight: 600; margin-top: .45rem; }
+    .rz-year strong { font-weight: 800; }
+    .rz-soft { font-size: .95rem; color: var(--gray); line-height: 1.55; max-width: 440px; margin: .3rem auto 0; }
+    .rz-soft strong { color: var(--forest); }
+    .rz-body { padding: 1.6rem 1.5rem 1.8rem; text-align: center; }
+    .rz-compare { max-width: 440px; margin: 0 auto; text-align: left; }
+    .rz-bar-row { margin-bottom: .85rem; }
+    .rz-bar-label { display: flex; justify-content: space-between; font-size: .85rem; margin-bottom: .32rem; }
+    .rz-bar-label .rz-bl { color: var(--gray); }
+    .rz-bar-label .rz-bv { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .rz-track { height: 12px; background: var(--light); border-radius: 6px; overflow: hidden; }
+    .rz-fill { height: 100%; border-radius: 6px; width: 0; transition: width .7s cubic-bezier(.22,.61,.36,1); }
+    .rz-fill-cost { background: linear-gradient(90deg, #d9a768, var(--amber)); }
+    .rz-fill-price { background: linear-gradient(90deg, var(--sage), var(--forest)); }
+    .rz-keep { text-align: center; font-size: .82rem; color: var(--forest); font-weight: 600; margin-top: .5rem; }
+    .rz-plan { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+    .rz-plan-head { font-size: 1rem; color: var(--ink); }
+    .rz-plan-head strong { color: var(--forest); }
+    .rz-incl { list-style: none; margin: .9rem auto 0; display: inline-grid; grid-template-columns: repeat(2, auto); gap: .25rem 1.5rem; text-align: left; }
+    @media (max-width: 520px) { .rz-incl { grid-template-columns: 1fr; } }
+    .rz-incl li { font-size: .84rem; color: var(--gray); display: flex; gap: 7px; }
+    .rz-incl li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    @media (prefers-reduced-motion: reduce) { .rz-fill { transition: none; } }
+    .calc-see { margin-top: 1.1rem; }
     .calc-see summary { cursor: pointer; font-size: .8rem; color: var(--gray); font-weight: 600; list-style: none; }
     .calc-see summary::-webkit-details-marker { display: none; }
     .calc-see summary::after { content: ' ▸'; color: var(--gold); }
@@ -744,7 +756,36 @@
         </div>
       </div>
 
-      <div class="calc-result" id="calcResult" aria-live="polite"></div>
+      <div class="calc-result" id="calcResult" aria-live="polite">
+        <div class="rz-hero-wrap">
+          <div class="rz-eyebrow" id="rzEyebrow">Your potential savings</div>
+          <div class="rz-hero" id="rzHero"><span class="rz-save" id="rzSaveMonth">$0</span><span class="rz-save-unit">/month</span></div>
+          <div class="rz-year" id="rzYear"></div>
+          <p class="rz-soft" id="rzSoft" hidden></p>
+        </div>
+        <div class="rz-body">
+          <div class="rz-compare">
+            <div class="rz-bar-row">
+              <div class="rz-bar-label"><span class="rz-bl">With delivery apps you pay</span><span class="rz-bv" id="rzCostVal">$0</span></div>
+              <div class="rz-track"><div class="rz-fill rz-fill-cost" id="rzCostBar"></div></div>
+            </div>
+            <div class="rz-bar-row" id="rzPriceRow">
+              <div class="rz-bar-label"><span class="rz-bl">With Resto-Reso <span id="rzPlanInline">Starter</span> you pay</span><span class="rz-bv" id="rzPriceVal">$0</span></div>
+              <div class="rz-track"><div class="rz-fill rz-fill-price" id="rzPriceBar"></div></div>
+            </div>
+            <div class="rz-keep" id="rzKeep">You keep the difference — every month.</div>
+          </div>
+          <div class="rz-plan">
+            <div class="rz-plan-head">Recommended: <strong id="rzPlanName">Starter</strong> · <span id="rzPlanPrice">$0/month</span></div>
+            <ul class="rz-incl" id="rzIncl"></ul>
+          </div>
+          <details class="calc-see" id="rzSee"><summary>See calculation</summary><div class="calc-see-body" id="rzCalc"></div></details>
+          <div class="calc-cta-row">
+            <a class="btn-primary" id="rzCta" href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank">Take Pickup Back</a>
+            <a class="calc-textlink" href="#orders">See How Direct Pickup Works</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="calc-strip">
@@ -985,13 +1026,35 @@
         return x;
       }
 
+      const CAD0 = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      const money0 = n => CAD0.format(n);
+      const REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let shown = 0, animId = null;
+
+      // Count-up on the hero savings number (and derived annual figure)
+      function animateSavings(target) {
+        if (animId) cancelAnimationFrame(animId);
+        const paint = val => {
+          $('rzSaveMonth').textContent = money0(val);
+          $('rzYear').innerHTML = "That's <strong>" + money0(val * 12) + "</strong> a year kept in your business.";
+        };
+        if (REDUCE) { shown = target; paint(target); return; }
+        const from = shown, to = target, dur = 550, t0 = performance.now();
+        (function frame(now) {
+          const p = Math.min(1, (now - t0) / dur);
+          const val = from + (to - from) * (1 - Math.pow(1 - p, 3)); // easeOutCubic
+          paint(val);
+          if (p < 1) animId = requestAnimationFrame(frame); else shown = to;
+        })(t0);
+      }
+
       function compute() {
         const D = Math.round(clampNum($('calcD'), 0, null));
         const A = clampNum($('calcA'), 0, null);
         const F = clampNum($('calcF'), 0, 100);
         const v = Math.round(clampNum($('calcV'), 0, null));
 
-        // Delivery-app pickup fees
         const dap = D * A * (F / 100);
 
         // Plan recommendation + price (Orders only: Starter / Growth / Custom)
@@ -1000,7 +1063,54 @@
         else if (v <= 300) { plan = 'Growth'; price = 85 + v * 0.85; }
         else { plan = 'Custom pricing'; custom = true; }
 
-        const incl = [
+        const monthly = custom ? null : (dap - price);
+        const positive = !custom && monthly > 0;
+
+        // ── Hero: lead with the win ──
+        if (positive) {
+          $('rzEyebrow').textContent = 'Your potential savings';
+          $('rzHero').hidden = false;
+          $('rzYear').hidden = false;
+          $('rzSoft').hidden = true;
+          animateSavings(monthly);
+        } else {
+          if (animId) cancelAnimationFrame(animId);
+          shown = 0;
+          $('rzHero').hidden = true;
+          $('rzYear').hidden = true;
+          $('rzSoft').hidden = false;
+          if (custom) {
+            $('rzEyebrow').textContent = 'Growing fast';
+            $('rzSoft').innerHTML = "<strong>Above 300 completed phone orders, we build custom pricing with you.</strong> Book a demo for an exact quote at your volume.";
+          } else {
+            $('rzEyebrow').textContent = 'The bigger picture';
+            $('rzSoft').innerHTML = "<strong>At this pickup volume, delivery-app fee savings alone may not cover the full Resto-Reso price.</strong> Resto-Reso still delivers 24/7 phone answering, staff time returned and one dashboard for every direct order.";
+          }
+        }
+
+        // ── Before / after bars ──
+        $('rzCostVal').textContent = money(dap);
+        if (custom) {
+          $('rzPriceRow').hidden = true;
+          $('rzKeep').hidden = true;
+          $('rzCostBar').style.width = dap > 0 ? '100%' : '0%';
+          $('rzPriceBar').style.width = '0%';
+        } else {
+          $('rzPriceRow').hidden = false;
+          $('rzPriceVal').textContent = money(price);
+          $('rzPlanInline').textContent = plan;
+          $('rzKeep').hidden = !positive;
+          const maxv = Math.max(dap, price, 1);
+          requestAnimationFrame(() => {
+            $('rzCostBar').style.width = (dap / maxv * 100) + '%';
+            $('rzPriceBar').style.width = (price / maxv * 100) + '%';
+          });
+        }
+
+        // ── Plan + inclusions ──
+        $('rzPlanName').textContent = plan;
+        $('rzPlanPrice').textContent = custom ? 'Custom pricing required' : money(price) + '/month';
+        $('rzIncl').innerHTML = [
           'Unlimited direct online pickup orders',
           v + ' completed AI phone orders',
           'One pickup menu',
@@ -1008,48 +1118,17 @@
           '24/7 phone answering'
         ].map(x => '<li>' + x + '</li>').join('');
 
-        const html = [];
-
-        // Lead: what delivery apps may be taking (dominant number)
-        html.push('<div class="calc-lead-label">You may be paying</div>');
-        html.push('<div class="calc-cost">' + money(dap) + '<span> /month</span></div>');
-        html.push('<div class="calc-cost-sub">in delivery-app fees on pickup orders.</div>');
-
-        // Recommended plan + Resto-Reso price + inclusions
-        html.push('<div class="calc-seg2">');
-        html.push('<div class="calc-plan-name">Recommended plan: <strong>' + plan + '</strong></div>');
-        html.push('<div class="calc-plan-price">Estimated Resto-Reso price: ' + (custom ? 'Custom pricing required' : money(price) + '/month') + '</div>');
-        html.push('<ul class="calc-incl">' + incl + '</ul>');
-        html.push('</div>');
-
-        // Savings
-        html.push('<div class="calc-seg2">');
-        if (custom) {
-          html.push('<p class="calc-soft"><strong>Above 300 completed phone orders, we build custom pricing with you.</strong> Book a demo for an exact quote at your volume.</p>');
-        } else {
-          const monthly = dap - price;
-          if (monthly > 0) {
-            html.push('<div class="calc-savings-label">Potential savings</div>');
-            html.push('<div class="calc-save-month">' + money(monthly) + '<span style="font-size:1rem;font-weight:600;color:var(--gray)"> /month</span></div>');
-            html.push('<div class="calc-save-year">' + money(monthly * 12) + ' per year</div>');
-          } else {
-            html.push('<p class="calc-soft"><strong>At this pickup volume, delivery-app fee savings alone may not cover the full Resto-Reso price.</strong> Resto-Reso may still provide value through 24/7 phone answering, staff time returned and one dashboard for direct orders.</p>');
-          }
-          // optional "See calculation" disclosure
-          html.push('<details class="calc-see"><summary>See calculation</summary><div class="calc-see-body">' +
-            'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>' +
+        // ── See calculation ──
+        $('rzCalc').innerHTML = custom
+          ? 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>Above 300 completed phone orders, Resto-Reso uses custom pricing.'
+          : 'Delivery-app pickup fees: ' + D + ' orders × ' + money(A) + ' × ' + F + '% = ' + money(dap) + '.<br>' +
             'Resto-Reso ' + plan + ': ' + money(price) + '/month.<br>' +
-            'Monthly difference: ' + money(dap) + ' − ' + money(price) + ' = ' + (monthly >= 0 ? '+' : '') + money(monthly) + '.' +
-            '</div></details>');
-        }
-        html.push('</div>');
+            'You keep: ' + money(dap) + ' − ' + money(price) + ' = ' + (monthly >= 0 ? '+' : '') + money(monthly) + '/month.';
 
-        // CTA
-        html.push('<div class="calc-cta-row">' +
-          '<a class="btn-primary" href="' + DEMO_URL + '" target="_blank">Take Pickup Back</a>' +
-          '<a class="calc-textlink" href="' + ORDERS_URL + '">See How Direct Pickup Works</a></div>');
-
-        $('calcResult').innerHTML = html.join('');
+        // ── CTA ──
+        const cta = $('rzCta');
+        if (custom) { cta.textContent = 'Request Custom Pricing'; cta.href = '#contact'; cta.removeAttribute('target'); }
+        else { cta.textContent = 'Take Pickup Back'; cta.href = DEMO_URL; cta.setAttribute('target', '_blank'); }
       }
 
       ['calcD', 'calcA', 'calcF', 'calcV'].forEach(id => $(id).addEventListener('input', compute));
