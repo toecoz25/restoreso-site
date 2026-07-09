@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Resto-Reso — AI Phone Agent &amp; Online Ordering for Restaurants</title>
-  <meta name="description" content="AI phone agent for independent Toronto restaurants — books reservations and takes pickup &amp; delivery orders 24/7, plus a commission-free online ordering page. Never miss a call or an order.">
+  <meta name="description" content="AI phone agent for independent Canadian restaurants — books reservations and takes pickup &amp; delivery orders 24/7, plus a direct online ordering page with no percentage commissions on direct orders. Never miss a call or an order.">
   <link rel="canonical" href="https://restoreso.ca/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -97,7 +97,7 @@
     .hero h1 em { color: var(--gold2); font-style: normal; }
     .hero p {
       font-size: 1.15rem; color: #94a3b8;
-      max-width: 600px; margin: 0 auto 2.5rem;
+      max-width: 640px; margin: 0 auto 2.5rem;
     }
     .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
@@ -122,7 +122,7 @@
       margin-top: 4rem;
       display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
     }
-    .stat { text-align: center; }
+    .stat { text-align: center; max-width: 160px; }
     .stat-num { font-size: 2rem; font-weight: 800; color: var(--gold2); }
     .stat-label { font-size: 0.82rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
@@ -139,7 +139,7 @@
       font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 700; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.2px;
     }
-    .section-sub { font-size: 1.05rem; color: var(--gray); max-width: 540px; margin: 0 auto; }
+    .section-sub { font-size: 1.05rem; color: var(--gray); max-width: 560px; margin: 0 auto; }
     .center { text-align: center; }
 
     /* ── Problem ── */
@@ -207,33 +207,20 @@
     .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
     .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: var(--white); }
     .feature-card p { font-size: 0.88rem; color: #94a3b8; }
-
-    /* ── Integrations ── */
-    .integrations { background: var(--cream); }
-    .int-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem; margin-top: 3rem;
-    }
-    .int-card {
-      background: var(--white); border-radius: var(--radius);
-      padding: 1.6rem 1.2rem; text-align: center; box-shadow: var(--shadow);
-      border: 2px solid transparent; transition: border-color .2s, transform .15s;
-    }
-    .int-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-    .int-logo { font-size: 2.2rem; margin-bottom: .8rem; }
-    .int-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: .3rem; }
-    .int-card p { font-size: 0.8rem; color: var(--gray); }
+    .feature-card p + p { margin-top: .6rem; }
 
     /* ── Pricing ── */
     .pricing { background: var(--white); }
+    .pricing-note { text-align: center; font-size: 0.9rem; color: var(--gray); margin-top: .6rem; }
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem; margin-top: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 1.5rem; margin: 3rem auto 0; max-width: 1280px; align-items: start;
     }
     .price-card {
       border-radius: var(--radius); padding: 2.2rem;
       border: 2px solid var(--light); position: relative;
       transition: transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column;
     }
     .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
     .price-card.featured {
@@ -244,25 +231,30 @@
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
       background: var(--gold); color: var(--navy);
       font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.5px; padding: 4px 14px; border-radius: 50px;
+      letter-spacing: 0.5px; padding: 4px 14px; border-radius: 50px; white-space: nowrap;
     }
     .price-tier { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: .5rem; }
     .price-card.featured .price-tier { color: var(--gold2); }
-    .price-amount { font-size: 2.8rem; font-weight: 800; line-height: 1; }
-    .price-period { font-size: 0.88rem; color: var(--gray); }
+    .price-amount { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+    .price-period { font-size: 0.9rem; color: var(--gray); margin-top: .35rem; font-weight: 600; }
     .price-card.featured .price-period { color: #94a3b8; }
-    .price-desc { font-size: 0.88rem; color: var(--gray); margin: .8rem 0 1.5rem; }
+    .price-desc { font-size: 0.88rem; color: var(--gray); margin: .8rem 0 1.3rem; }
     .price-card.featured .price-desc { color: #94a3b8; }
-    .price-features { list-style: none; margin-bottom: 2rem; }
+    .price-features { list-style: none; margin-bottom: 1rem; }
     .price-features li {
-      font-size: 0.88rem; padding: 6px 0;
+      font-size: 0.86rem; padding: 5px 0;
       display: flex; align-items: flex-start; gap: 8px;
       color: var(--gray);
     }
     .price-card.featured .price-features li { color: #cbd5e1; }
     .price-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .price-card.featured .price-features li::before { color: var(--gold2); }
+    .price-limit { background: var(--mint); color: var(--forest); font-weight: 700; font-size: 0.82rem; border-radius: 8px; padding: .6rem .7rem; margin: .3rem 0 .9rem; text-align: center; }
+    .price-card.featured .price-limit { background: rgba(200,232,212,0.14); color: var(--gold2); }
+    .price-add { font-size: 0.8rem; color: var(--gray); margin: 0 0 1.1rem; line-height: 1.45; }
+    .price-card.featured .price-add { color: #94a3b8; }
     .price-btn {
-      display: block; text-align: center; width: 100%;
+      display: block; text-align: center; width: 100%; margin-top: auto;
       padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.95rem;
       text-decoration: none; cursor: pointer; border: none;
       background: var(--light); color: var(--navy);
@@ -271,30 +263,83 @@
     .price-card.featured .price-btn { background: var(--gold); color: var(--navy); }
     .price-btn:hover { opacity: .85; }
 
-    /* ── Cost calculator ── */
-    .calc { max-width: 880px; margin: 3.5rem auto 0; background: var(--warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); }
-    .calc h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; margin-bottom: .4rem; }
-    .calc-sub { text-align: center; font-size: .9rem; color: var(--gray); margin-bottom: 1.8rem; }
-    .calc-sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.8rem; }
-    @media (max-width: 700px) { .calc-sliders { grid-template-columns: 1fr; } }
-    .calc-slider label { display: flex; justify-content: space-between; align-items: baseline; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
-    .calc-slider label output { color: var(--forest); font-size: 1.15rem; font-weight: 800; }
-    .calc input[type=range] { width: 100%; height: 6px; border-radius: 3px; background: var(--mint-mid); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none; }
-    .calc input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
-    .calc input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
-    .calc-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1rem; }
-    .calc-plan { background: var(--white); border: 2px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; position: relative; transition: opacity .2s, border-color .2s, background .2s; }
-    .calc-plan.best { border-color: var(--gold); background: var(--mint); }
-    .calc-plan.dim { opacity: .4; }
-    .calc-plan-name { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--gray); margin-bottom: .3rem; }
-    .calc-plan-price { font-size: 1.5rem; font-weight: 800; color: var(--ink); }
-    .calc-plan-price span { font-size: .8rem; font-weight: 600; color: var(--gray); }
-    .calc-plan-note { font-size: .74rem; color: var(--gray); margin-top: .25rem; min-height: 1.1em; }
-    .best-badge { position: absolute; top: -11px; right: 10px; background: var(--gold); color: var(--white); font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 3px 10px; border-radius: 50px; display: none; }
-    .calc-plan.best .best-badge { display: inline-block; }
-    .calc-verdict { margin-top: 1.4rem; text-align: center; font-size: .95rem; color: var(--forest); font-weight: 600; background: var(--mint); border: 1px solid var(--mint-mid); border-radius: 10px; padding: .9rem 1.2rem; }
-    .calc-apps { margin-top: .8rem; text-align: center; font-size: .87rem; color: #a86b6b; font-weight: 600; }
-    .calc-foot { margin-top: 1rem; text-align: center; font-size: .72rem; color: #94a3b8; line-height: 1.5; }
+    /* ── Setup section ── */
+    .setup-box { max-width: 900px; margin: 3rem auto 0; background: var(--warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.4rem; box-shadow: var(--shadow); text-align: center; }
+    .setup-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: .4rem; }
+    .setup-price { font-size: 2rem; font-weight: 800; color: var(--forest); }
+    .setup-price span { font-size: 0.95rem; font-weight: 600; color: var(--gray); }
+    .setup-sub { color: var(--gray); font-size: 0.92rem; margin: .7rem auto 1.5rem; max-width: 560px; }
+    .setup-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .5rem 1.6rem; max-width: 720px; margin: 0 auto 1.3rem; text-align: left; }
+    .setup-list li { font-size: 0.88rem; color: var(--gray); display: flex; gap: 8px; }
+    .setup-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .setup-note { font-size: 0.9rem; font-weight: 600; color: var(--forest); }
+
+    /* ── Pricing / savings calculator ── */
+    .calc { max-width: 960px; margin: 3.5rem auto 0; background: var(--warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); }
+    .calc h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; text-align: center; margin-bottom: .4rem; }
+    .calc-sub { text-align: center; font-size: .92rem; color: var(--gray); margin: 0 auto 1.8rem; max-width: 620px; }
+    .calc fieldset { border: none; }
+    .calc legend { font-size: .85rem; font-weight: 700; color: var(--forest); margin-bottom: .7rem; }
+    /* segmented control */
+    .calc-segment { display: flex; gap: .4rem; background: var(--light); border-radius: 12px; padding: .35rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+    .calc-segment .seg { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .calc-segment label { flex: 1 1 auto; min-width: 120px; text-align: center; padding: .65rem .5rem; border-radius: 9px; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: background .2s, color .2s; }
+    .calc-segment .seg:checked + label { background: var(--white); color: var(--forest); box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+    .calc-segment .seg:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .calc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 760px) { .calc-cols { grid-template-columns: 1fr; gap: 1.2rem; } }
+    .calc-col-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--forest); margin-bottom: 1rem; }
+    .calc-field { margin-bottom: 1.3rem; }
+    .calc-field.hidden { display: none; }
+    .calc-field > label { display: block; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .45rem; }
+    .calc-input-row { display: flex; align-items: center; gap: .8rem; }
+    .calc-input-row input[type=range] { flex: 1; height: 6px; border-radius: 3px; background: var(--mint-mid); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none; }
+    .calc-input-row input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
+    .calc-input-row input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
+    .calc-num { width: 92px; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: 8px; font-size: .95rem; font-family: inherit; color: var(--ink); background: var(--white); text-align: right; }
+    .calc-num:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+    .calc-help { font-size: .75rem; color: var(--gray); margin-top: .4rem; line-height: 1.4; }
+    /* results */
+    .calc-out { margin-top: 2rem; background: var(--white); border: 2px solid var(--mint-mid); border-radius: 12px; padding: 1.8rem; }
+    .calc-rec { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 1.2rem; margin-bottom: 1.2rem; }
+    .calc-rec-badge { display: inline-block; background: var(--forest); color: var(--white); font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; padding: 4px 12px; border-radius: 50px; }
+    .calc-rec-name { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-top: .6rem; }
+    .calc-rec-reason { font-size: .9rem; color: var(--gray); max-width: 520px; margin: .3rem auto 0; }
+    .calc-cols-out { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    @media (max-width: 620px) { .calc-cols-out { grid-template-columns: 1fr; } }
+    .calc-out-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--gray); margin-bottom: .6rem; }
+    .calc-price { font-size: 1.7rem; font-weight: 800; color: var(--forest); margin-bottom: .6rem; }
+    .calc-price.custom { font-size: 1.25rem; color: var(--ink); }
+    .calc-row { display: flex; justify-content: space-between; gap: 1rem; font-size: .86rem; color: var(--gray); padding: .4rem 0; border-bottom: 1px dashed var(--border); }
+    .calc-row span:last-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .calc-row.total { font-weight: 800; color: var(--ink); border-bottom: none; border-top: 2px solid var(--border); margin-top: .2rem; }
+    .calc-row.total span:last-child { font-weight: 800; }
+    .calc-savings { margin-top: 1.4rem; }
+    .calc-save-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .calc-save-item { background: var(--mint); border: 1px solid var(--mint-mid); border-radius: 10px; padding: 1rem; text-align: center; }
+    .calc-save-num { font-size: 1.5rem; font-weight: 800; color: var(--forest); }
+    .calc-save-lbl { font-size: .75rem; color: var(--gray); margin-top: .2rem; }
+    .calc-note { font-size: .88rem; color: var(--gray); margin-top: 1rem; line-height: 1.5; background: var(--warm); border: 1px solid var(--border); border-radius: 10px; padding: .9rem 1.1rem; }
+    .calc-note strong { color: var(--forest); }
+    .calc-setup-line { margin-top: 1.3rem; padding-top: 1.1rem; border-top: 1px solid var(--border); text-align: center; font-size: .9rem; color: var(--gray); }
+    .calc-setup-line strong { color: var(--ink); }
+    .calc-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.3rem; }
+    .btn-dark {
+      background: var(--white); color: var(--navy);
+      border: 2px solid var(--border); border-radius: 10px;
+      padding: 13px 28px; font-size: 1rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-dark:hover { border-color: var(--gold); background: var(--mint); }
+    .calc-disclaimer { max-width: 960px; margin: 1.2rem auto 0; font-size: .72rem; color: #94a3b8; line-height: 1.55; }
+    .calc-disclaimer p { margin-bottom: .5rem; }
+
+    /* ── Final pricing CTA ── */
+    .pricing-cta { text-align: center; max-width: 640px; margin: 3.5rem auto 0; }
+    .pricing-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: .5rem; }
+    .pricing-cta p { color: var(--gray); margin-bottom: 1.4rem; font-size: .98rem; }
+    .pricing-cta .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* ── Why Switch / comparison ── */
     .compare { background: var(--cream); }
@@ -313,6 +358,17 @@
     .split-col .cmp-table { flex: 1; }
     .cmp-foot { max-width: 1040px; margin: 1.1rem auto 0; font-size: 0.78rem; color: #94a3b8; text-align: center; }
     @media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } .cmp-table th, .cmp-table td { padding: 12px 10px; font-size: 0.85rem; } }
+
+    /* ── FAQ ── */
+    .faq { background: var(--white); }
+    .faq-list { max-width: 780px; margin: 2.5rem auto 0; }
+    .faq-item { background: var(--warm); border: 1px solid var(--border); border-radius: 10px; margin-bottom: .8rem; overflow: hidden; }
+    .faq-item summary { cursor: pointer; padding: 1.1rem 1.3rem; font-weight: 700; font-size: 1rem; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--gold); font-weight: 700; flex-shrink: 0; line-height: 1; }
+    .faq-item[open] summary::after { content: '\2013'; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .faq-item .faq-a { padding: 0 1.3rem 1.1rem; font-size: 0.92rem; color: var(--gray); }
 
     /* ── Contact/CTA ── */
     .contact { background: var(--navy); color: var(--white); }
@@ -368,7 +424,7 @@
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--mint-mid); }
     .footer-logo span { color: #64748b; }
     footer p { color: #475569; }
-    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a { color: #475569; text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--gold); }
 
@@ -390,6 +446,7 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#why-switch">Why Switch</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="nav-cta">Book a Demo</a>
   </nav>
@@ -398,7 +455,7 @@
   <section class="hero">
     <div class="hero-inner">
 <h1>Never Miss a Call, a Table, or an <em>Order</em> Again</h1>
-      <p>Resto-Reso answers every call, books reservations, and takes pickup &amp; delivery orders — 24/7. Plus a commission-free online ordering page for your website. Everything on one clean dashboard.</p>
+      <p>Resto-Reso answers every call, books reservations and takes pickup and delivery orders—24/7. Give customers a direct online ordering page, manage everything from one dashboard and avoid percentage commissions on direct orders.</p>
       <div class="hero-actions">
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="btn-primary">Book a Free Demo</a>
         <a href="#how-it-works" class="btn-outline">See How It Works</a>
@@ -417,8 +474,8 @@
           <div class="stat-label">Avg Handle Time</div>
         </div>
         <div class="stat">
-          <div class="stat-num">0%</div>
-          <div class="stat-label">Order Commission</div>
+          <div class="stat-num">✓</div>
+          <div class="stat-label">No Percentage Commissions</div>
         </div>
       </div>
     </div>
@@ -428,8 +485,8 @@
   <section class="problem" id="problem">
     <div class="center">
       <span class="section-tag">The Problem</span>
-      <h2>Restaurants Lose Revenue Every Day —<br>On Missed Calls <em>and</em> Commissions</h2>
-      <p class="section-sub">Your staff are slammed serving guests. Calls go to voicemail, takeout orders bleed app commissions, and the business walks to a competitor.</p>
+      <h2>Restaurants Lose Revenue Every Day —<br>On Missed Calls <em>and</em> Marketplace Fees</h2>
+      <p class="section-sub">Your staff are slammed serving guests. Calls go to voicemail, direct orders lose margin to marketplace fees, and the business walks to a competitor.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
@@ -444,8 +501,8 @@
       </div>
       <div class="problem-card">
         <div class="icon">📉</div>
-        <h3>You pay commission even on pickup</h3>
-        <p>Delivery apps take 7–15% on pickup orders they don't even deliver — money on takeout you could simply keep.</p>
+        <h3>Percentage fees reduce the value of every pickup order</h3>
+        <p>Marketplace apps can charge a percentage even when the customer picks up the food. Direct phone and online ordering gives repeat customers another way to order while helping the restaurant keep more of each sale.</p>
       </div>
       <div class="problem-card">
         <div class="icon">💸</div>
@@ -496,18 +553,19 @@
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">📅</div>
-        <h3>Book, Modify & Cancel Reservations</h3>
+        <h3>Book, Modify &amp; Cancel Reservations</h3>
         <p>Takes bookings, changes, and cancellations by phone — logged instantly.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🥡</div>
-        <h3>Takes Pickup & Delivery Orders</h3>
+        <h3>Takes Pickup &amp; Delivery Orders</h3>
         <p>Reads your menu and sends phone orders straight to a kitchen-ready dashboard.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🛒</div>
-        <h3>Commission-Free Online Ordering</h3>
-        <p>A branded online pickup page — free, unlimited online orders, never the 7–15% the apps take on pickup.</p>
+        <h3>Direct Online Ordering Included</h3>
+        <p>Give customers a branded online page for pickup and delivery orders. Online orders are included at no additional order fee with Starter, Growth and Complete.</p>
+        <p>Customers place their order online and pay the restaurant at pickup or delivery. Resto-Reso does not currently process customer payments online.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔗</div>
@@ -531,7 +589,7 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <h3>Secure & Private</h3>
+        <h3>Secure &amp; Private</h3>
         <p>Calls encrypted; customer data stored securely and never sold.</p>
       </div>
       <div class="feature-card">
@@ -548,145 +606,252 @@
     <div class="center">
       <span class="section-tag">Pricing</span>
       <h2>Simple Plans. Pick What You Need.</h2>
-      <p class="section-sub">Reservations, orders, or both. No long contract — cancel any time. A $150 one-time setup; we build it all for you.</p>
+      <p class="section-sub">Choose reservations, ordering or both. No percentage commissions, no charge for online orders and no long-term contract.</p>
+      <p class="pricing-note">All prices are in Canadian dollars and apply per restaurant location.</p>
     </div>
-    <div class="pricing-grid" style="max-width:1280px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));align-items:start;">
+    <div class="pricing-grid">
 
-      <!-- Starter · Orders -->
+      <!-- Starter -->
       <div class="price-card">
-        <div class="price-tier">Starter · Orders</div>
-        <div class="price-amount">$50<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/mo</span></div>
-        <div class="price-period">+ $1.10 per completed phone order — pickup &amp; delivery<sup>*</sup></div>
-        <div class="price-desc">Take orders without the app commissions.</div>
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">$50<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
+        <div class="price-period">+ $1.10 per completed phone order</div>
+        <div class="price-desc">For restaurants receiving up to 150 completed phone orders per month.</div>
         <ul class="price-features">
-          <li><strong style="color:var(--navy)">$1.10/order — vs the 7–15% apps take on pickup</strong></li>
-          <li>AI answers &amp; takes phone orders 24/7 — ASAP or scheduled up to 7 days ahead</li>
-          <li>Online ordering page included — web orders free</li>
-          <li>Plan order limit 150 — $215/mo at the limit; higher volume moves to Growth</li>
-          <li>Live, kitchen-ready orders dashboard</li>
-          <li>SMS confirmation to customers</li>
-          <li>Manager alert on every order</li>
-          <li>We build your menu in — update it anytime from your dashboard</li>
+          <li>AI answers and takes phone orders 24/7</li>
+          <li>Unlimited online pickup and delivery orders</li>
+          <li>No additional fee for online orders</li>
+          <li>Pickup and delivery order management</li>
+          <li>Live order dashboard</li>
+          <li>Customer SMS order confirmation</li>
+          <li>Restaurant alert for every order</li>
+          <li>Customers can request pickup-order changes by text</li>
+          <li>Order history and business summaries</li>
+          <li>No percentage commissions</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
-        <p style="margin-top:0.9rem;font-size:0.78rem;color:var(--gray);text-align:left;line-height:1.5;">
-          <sup>*</sup>Delivery means we take the order — you deliver with your own driver. No driver? Keep your delivery app for delivery, switch off its in-app pickup, and send pickup orders here to skip the 7–15% pickup commission.
-        </p>
+        <div class="price-limit">$215 at the 150-order plan limit</div>
+        <p class="price-add">You only pay the per-order fee when the AI successfully completes an order.</p>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
-      <!-- Growth · Orders -->
+      <!-- Growth -->
       <div class="price-card">
-        <div class="price-tier">Growth · Orders</div>
-        <div class="price-amount">$80<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/mo</span></div>
-        <div class="price-period">+ 90¢ per completed phone order — pickup &amp; delivery<sup>*</sup></div>
-        <div class="price-desc">For high-volume takeout &amp; delivery.</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-amount">$80<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
+        <div class="price-period">+ $0.90 per completed phone order</div>
+        <div class="price-desc">For restaurants receiving between 151 and 300 completed phone orders per month.</div>
         <ul class="price-features">
-          <li><strong style="color:var(--navy)">Our lowest per-order rate — 90¢</strong></li>
           <li>Everything in Starter</li>
-          <li>Best value from 151 orders/mo</li>
-          <li>Plan order limit 300 — $350/mo at the limit; higher volume gets custom pricing</li>
+          <li>Lower per-order pricing</li>
+          <li>AI phone ordering available 24/7</li>
+          <li>Unlimited online pickup and delivery orders</li>
+          <li>Customer and restaurant SMS notifications</li>
+          <li>Order dashboard, history and business summaries</li>
+          <li>No percentage commissions</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
+        <div class="price-limit">$350 at the 300-order plan limit</div>
+        <p class="price-add">Custom high-volume pricing is available above 300 completed phone orders.</p>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
       <!-- Reservations -->
       <div class="price-card">
         <div class="price-tier">Reservations</div>
-        <div class="price-amount">$199</div>
-        <div class="price-period">/ month per location</div>
-        <div class="price-desc">Never miss a reservation call again.</div>
+        <div class="price-amount">$199<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/month</span></div>
+        <div class="price-period">per restaurant location</div>
+        <div class="price-desc">Never miss another reservation call.</div>
         <ul class="price-features">
-          <li>120 reservation calls/mo included <span style="color:#94a3b8;font-size:0.8rem;">(90¢/call after)</span></li>
-          <li>Book, modify &amp; cancel by phone</li>
-          <li>SMS confirmation to guests</li>
-          <li>Manager text alert on every booking</li>
-          <li>Reservations dashboard + walk-in booking</li>
-          <li>Custom profile (hours, tables, policies)</li>
-          <li>Monthly summary report &amp; email support</li>
+          <li>Up to 120 eligible AI-handled reservation calls per month</li>
+          <li>$0.90 per additional eligible call</li>
+          <li>Books new reservations by phone</li>
+          <li>Modifies existing reservations</li>
+          <li>Processes cancellations</li>
+          <li>Answers common restaurant questions</li>
+          <li>Sends reservation confirmations</li>
+          <li>Alerts the restaurant about new bookings</li>
+          <li>Reservation dashboard for owners, managers and front-of-house staff</li>
+          <li>Walk-in and manual booking support</li>
+          <li>Reservation history and business summaries</li>
+          <li>Restaurant hours, tables and policies configured for the restaurant</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
+        <p class="price-add">Spam, wrong numbers and clearly unsuccessful calls are not counted as eligible reservation calls.</p>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
       <!-- Complete (featured) -->
       <div class="price-card featured">
-        <div class="popular-badge">Most Popular</div>
+        <div class="popular-badge">Best Value</div>
         <div class="price-tier">Complete</div>
-        <div class="price-amount" style="color:var(--gold2)">$249<span style="font-size:1.1rem;font-weight:600;color:#94a3b8"> + 90¢/order</span></div>
-        <div class="price-period">/ month — reservations &amp; orders</div>
-        <div class="price-desc">Both products, one bill, best value.</div>
+        <div class="price-amount" style="color:var(--gold2)">$249<span style="font-size:1.1rem;font-weight:600;color:#94a3b8">/month</span></div>
+        <div class="price-period">+ $0.90 per completed phone order</div>
+        <div class="price-desc">Reservations, phone ordering and online ordering in one system.</div>
         <ul class="price-features">
-          <li>Everything in Reservations + Orders</li>
-          <li>120 reservation calls/mo included</li>
-          <li>90¢ per completed phone order — our lowest rate</li>
-          <li>Plan order limit 300 — $519/mo at the limit; higher volume gets custom pricing</li>
-          <li>One dashboard for tables &amp; tickets</li>
-          <li>Save $30/mo vs separate plans</li>
+          <li>Everything included with Reservations</li>
+          <li>Everything included with Orders</li>
+          <li>Up to 120 eligible AI-handled reservation calls per month</li>
+          <li>$0.90 per additional eligible reservation call</li>
+          <li>Completed phone orders at $0.90 each</li>
+          <li>Unlimited online pickup and delivery orders</li>
+          <li>No additional fee for online orders</li>
+          <li>One dashboard for reservations and orders</li>
+          <li>Combined reservation, order and business summaries</li>
+          <li>No percentage commissions</li>
         </ul>
-        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
+        <div class="price-limit">$519 at 300 completed phone orders and up to 120 eligible reservation calls</div>
+        <p class="price-add">Custom Complete pricing is available above 300 completed phone orders.</p>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Demo</a>
       </div>
 
     </div>
 
-    <!-- Cost calculator -->
+    <!-- Setup fee -->
+    <div class="setup-box">
+      <h3>One-Time Setup</h3>
+      <div class="setup-price">$150 <span>per restaurant location</span></div>
+      <p class="setup-sub">We configure everything required to get your restaurant ready to use Resto-Reso.</p>
+      <ul class="setup-list">
+        <li>Restaurant hours and contact details</li>
+        <li>Menu configuration</li>
+        <li>Pickup and delivery rules</li>
+        <li>Reservation policies</li>
+        <li>Table and seating configuration</li>
+        <li>AI receptionist configuration</li>
+        <li>Call-flow testing</li>
+        <li>Dashboard setup</li>
+        <li>Staff onboarding</li>
+      </ul>
+      <p class="setup-note">No technical team or new hardware is required.</p>
+    </div>
+
+    <!-- Pricing & savings calculator -->
     <div class="calc" id="calculator">
-      <h3>What Would It Cost You?</h3>
-      <p class="calc-sub">Drag to your monthly volumes — we'll price every plan and pick the best one for you.</p>
-      <div class="calc-sliders">
-        <div class="calc-slider">
-          <label>Phone orders / month <output id="calcOrdersOut">120</output></label>
-          <input type="range" id="calcOrders" min="0" max="400" step="5" value="120">
+      <h3>See What Direct Ordering Could Save Your Restaurant</h3>
+      <p class="calc-sub">Enter a few details about your restaurant. We'll estimate your Resto-Reso monthly price, recommend the best plan and compare it with what you may currently be paying.</p>
+
+      <fieldset class="calc-service">
+        <legend>What do you need?</legend>
+        <div class="calc-segment" role="radiogroup">
+          <input class="seg" type="radio" name="calcService" id="svcOrders" value="orders">
+          <label for="svcOrders">Orders</label>
+          <input class="seg" type="radio" name="calcService" id="svcResv" value="reservations">
+          <label for="svcResv">Reservations</label>
+          <input class="seg" type="radio" name="calcService" id="svcBoth" value="both" checked>
+          <label for="svcBoth">Reservations + Orders</label>
         </div>
-        <div class="calc-slider">
-          <label>Reservation calls / month <output id="calcResvOut">80</output></label>
-          <input type="range" id="calcResv" min="0" max="300" step="5" value="80">
+      </fieldset>
+
+      <div class="calc-cols">
+        <div>
+          <div class="calc-col-title">Your restaurant activity</div>
+
+          <div class="calc-field" data-group="orders" id="fldV">
+            <label for="calcV">Completed phone orders per month</label>
+            <div class="calc-input-row">
+              <input type="range" id="calcVr" min="0" max="500" step="5" value="100" aria-label="Completed phone orders per month slider">
+              <input type="number" id="calcV" min="0" step="1" value="100" inputmode="numeric" aria-describedby="helpV">
+            </div>
+            <p class="calc-help" id="helpV">Only include orders you expect the AI receptionist to complete by phone.</p>
+          </div>
+
+          <div class="calc-field" data-group="orders" id="fldO">
+            <label for="calcO">Online pickup or delivery orders per month</label>
+            <div class="calc-input-row">
+              <input type="range" id="calcOr" min="0" max="500" step="5" value="100" aria-label="Online pickup or delivery orders per month slider">
+              <input type="number" id="calcO" min="0" step="1" value="100" inputmode="numeric" aria-describedby="helpO">
+            </div>
+            <p class="calc-help" id="helpO">Online orders are included at no additional order fee.</p>
+          </div>
+
+          <div class="calc-field" data-group="resv" id="fldC">
+            <label for="calcC">Eligible reservation calls per month</label>
+            <div class="calc-input-row">
+              <input type="range" id="calcCr" min="0" max="400" step="5" value="120" aria-label="Eligible reservation calls per month slider">
+              <input type="number" id="calcC" min="0" step="1" value="120" inputmode="numeric" aria-describedby="helpC">
+            </div>
+            <p class="calc-help" id="helpC">Include calls to book, modify or cancel reservations.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="calc-col-title">Your current costs</div>
+
+          <div class="calc-field" data-group="orders" id="fldMP">
+            <label for="calcMP">Marketplace pickup orders that could move to direct ordering each month</label>
+            <div class="calc-input-row">
+              <input type="range" id="calcMPr" min="0" max="500" step="5" value="100" aria-label="Marketplace pickup orders that could move to direct ordering slider">
+              <input type="number" id="calcMP" min="0" step="1" value="100" inputmode="numeric" aria-describedby="helpMP">
+            </div>
+            <p class="calc-help" id="helpMP">Do not assume every online or phone order currently comes from a marketplace.</p>
+          </div>
+
+          <div class="calc-field" data-group="orders" id="fldAOV">
+            <label for="calcAOV">Average pickup-order value ($)</label>
+            <input type="number" class="calc-num" id="calcAOV" min="0" step="0.01" value="38" inputmode="decimal" style="width:120px;text-align:left;">
+          </div>
+
+          <div class="calc-field" data-group="orders" id="fldFee">
+            <label for="calcFee">Current marketplace pickup fee (%)</label>
+            <input type="number" class="calc-num" id="calcFee" min="0" max="100" step="0.1" value="10" inputmode="decimal" style="width:120px;text-align:left;" aria-describedby="helpFee">
+            <p class="calc-help" id="helpFee">Use the percentage shown in your current merchant agreement. Platforms vary — this is only an estimate.</p>
+          </div>
+
+          <div class="calc-field" data-group="resv" id="fldResvCost">
+            <label for="calcResvCost">Current monthly reservation software and booking fees ($)</label>
+            <input type="number" class="calc-num" id="calcResvCost" min="0" step="1" value="250" inputmode="decimal" style="width:120px;text-align:left;" aria-describedby="helpResvCost">
+            <p class="calc-help" id="helpResvCost">Enter your total estimated monthly reservation-platform cost. Enter $0 if you do not currently use one.</p>
+          </div>
         </div>
       </div>
-      <div class="calc-results">
-        <div class="calc-plan" id="planStarter">
-          <span class="best-badge">Best for you</span>
-          <div class="calc-plan-name">Starter</div>
-          <div class="calc-plan-price" id="priceStarter">—</div>
-          <div class="calc-plan-note" id="noteStarter"></div>
+
+      <div class="calc-out" aria-live="polite">
+        <div class="calc-rec">
+          <span class="calc-rec-badge">Recommended plan</span>
+          <div class="calc-rec-name" id="recPlan">—</div>
+          <p class="calc-rec-reason" id="recReason"></p>
         </div>
-        <div class="calc-plan" id="planGrowth">
-          <span class="best-badge">Best for you</span>
-          <div class="calc-plan-name">Growth</div>
-          <div class="calc-plan-price" id="priceGrowth">—</div>
-          <div class="calc-plan-note" id="noteGrowth"></div>
+        <div class="calc-cols-out">
+          <div>
+            <div class="calc-out-title">Estimated Resto-Reso price</div>
+            <div class="calc-price" id="recPrice">—</div>
+            <div id="recBreakdown"></div>
+          </div>
+          <div>
+            <div class="calc-out-title">Estimated current monthly cost</div>
+            <div id="curRows"></div>
+          </div>
         </div>
-        <div class="calc-plan" id="planResv">
-          <span class="best-badge">Best for you</span>
-          <div class="calc-plan-name">Reservations</div>
-          <div class="calc-plan-price" id="priceResv">—</div>
-          <div class="calc-plan-note" id="noteResv"></div>
-        </div>
-        <div class="calc-plan" id="planComplete">
-          <span class="best-badge">Best for you</span>
-          <div class="calc-plan-name">Complete</div>
-          <div class="calc-plan-price" id="priceComplete">—</div>
-          <div class="calc-plan-note" id="noteComplete"></div>
+        <div class="calc-savings" id="recSavings"></div>
+        <div class="calc-setup-line">One-time setup: <strong>$150 per location</strong> — a separate one-time charge, not part of your monthly pricing.</div>
+        <div class="calc-cta-row">
+          <a class="btn-primary" id="recCta" href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank">Book a Free Demo</a>
+          <button type="button" class="btn-dark" id="calcReset">Reset Calculator</button>
         </div>
       </div>
-      <div class="calc-verdict" id="calcVerdict"></div>
-      <div class="calc-apps" id="calcApps"></div>
-      <p class="calc-foot">
-        Completed-phone-order pricing shown — online orders are free on every order plan. Reservation calls beyond the 120 included are 90¢ each.
-        Starter covers up to 150 orders, Growth and Complete up to 300; higher volumes move to custom pricing.
-        Estimates in CAD. App comparison assumes a $38 average order at the 7–15% pickup commissions delivery apps charge.
-      </p>
+    </div>
+    <div class="calc-disclaimer">
+      <p>Estimates are based on the information entered and are provided for comparison purposes only. Actual marketplace charges vary by provider, merchant plan, promotions and contract.</p>
+      <p>Marketplace platforms may also provide customer discovery, prepaid checkout and delivery logistics. This is a direct-cost comparison, not a feature-equivalent comparison.</p>
+      <p>Estimated savings do not include payment-processing fees, delivery charges, staff-time savings or potential revenue from recovered missed calls.</p>
+      <p>Resto-Reso does not currently process customer payments online.</p>
     </div>
 
-    <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--gray)">
-      All plans include full setup &amp; onboarding — <strong>$150 one-time</strong>. Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
-    </p>
+    <!-- Final pricing CTA -->
+    <div class="pricing-cta">
+      <h3>Not sure which plan fits your restaurant?</h3>
+      <p>Use the calculator to estimate your monthly price and potential savings, or book a demo and we'll review your reservation and order volume with you.</p>
+      <div class="btn-row">
+        <a href="#calculator" class="btn-dark">Calculate My Savings</a>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="btn-primary">Book a Free Demo</a>
+      </div>
+    </div>
   </section>
 
   <!-- WHY SWITCH -->
   <section class="compare" id="why-switch">
     <div class="center">
       <span class="section-tag">Why Switch</span>
-      <h2>Flat Fees. No Commissions. No Surprises.</h2>
-      <p class="section-sub">Compare us against the delivery apps and the booking platforms — head to head.</p>
+      <h2>Flat Fees. No Percentage Commissions on Direct Orders.</h2>
+      <p class="section-sub">Compare us against the delivery apps and the booking platforms — head to head. Resto-Reso is a direct-order channel that can work alongside the services you already use.</p>
     </div>
 
     <div class="split-grid">
@@ -697,8 +862,8 @@
             <tr><th></th><th class="us-col">Resto-Reso</th><th>DoorDash / Uber Eats</th></tr>
           </thead>
           <tbody>
-            <tr><td class="row-label">Pickup commission</td><td class="us-col">0%</td><td class="them">7–15%</td></tr>
-            <tr><td class="row-label">Delivery commission</td><td class="us-col">0%</td><td class="them">up to ~30%</td></tr>
+            <tr><td class="row-label">Commission on direct pickup orders</td><td class="us-col">None</td><td class="them">7–15%</td></tr>
+            <tr><td class="row-label">Commission on direct delivery orders</td><td class="us-col">None</td><td class="them">up to ~30%</td></tr>
             <tr><td class="row-label">Own ordering page</td><td class="us-col"><span class="yes">✓</span> Included</td><td class="them">Not included</td></tr>
             <tr><td class="row-label">Own your customer data</td><td class="us-col"><span class="yes">✓</span> Yes</td><td class="them">Theirs</td></tr>
             <tr><td class="row-label">Canadian company</td><td class="us-col"><span class="yes">✓</span> Canadian-owned</td><td class="them">U.S.-based</td></tr>
@@ -714,8 +879,8 @@
             <tr><th></th><th class="us-col">Resto-Reso</th><th>OpenTable / Resy</th></tr>
           </thead>
           <tbody>
-            <tr><td class="row-label">Reservation pricing</td><td class="us-col">Flat monthly</td><td class="them">Monthly + ~$1.50 / cover</td></tr>
-            <tr><td class="row-label">"Success tax" per cover</td><td class="us-col"><span class="yes">✓</span> None</td><td class="them">Per-cover fee</td></tr>
+            <tr><td class="row-label">Reservation pricing</td><td class="us-col">Flat monthly</td><td class="them">Monthly + per-cover fees</td></tr>
+            <tr><td class="row-label">Per-cover "success" fee</td><td class="us-col"><span class="yes">✓</span> None</td><td class="them">Per-cover fee</td></tr>
             <tr><td class="row-label">Phone + walk-in booking</td><td class="us-col"><span class="yes">✓</span> Included</td><td class="them">Add-on / varies</td></tr>
             <tr><td class="row-label">Own your customer data</td><td class="us-col"><span class="yes">✓</span> Yes</td><td class="them">Limited</td></tr>
             <tr><td class="row-label">Canadian company</td><td class="us-col"><span class="yes">✓</span> Canadian-owned</td><td class="them">U.S.-based</td></tr>
@@ -724,7 +889,46 @@
         </table>
       </div>
     </div>
-    <p class="cmp-foot">Competitor fees vary by plan, region and order size; figures are typical published ranges as of 2026. Check each provider for current rates.</p>
+    <p class="cmp-foot">Competitor fees vary by provider, plan, region, promotions and order size; figures are typical published ranges as of 2026. Marketplaces may also provide discovery, prepaid checkout and delivery logistics — this is a direct-cost comparison, not a feature-equivalent comparison. Check each provider for current rates.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="center">
+      <span class="section-tag">FAQ</span>
+      <h2>Questions, Answered</h2>
+      <p class="section-sub">The details behind the pricing, the plans and how Resto-Reso fits with what you already use.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What counts as a completed phone order?</summary>
+        <div class="faq-a">A completed phone order is an order successfully captured by the AI receptionist and submitted to the restaurant. General questions, abandoned calls, spam, wrong numbers and calls that do not result in an order are not billed as completed orders.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are online orders charged per order?</summary>
+        <div class="faq-a">No. Online pickup and delivery orders are included at no additional order fee with Starter, Growth and Complete.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How do customers pay for online orders?</summary>
+        <div class="faq-a">Customers pay the restaurant when they pick up the order or when the order is delivered. Resto-Reso does not currently process online customer payments.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to cancel Uber Eats or DoorDash?</summary>
+        <div class="faq-a">No. Resto-Reso can work alongside marketplace apps. Restaurants can keep those services for discovery or delivery while giving existing and repeat customers a lower-cost way to order directly.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What is included in the setup fee?</summary>
+        <div class="faq-a">The one-time $150 setup fee includes menu configuration, restaurant hours, pickup and delivery rules, reservation policies, seating configuration, AI receptionist setup, testing, dashboard setup and staff onboarding.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if I receive more than 300 completed phone orders?</summary>
+        <div class="faq-a">Restaurants receiving more than 300 completed phone orders per month receive custom high-volume pricing.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Are prices in Canadian dollars?</summary>
+        <div class="faq-a">Yes. All displayed prices are in Canadian dollars and apply per restaurant location.</div>
+      </details>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -779,10 +983,11 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Resto<span>-Reso</span></div>
-    <p>© 2026 Resto-Reso. All rights reserved.</p>
+    <p>© 2026 Resto-Reso. All rights reserved. Prices in CAD, per location.</p>
     <div class="footer-links">
       <a href="#how-it-works">How It Works</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="mailto:info@restoreso.ca">Contact</a>
     </div>
   </footer>
@@ -832,92 +1037,193 @@
       }
     }
 
-    // ── Pricing calculator ──
+    // ── Pricing & savings calculator ──
     (function () {
-      const AVG_ORDER = 38;
+      const DEMO_URL = 'https://calendar.app.google/3PpVg9Rfqhi28Vr1A';
+      const CONTACT_URL = '#contact';
+      const SETUP_FEE = 150;
 
-      // Canonical pricing — rev 2026-07-09 (see Resto-reso/docs/PRICING.md).
-      // Hard plan limits, no overage caps. null = volume is past this plan's limit
-      // → it moves to another plan or to custom pricing.
-      const RESV_INCL = 120;
-      const starterCost  = v => v <= 150 ? 50 + 1.10 * v : null;                                        // >150 → Growth
-      const growthCost   = v => v <= 300 ? 80 + 0.90 * v : null;                                        // >300 → custom
-      const resvCost     = c => 199 + Math.max(0, c - RESV_INCL) * 0.90;
-      const completeCost = (v, c) => v <= 300 ? 249 + 0.90 * v + Math.max(0, c - RESV_INCL) * 0.90 : null; // >300 → custom
-
+      const CAD = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0, maximumFractionDigits: 2 });
+      const money = n => CAD.format(n);
       const $ = id => document.getElementById(id);
-      const money = n => '$' + Math.round(n);
-      const muted = t => '<span style="font-size:0.95rem;font-weight:600;color:var(--gray)">' + t + '</span>';
 
-      function calcUpdate() {
-        const v = parseInt($('calcOrders').value, 10);
-        const c = parseInt($('calcResv').value, 10);
-        $('calcOrdersOut').textContent = v;
-        $('calcResvOut').textContent = c;
+      const DEFAULTS = { service: 'both', v: 100, o: 100, c: 120, mp: 100, aov: 38, fee: 10, resvCost: 250 };
 
-        const s = starterCost(v), g = growthCost(v), r = resvCost(c), b = completeCost(v, c);
+      // range + number pairs that stay in sync (number may exceed the slider max)
+      const pairs = [
+        { r: 'calcVr', n: 'calcV', max: 500 },
+        { r: 'calcOr', n: 'calcO', max: 500 },
+        { r: 'calcCr', n: 'calcC', max: 400 },
+        { r: 'calcMPr', n: 'calcMP', max: 500 },
+      ];
 
-        // Prices — '—' when the plan doesn't apply, muted text past a hard limit
-        $('priceStarter').innerHTML  = v === 0 ? '—' : (s === null ? muted('Over 150 limit') : money(s) + '<span>/mo</span>');
-        $('priceGrowth').innerHTML   = v === 0 ? '—' : (g === null ? muted('Custom pricing') : money(g) + '<span>/mo</span>');
-        $('priceResv').innerHTML     = c === 0 ? '—' : money(r) + '<span>/mo</span>';
-        $('priceComplete').innerHTML = (v === 0 || c === 0) ? '—' : (b === null ? muted('Custom pricing') : money(b) + '<span>/mo</span>');
-
-        // Notes
-        $('noteStarter').textContent  = v > 150 ? 'Plan limit 150 orders — see Growth' : '';
-        $('noteGrowth').textContent   = v > 300 ? 'Above 300 orders — custom pricing' : '';
-        $('noteResv').textContent     = c > RESV_INCL ? 'incl. ' + (c - RESV_INCL) + ' calls at 90¢' : '';
-        $('noteComplete').textContent = v > 300 ? 'Above 300 orders — custom pricing'
-                                      : c > RESV_INCL ? 'incl. ' + (c - RESV_INCL) + ' calls at 90¢' : '';
-
-        // Which plans apply (Starter only up to its 150-order limit)
-        const plans = { planStarter: v > 0 && v <= 150, planGrowth: v > 0, planResv: c > 0, planComplete: v > 0 && c > 0 };
-        let best = null;
-        if (v > 0 && c > 0) best = b !== null ? 'planComplete' : null;
-        else if (v > 0)     best = v <= 150 ? 'planStarter' : 'planGrowth';
-        else if (c > 0)     best = 'planResv';
-
-        Object.entries(plans).forEach(([id, on]) => {
-          $(id).classList.toggle('dim', !on);
-          $(id).classList.toggle('best', id === best);
-        });
-
-        // Verdict
-        const verdict = $('calcVerdict');
-        if (v > 0 && c > 0) {
-          if (b === null) {
-            verdict.textContent = `Over 300 orders a month — let's build you custom Complete pricing. Book a demo.`;
-          } else {
-            const bestOrder = v <= 150 ? s : g;   // g is null only above 300, handled above
-            if (bestOrder !== null) {
-              const separate = r + bestOrder;
-              const save = separate - b;
-              verdict.textContent = save > 0
-                ? `Best for you: Complete at ${money(b)}/mo — saves ${money(save)}/mo vs separate plans (${money(separate)}).`
-                : `Best for you: Complete at ${money(b)}/mo — everything on one bill.`;
-            } else {
-              verdict.textContent = `Best for you: Complete at ${money(b)}/mo — everything on one bill.`;
-            }
-          }
-        } else if (v > 0) {
-          if (v <= 150)        verdict.textContent = `Best for you: Starter at ${money(s)}/mo for ${v} completed phone orders.`;
-          else if (g !== null) verdict.textContent = `Best for you: Growth at ${money(g)}/mo for ${v} completed phone orders.`;
-          else                 verdict.textContent = `Over 300 orders a month — let's build you custom high-volume pricing. Book a demo.`;
-        } else if (c > 0) {
-          verdict.textContent = `Best for you: Reservations at ${money(r)}/mo for ${c} reservation calls.`;
-        } else {
-          verdict.textContent = 'Drag the sliders to see your monthly cost.';
-        }
-
-        // Delivery app comparison
-        $('calcApps').textContent = v > 0
-          ? `Delivery apps would take ${money(v * AVG_ORDER * 0.07)}–${money(v * AVG_ORDER * 0.15)}/mo in pickup commissions on those same orders.`
-          : '';
+      function clampNum(el, min, max) {
+        let x = parseFloat(el.value);
+        if (!isFinite(x)) x = 0;
+        if (x < min) x = min;
+        if (max != null && x > max) x = max;
+        return x;
       }
 
-      $('calcOrders').addEventListener('input', calcUpdate);
-      $('calcResv').addEventListener('input', calcUpdate);
-      calcUpdate();
+      function service() {
+        const el = document.querySelector('input[name=calcService]:checked');
+        return el ? el.value : 'both';
+      }
+
+      function toggleGroups() {
+        const s = service();
+        const showOrders = s === 'orders' || s === 'both';
+        const showResv = s === 'reservations' || s === 'both';
+        document.querySelectorAll('.calc-field[data-group=orders]').forEach(f => f.classList.toggle('hidden', !showOrders));
+        document.querySelectorAll('.calc-field[data-group=resv]').forEach(f => f.classList.toggle('hidden', !showResv));
+      }
+
+      function row(label, val, total) {
+        return '<div class="calc-row' + (total ? ' total' : '') + '"><span>' + label + '</span><span>' + val + '</span></div>';
+      }
+
+      function compute() {
+        const s = service();
+        const showOrders = s === 'orders' || s === 'both';
+        const showResv = s === 'reservations' || s === 'both';
+
+        const v = showOrders ? Math.round(clampNum($('calcV'), 0, null)) : 0;
+        const c = showResv ? Math.round(clampNum($('calcC'), 0, null)) : 0;
+        const mp = showOrders ? Math.round(clampNum($('calcMP'), 0, null)) : 0;
+        const aov = showOrders ? clampNum($('calcAOV'), 0, null) : 0;
+        const fee = showOrders ? clampNum($('calcFee'), 0, 100) : 0;
+        const resvPlat = showResv ? clampNum($('calcResvCost'), 0, null) : 0;
+
+        // ── Resto-Reso plan + price ──
+        let planName = '', reason = '', custom = false, price = 0, breakdown = [];
+        if (s === 'orders') {
+          if (v <= 150) {
+            planName = 'Starter'; price = 50 + v * 1.10;
+            reason = 'Starter is designed for restaurants receiving up to 150 completed phone orders per month.';
+            breakdown = [['Monthly platform fee', 50], ['Completed phone orders (' + v + ' × $1.10)', v * 1.10]];
+          } else if (v <= 300) {
+            planName = 'Growth'; price = 80 + v * 0.90;
+            reason = 'Growth provides a lower per-order rate for restaurants receiving between 151 and 300 completed phone orders per month.';
+            breakdown = [['Monthly platform fee', 80], ['Completed phone orders (' + v + ' × $0.90)', v * 0.90]];
+          } else {
+            custom = true; planName = 'Custom Orders';
+            reason = 'Restaurants receiving more than 300 completed phone orders per month use custom high-volume pricing.';
+          }
+        } else if (s === 'reservations') {
+          const over = Math.max(0, c - 120);
+          planName = 'Reservations'; price = 199 + over * 0.90;
+          reason = 'Reservations keeps every booking call covered, with up to 120 eligible reservation calls included each month.';
+          breakdown = [['Monthly platform fee', 199], ['Eligible reservation-call overages (' + over + ' × $0.90)', over * 0.90]];
+        } else {
+          if (v <= 300) {
+            const over = Math.max(0, c - 120);
+            planName = 'Complete'; price = 249 + v * 0.90 + over * 0.90;
+            reason = 'Complete combines reservations, phone ordering and unlimited online ordering in one system.';
+            breakdown = [
+              ['Monthly platform fee', 249],
+              ['Completed phone orders (' + v + ' × $0.90)', v * 0.90],
+              ['Eligible reservation-call overages (' + over + ' × $0.90)', over * 0.90]
+            ];
+          } else {
+            custom = true; planName = 'Custom Complete';
+            reason = 'Restaurants receiving more than 300 completed phone orders per month use custom Complete pricing.';
+          }
+        }
+
+        // ── Current costs ──
+        const marketFees = showOrders ? mp * aov * (fee / 100) : 0;
+        const currentCost = (showOrders ? marketFees : 0) + (showResv ? resvPlat : 0);
+        const currentRows = [];
+        if (showOrders) currentRows.push(['Estimated marketplace pickup fees', marketFees]);
+        if (showResv) currentRows.push(['Current reservation-platform costs', resvPlat]);
+
+        // ── Render ──
+        $('recPlan').textContent = planName;
+        $('recReason').textContent = reason;
+
+        const priceEl = $('recPrice');
+        if (custom) {
+          priceEl.textContent = 'Custom pricing required';
+          priceEl.classList.add('custom');
+          $('recBreakdown').innerHTML = '';
+        } else {
+          priceEl.textContent = money(price) + ' /mo';
+          priceEl.classList.remove('custom');
+          $('recBreakdown').innerHTML =
+            breakdown.map(r => row(r[0], money(r[1]))).join('') +
+            row('Estimated monthly total', money(price), true);
+        }
+
+        $('curRows').innerHTML = currentRows.length
+          ? currentRows.map(r => row(r[0], money(r[1]))).join('') + row('Combined monthly total', money(currentCost), true)
+          : row('No current costs entered', money(0));
+
+        // ── Savings / messaging ──
+        const savingsEl = $('recSavings');
+        if (custom) {
+          savingsEl.innerHTML = '<div class="calc-note"><strong>Contact us for a high-volume estimate.</strong><br>We’ll build custom pricing around your volume and review your reservation and order costs with you.</div>';
+        } else if (currentCost === 0) {
+          savingsEl.innerHTML = '<div class="calc-note"><strong>No current platform costs were entered.</strong><br>Resto-Reso may still provide value through missed-call recovery, staff-time savings, 24/7 availability and a single reservation and order dashboard.</div>';
+        } else {
+          const monthly = currentCost - price;
+          const annual = monthly * 12;
+          if (monthly > 0) {
+            const firstYear = annual - SETUP_FEE;
+            savingsEl.innerHTML =
+              '<div class="calc-save-grid">' +
+                '<div class="calc-save-item"><div class="calc-save-num">' + money(monthly) + '</div><div class="calc-save-lbl">Estimated monthly savings</div></div>' +
+                '<div class="calc-save-item"><div class="calc-save-num">' + money(annual) + '</div><div class="calc-save-lbl">Estimated annual savings</div></div>' +
+                '<div class="calc-save-item"><div class="calc-save-num">' + money(firstYear) + '</div><div class="calc-save-lbl">Estimated first-year savings after setup</div></div>' +
+              '</div>' +
+              '<div class="calc-note">Based on the numbers entered, Resto-Reso could reduce your estimated direct-order and reservation-platform costs.</div>';
+          } else {
+            savingsEl.innerHTML =
+              '<div class="calc-note"><strong>Direct fee savings alone may not cover the full platform price based on these numbers.</strong><br>' +
+              'This estimate does not include staff time saved, 24/7 phone availability or potential revenue from calls that might otherwise go unanswered.</div>';
+          }
+        }
+
+        // ── CTA ──
+        const cta = $('recCta');
+        if (custom) {
+          cta.textContent = 'Request Custom Pricing';
+          cta.href = CONTACT_URL;
+          cta.removeAttribute('target');
+        } else {
+          cta.textContent = 'Book a Free Demo';
+          cta.href = DEMO_URL;
+          cta.setAttribute('target', '_blank');
+        }
+      }
+
+      // ── Wiring ──
+      pairs.forEach(p => {
+        const r = $(p.r), n = $(p.n);
+        r.addEventListener('input', () => { n.value = r.value; compute(); });
+        n.addEventListener('input', () => {
+          const x = clampNum(n, 0, null);
+          r.value = Math.min(x, p.max);
+          compute();
+        });
+      });
+      ['calcAOV', 'calcFee', 'calcResvCost'].forEach(id => $(id).addEventListener('input', compute));
+      document.querySelectorAll('input[name=calcService]').forEach(el =>
+        el.addEventListener('change', () => { toggleGroups(); compute(); }));
+
+      $('calcReset').addEventListener('click', () => {
+        $('svcBoth').checked = true;
+        $('calcV').value = DEFAULTS.v; $('calcVr').value = DEFAULTS.v;
+        $('calcO').value = DEFAULTS.o; $('calcOr').value = DEFAULTS.o;
+        $('calcC').value = DEFAULTS.c; $('calcCr').value = DEFAULTS.c;
+        $('calcMP').value = DEFAULTS.mp; $('calcMPr').value = DEFAULTS.mp;
+        $('calcAOV').value = DEFAULTS.aov;
+        $('calcFee').value = DEFAULTS.fee;
+        $('calcResvCost').value = DEFAULTS.resvCost;
+        toggleGroups(); compute();
+      });
+
+      toggleGroups();
+      compute();
     })();
   </script>
 </body>
