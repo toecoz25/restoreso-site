@@ -271,6 +271,31 @@
     .price-card.featured .price-btn { background: var(--gold); color: var(--navy); }
     .price-btn:hover { opacity: .85; }
 
+    /* ── Cost calculator ── */
+    .calc { max-width: 880px; margin: 3.5rem auto 0; background: var(--warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow); }
+    .calc h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; text-align: center; margin-bottom: .4rem; }
+    .calc-sub { text-align: center; font-size: .9rem; color: var(--gray); margin-bottom: 1.8rem; }
+    .calc-sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.8rem; }
+    @media (max-width: 700px) { .calc-sliders { grid-template-columns: 1fr; } }
+    .calc-slider label { display: flex; justify-content: space-between; align-items: baseline; font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
+    .calc-slider label output { color: var(--forest); font-size: 1.15rem; font-weight: 800; }
+    .calc input[type=range] { width: 100%; height: 6px; border-radius: 3px; background: var(--mint-mid); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none; }
+    .calc input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
+    .calc input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 3px solid var(--white); box-shadow: 0 1px 6px rgba(0,0,0,.25); cursor: pointer; }
+    .calc-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1rem; }
+    .calc-plan { background: var(--white); border: 2px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; position: relative; transition: opacity .2s, border-color .2s, background .2s; }
+    .calc-plan.best { border-color: var(--gold); background: var(--mint); }
+    .calc-plan.dim { opacity: .4; }
+    .calc-plan-name { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--gray); margin-bottom: .3rem; }
+    .calc-plan-price { font-size: 1.5rem; font-weight: 800; color: var(--ink); }
+    .calc-plan-price span { font-size: .8rem; font-weight: 600; color: var(--gray); }
+    .calc-plan-note { font-size: .74rem; color: var(--gray); margin-top: .25rem; min-height: 1.1em; }
+    .best-badge { position: absolute; top: -11px; right: 10px; background: var(--gold); color: var(--white); font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding: 3px 10px; border-radius: 50px; display: none; }
+    .calc-plan.best .best-badge { display: inline-block; }
+    .calc-verdict { margin-top: 1.4rem; text-align: center; font-size: .95rem; color: var(--forest); font-weight: 600; background: var(--mint); border: 1px solid var(--mint-mid); border-radius: 10px; padding: .9rem 1.2rem; }
+    .calc-apps { margin-top: .8rem; text-align: center; font-size: .87rem; color: #a86b6b; font-weight: 600; }
+    .calc-foot { margin-top: 1rem; text-align: center; font-size: .72rem; color: #94a3b8; line-height: 1.5; }
+
     /* ── Why Switch / comparison ── */
     .compare { background: var(--cream); }
     .cmp-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
@@ -482,7 +507,7 @@
       <div class="feature-card">
         <div class="feature-icon">🛒</div>
         <h3>Commission-Free Online Ordering</h3>
-        <p>A branded online pickup page — a low flat fee per order, never the 7–15% the apps take on pickup.</p>
+        <p>A branded online pickup page — free, unlimited online orders, never the 7–15% the apps take on pickup.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔗</div>
@@ -523,25 +548,25 @@
     <div class="center">
       <span class="section-tag">Pricing</span>
       <h2>Simple Plans. Pick What You Need.</h2>
-      <p class="section-sub">Reservations, orders, or both. No long contract — cancel any time. A $75 one-time setup; we build it all for you.</p>
+      <p class="section-sub">Reservations, orders, or both. No long contract — cancel any time. A $150 one-time setup; we build it all for you.</p>
     </div>
-    <div class="pricing-grid" style="max-width:1020px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start;">
+    <div class="pricing-grid" style="max-width:1280px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));align-items:start;">
 
-      <!-- Orders -->
+      <!-- Starter · Orders -->
       <div class="price-card">
-        <div class="price-tier">Orders</div>
-        <div class="price-amount">$1.50<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/call</span></div>
-        <div class="price-period">pay-as-you-go — pickup &amp; delivery<sup>*</sup></div>
+        <div class="price-tier">Starter · Orders</div>
+        <div class="price-amount">$50<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/mo</span></div>
+        <div class="price-period">+ $1.10 per completed phone order — pickup &amp; delivery<sup>*</sup></div>
         <div class="price-desc">Take orders without the app commissions.</div>
         <ul class="price-features">
-          <li><strong style="color:var(--navy)">No monthly fee — only pay for what you use</strong></li>
-          <li>AI answers &amp; takes phone orders 24/7</li>
-          <li>Online ordering page included — 50¢ per web order</li>
-          <li>Just $1.50 per call — vs the 7–15% apps take on pickup</li>
+          <li><strong style="color:var(--navy)">$1.10/order — vs the 7–15% apps take on pickup</strong></li>
+          <li>AI answers &amp; takes phone orders 24/7 — ASAP or scheduled up to 7 days ahead</li>
+          <li>Online ordering page included — web orders free</li>
+          <li>Plan order limit 150 — $215/mo at the limit; higher volume moves to Growth</li>
           <li>Live, kitchen-ready orders dashboard</li>
           <li>SMS confirmation to customers</li>
           <li>Manager alert on every order</li>
-          <li>We build your menu into the system</li>
+          <li>We build your menu in — update it anytime from your dashboard</li>
         </ul>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
         <p style="margin-top:0.9rem;font-size:0.78rem;color:var(--gray);text-align:left;line-height:1.5;">
@@ -549,14 +574,29 @@
         </p>
       </div>
 
+      <!-- Growth · Orders -->
+      <div class="price-card">
+        <div class="price-tier">Growth · Orders</div>
+        <div class="price-amount">$80<span style="font-size:1.1rem;font-weight:600;color:var(--gray)">/mo</span></div>
+        <div class="price-period">+ 90¢ per completed phone order — pickup &amp; delivery<sup>*</sup></div>
+        <div class="price-desc">For high-volume takeout &amp; delivery.</div>
+        <ul class="price-features">
+          <li><strong style="color:var(--navy)">Our lowest per-order rate — 90¢</strong></li>
+          <li>Everything in Starter</li>
+          <li>Best value from 151 orders/mo</li>
+          <li>Plan order limit 300 — $350/mo at the limit; higher volume gets custom pricing</li>
+        </ul>
+        <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
+      </div>
+
       <!-- Reservations -->
       <div class="price-card">
         <div class="price-tier">Reservations</div>
-        <div class="price-amount">$130</div>
+        <div class="price-amount">$199</div>
         <div class="price-period">/ month per location</div>
         <div class="price-desc">Never miss a reservation call again.</div>
         <ul class="price-features">
-          <li>Up to 120 reservation calls/mo <span style="color:#94a3b8;font-size:0.8rem;">($1/call after)</span></li>
+          <li>120 reservation calls/mo included <span style="color:#94a3b8;font-size:0.8rem;">(90¢/call after)</span></li>
           <li>Book, modify &amp; cancel by phone</li>
           <li>SMS confirmation to guests</li>
           <li>Manager text alert on every booking</li>
@@ -565,29 +605,79 @@
           <li>Monthly summary report &amp; email support</li>
         </ul>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
-        <p style="margin-top:0.9rem;font-size:0.8rem;color:var(--gray);text-align:center;">+ $15/mo — add a website reservation chatbot</p>
       </div>
 
       <!-- Complete (featured) -->
       <div class="price-card featured">
         <div class="popular-badge">Most Popular</div>
         <div class="price-tier">Complete</div>
-        <div class="price-amount" style="color:var(--gold2)">$165<span style="font-size:1.1rem;font-weight:600;color:#94a3b8"> + $1/phone order</span></div>
+        <div class="price-amount" style="color:var(--gold2)">$249<span style="font-size:1.1rem;font-weight:600;color:#94a3b8"> + 90¢/order</span></div>
         <div class="price-period">/ month — reservations &amp; orders</div>
         <div class="price-desc">Both products, one bill, best value.</div>
         <ul class="price-features">
           <li>Everything in Reservations + Orders</li>
-          <li>150 reservation calls/mo included</li>
-          <li>$1 per phone order — web ordering free</li>
+          <li>120 reservation calls/mo included</li>
+          <li>90¢ per completed phone order — our lowest rate</li>
+          <li>Plan order limit 300 — $519/mo at the limit; higher volume gets custom pricing</li>
           <li>One dashboard for tables &amp; tickets</li>
-          <li>Save $15/mo vs separate plans</li>
+          <li>Save $30/mo vs separate plans</li>
         </ul>
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" class="price-btn">Book a Free Demo</a>
       </div>
 
     </div>
+
+    <!-- Cost calculator -->
+    <div class="calc" id="calculator">
+      <h3>What Would It Cost You?</h3>
+      <p class="calc-sub">Drag to your monthly volumes — we'll price every plan and pick the best one for you.</p>
+      <div class="calc-sliders">
+        <div class="calc-slider">
+          <label>Phone orders / month <output id="calcOrdersOut">120</output></label>
+          <input type="range" id="calcOrders" min="0" max="400" step="5" value="120">
+        </div>
+        <div class="calc-slider">
+          <label>Reservation calls / month <output id="calcResvOut">80</output></label>
+          <input type="range" id="calcResv" min="0" max="300" step="5" value="80">
+        </div>
+      </div>
+      <div class="calc-results">
+        <div class="calc-plan" id="planStarter">
+          <span class="best-badge">Best for you</span>
+          <div class="calc-plan-name">Starter</div>
+          <div class="calc-plan-price" id="priceStarter">—</div>
+          <div class="calc-plan-note" id="noteStarter"></div>
+        </div>
+        <div class="calc-plan" id="planGrowth">
+          <span class="best-badge">Best for you</span>
+          <div class="calc-plan-name">Growth</div>
+          <div class="calc-plan-price" id="priceGrowth">—</div>
+          <div class="calc-plan-note" id="noteGrowth"></div>
+        </div>
+        <div class="calc-plan" id="planResv">
+          <span class="best-badge">Best for you</span>
+          <div class="calc-plan-name">Reservations</div>
+          <div class="calc-plan-price" id="priceResv">—</div>
+          <div class="calc-plan-note" id="noteResv"></div>
+        </div>
+        <div class="calc-plan" id="planComplete">
+          <span class="best-badge">Best for you</span>
+          <div class="calc-plan-name">Complete</div>
+          <div class="calc-plan-price" id="priceComplete">—</div>
+          <div class="calc-plan-note" id="noteComplete"></div>
+        </div>
+      </div>
+      <div class="calc-verdict" id="calcVerdict"></div>
+      <div class="calc-apps" id="calcApps"></div>
+      <p class="calc-foot">
+        Completed-phone-order pricing shown — online orders are free on every order plan. Reservation calls beyond the 120 included are 90¢ each.
+        Starter covers up to 150 orders, Growth and Complete up to 300; higher volumes move to custom pricing.
+        Estimates in CAD. App comparison assumes a $38 average order at the 7–15% pickup commissions delivery apps charge.
+      </p>
+    </div>
+
     <p style="text-align:center;margin-top:2rem;font-size:0.9rem;color:var(--gray)">
-      All plans include full setup &amp; onboarding — <strong>$75 one-time</strong>. Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
+      All plans include full setup &amp; onboarding — <strong>$150 one-time</strong>. Running multiple locations? <a href="#contact" style="color:var(--gold);font-weight:600">Contact us</a> for custom pricing.
     </p>
   </section>
 
@@ -741,6 +831,94 @@
         btn.disabled = false;
       }
     }
+
+    // ── Pricing calculator ──
+    (function () {
+      const AVG_ORDER = 38;
+
+      // Canonical pricing — rev 2026-07-09 (see Resto-reso/docs/PRICING.md).
+      // Hard plan limits, no overage caps. null = volume is past this plan's limit
+      // → it moves to another plan or to custom pricing.
+      const RESV_INCL = 120;
+      const starterCost  = v => v <= 150 ? 50 + 1.10 * v : null;                                        // >150 → Growth
+      const growthCost   = v => v <= 300 ? 80 + 0.90 * v : null;                                        // >300 → custom
+      const resvCost     = c => 199 + Math.max(0, c - RESV_INCL) * 0.90;
+      const completeCost = (v, c) => v <= 300 ? 249 + 0.90 * v + Math.max(0, c - RESV_INCL) * 0.90 : null; // >300 → custom
+
+      const $ = id => document.getElementById(id);
+      const money = n => '$' + Math.round(n);
+      const muted = t => '<span style="font-size:0.95rem;font-weight:600;color:var(--gray)">' + t + '</span>';
+
+      function calcUpdate() {
+        const v = parseInt($('calcOrders').value, 10);
+        const c = parseInt($('calcResv').value, 10);
+        $('calcOrdersOut').textContent = v;
+        $('calcResvOut').textContent = c;
+
+        const s = starterCost(v), g = growthCost(v), r = resvCost(c), b = completeCost(v, c);
+
+        // Prices — '—' when the plan doesn't apply, muted text past a hard limit
+        $('priceStarter').innerHTML  = v === 0 ? '—' : (s === null ? muted('Over 150 limit') : money(s) + '<span>/mo</span>');
+        $('priceGrowth').innerHTML   = v === 0 ? '—' : (g === null ? muted('Custom pricing') : money(g) + '<span>/mo</span>');
+        $('priceResv').innerHTML     = c === 0 ? '—' : money(r) + '<span>/mo</span>';
+        $('priceComplete').innerHTML = (v === 0 || c === 0) ? '—' : (b === null ? muted('Custom pricing') : money(b) + '<span>/mo</span>');
+
+        // Notes
+        $('noteStarter').textContent  = v > 150 ? 'Plan limit 150 orders — see Growth' : '';
+        $('noteGrowth').textContent   = v > 300 ? 'Above 300 orders — custom pricing' : '';
+        $('noteResv').textContent     = c > RESV_INCL ? 'incl. ' + (c - RESV_INCL) + ' calls at 90¢' : '';
+        $('noteComplete').textContent = v > 300 ? 'Above 300 orders — custom pricing'
+                                      : c > RESV_INCL ? 'incl. ' + (c - RESV_INCL) + ' calls at 90¢' : '';
+
+        // Which plans apply (Starter only up to its 150-order limit)
+        const plans = { planStarter: v > 0 && v <= 150, planGrowth: v > 0, planResv: c > 0, planComplete: v > 0 && c > 0 };
+        let best = null;
+        if (v > 0 && c > 0) best = b !== null ? 'planComplete' : null;
+        else if (v > 0)     best = v <= 150 ? 'planStarter' : 'planGrowth';
+        else if (c > 0)     best = 'planResv';
+
+        Object.entries(plans).forEach(([id, on]) => {
+          $(id).classList.toggle('dim', !on);
+          $(id).classList.toggle('best', id === best);
+        });
+
+        // Verdict
+        const verdict = $('calcVerdict');
+        if (v > 0 && c > 0) {
+          if (b === null) {
+            verdict.textContent = `Over 300 orders a month — let's build you custom Complete pricing. Book a demo.`;
+          } else {
+            const bestOrder = v <= 150 ? s : g;   // g is null only above 300, handled above
+            if (bestOrder !== null) {
+              const separate = r + bestOrder;
+              const save = separate - b;
+              verdict.textContent = save > 0
+                ? `Best for you: Complete at ${money(b)}/mo — saves ${money(save)}/mo vs separate plans (${money(separate)}).`
+                : `Best for you: Complete at ${money(b)}/mo — everything on one bill.`;
+            } else {
+              verdict.textContent = `Best for you: Complete at ${money(b)}/mo — everything on one bill.`;
+            }
+          }
+        } else if (v > 0) {
+          if (v <= 150)        verdict.textContent = `Best for you: Starter at ${money(s)}/mo for ${v} completed phone orders.`;
+          else if (g !== null) verdict.textContent = `Best for you: Growth at ${money(g)}/mo for ${v} completed phone orders.`;
+          else                 verdict.textContent = `Over 300 orders a month — let's build you custom high-volume pricing. Book a demo.`;
+        } else if (c > 0) {
+          verdict.textContent = `Best for you: Reservations at ${money(r)}/mo for ${c} reservation calls.`;
+        } else {
+          verdict.textContent = 'Drag the sliders to see your monthly cost.';
+        }
+
+        // Delivery app comparison
+        $('calcApps').textContent = v > 0
+          ? `Delivery apps would take ${money(v * AVG_ORDER * 0.07)}–${money(v * AVG_ORDER * 0.15)}/mo in pickup commissions on those same orders.`
+          : '';
+      }
+
+      $('calcOrders').addEventListener('input', calcUpdate);
+      $('calcResv').addEventListener('input', calcUpdate);
+      calcUpdate();
+    })();
   </script>
 </body>
 </html>
