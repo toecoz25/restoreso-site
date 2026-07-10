@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resto-Reso Site Review — 2026-07-10</title>
+<style>
+  :root {
+    --ink: #1e2a24;
+    --muted: #5a6b62;
+    --accent: #2e6b47;
+    --accent-soft: #e8f2ec;
+    --cream: #faf8f4;
+    --line: #e3e0d8;
+    --high: #b3402e;
+    --med: #a87728;
+    --low: #5a6b62;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  header.page {
+    background: #0d2318;
+    color: #f2efe8;
+    padding: 3rem 1.25rem 2.5rem;
+  }
+  header.page .wrap { padding-bottom: 0; }
+  header.page h1 { margin: 0 0 .35rem; font-size: 2rem; letter-spacing: -.01em; }
+  header.page .meta { color: #b9c9bf; font-size: .95rem; }
+  nav.toc {
+    position: sticky; top: 0; z-index: 10;
+    background: #ffffff; border-bottom: 1px solid var(--line);
+    padding: .55rem 1.25rem;
+    overflow-x: auto; white-space: nowrap;
+  }
+  nav.toc a {
+    color: var(--accent); text-decoration: none; font-size: .88rem; font-weight: 600;
+    margin-right: 1.1rem;
+  }
+  nav.toc a:hover { text-decoration: underline; }
+  h2 {
+    font-size: 1.45rem; margin: 3rem 0 1rem;
+    padding-bottom: .4rem; border-bottom: 2px solid var(--accent);
+    scroll-margin-top: 3.5rem;
+  }
+  h3 { font-size: 1.1rem; margin: 1.6rem 0 .5rem; }
+  p, li { max-width: 46rem; }
+  section p { color: var(--ink); }
+  .lede { font-size: 1.06rem; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 1.1rem 1.3rem; margin: 1rem 0;
+  }
+  .card h3 { margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .03em;
+    padding: .12rem .55rem; border-radius: 999px; text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .badge.high { background: #f7e5e1; color: var(--high); }
+  .badge.med  { background: #f5ecdc; color: var(--med); }
+  .badge.low  { background: #e9ece9; color: var(--low); }
+  .badge.sev-critical { background: #b3402e; color: #fff; }
+  .badge.sev-serious  { background: #f7e5e1; color: var(--high); }
+  .badge.sev-moderate { background: #f5ecdc; color: var(--med); }
+  .badge.sev-minor    { background: #e9ece9; color: var(--low); }
+  .badge.effort { background: var(--accent-soft); color: var(--accent); }
+  dl.owner-q dt {
+    font-weight: 700; margin-top: 1.15rem; color: var(--accent);
+  }
+  dl.owner-q dd { margin: .25rem 0 0; max-width: 46rem; }
+  .table-scroll { overflow-x: auto; margin: 1rem 0; }
+  table.actions {
+    border-collapse: collapse; width: 100%; background: #fff;
+    border: 1px solid var(--line); font-size: .92rem;
+  }
+  table.actions caption {
+    caption-side: top; text-align: left; font-weight: 700; padding: .4rem 0; color: var(--muted); font-size: .85rem;
+  }
+  table.actions th, table.actions td {
+    border: 1px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top;
+  }
+  table.actions th { background: var(--accent-soft); color: var(--ink); }
+  table.actions td:first-child { text-align: center; font-weight: 700; color: var(--muted); }
+  ul.a11y { list-style: none; padding: 0; }
+  ul.a11y li {
+    background: #fff; border: 1px solid var(--line); border-radius: 8px;
+    padding: .7rem .9rem; margin: .5rem 0; max-width: none; font-size: .93rem;
+  }
+  ul.a11y li .sc { color: var(--muted); font-size: .82rem; }
+  details.reviewer {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    margin: .8rem 0; padding: 0;
+  }
+  details.reviewer summary {
+    cursor: pointer; font-weight: 700; padding: .9rem 1.2rem; font-size: 1rem;
+    list-style-position: inside;
+  }
+  details.reviewer summary:hover { background: var(--accent-soft); border-radius: 10px; }
+  details.reviewer .body { padding: 0 1.4rem 1.2rem; border-top: 1px solid var(--line); }
+  details.reviewer h4 { margin: 1.2rem 0 .4rem; font-size: .98rem; color: var(--accent); }
+  details.reviewer ol li, details.reviewer ul li { margin-bottom: .45rem; }
+  .verdict { font-style: italic; color: var(--muted); }
+  .agree { color: var(--accent); font-weight: 700; }
+  code { background: #eef0ea; padding: .08rem .35rem; border-radius: 4px; font-size: .88em; }
+  footer.page { color: var(--muted); font-size: .85rem; margin-top: 4rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="wrap">
+    <h1>Resto-Reso Site Review</h1>
+    <p class="meta">July 10, 2026 · Five-persona expert panel: Web Designer/UX · Marketing Strategist · Sales/Conversion · Restaurant Owner (target buyer) · Accessibility Auditor (WCAG 2.2 AA)</p>
+    <p class="meta">Sources reviewed: live site (restoreso.ca) + repo source (<code>index.html</code>). No browser was available, so mobile and visual review is source-only (inferred from CSS/media queries).</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Report sections">
+  <a href="#summary">Executive summary</a>
+  <a href="#consensus">Consensus</a>
+  <a href="#splits">Split decisions</a>
+  <a href="#owner-questions">Your questions</a>
+  <a href="#actions">Action table</a>
+  <a href="#a11y">Accessibility appendix</a>
+  <a href="#reviewers">Full reviewer notes</a>
+</nav>
+
+<div class="wrap">
+
+<section id="summary">
+  <h2>Executive summary</h2>
+  <p class="lede">The panel's verdict is remarkably consistent: this is a polished, honest, well-argued page that <strong>never proves anything</strong> — a well-built stage with nobody on it. All five reviewers passed it on the 10-second clarity test and independently named the pricing transparency and savings calculator as the best thing on the site; the restaurant-owner persona called it "the most owner-respecting pricing section I've seen from a restaurant tech company." But four of five would not endorse the page as-is, and the owner persona closed the tab. The single biggest opportunity is unanimous: <strong>add proof media — short audio clips of a real reservation call and a pickup-order call, plus dashboard screenshots</strong> — because for a product whose core promise is "sounds human," asking visitors to book a demo just to hear the voice is the page's largest conversion leak. The top three cross-panel priorities are: (1) the proof layer (audio + screenshots, ideally a live "call this number" demo line, and at least one honest piece of social proof or founder note); (2) a dedicated reservations narrative beat — the $199/$249 tiers carry the least persuasion per dollar of price on the page; and (3) mechanical conversion blockers: the primary CTA buttons fail WCAG contrast sitewide (3.98:1), mobile users lose all navigation below 640px, and the calculator/comparison — the page's best persuasion — sits <em>after</em> the price ask.</p>
+</section>
+
+<section id="consensus">
+  <h2>Consensus <span class="badge high">do these first</span></h2>
+  <p>Points where all or most reviewers independently agreed — high confidence.</p>
+
+  <div class="card">
+    <h3>1. Add proof media: call audio + dashboard screenshots <span class="agree">5/5 reviewers</span></h3>
+    <p>Every reviewer, unprompted, called this the page's biggest gap. There is currently <em>not a single image</em> on the page (the only "imagery" is emoji), and the "Natural, Human-Like Voice" claim — the entire product — is an unverifiable adjective. Add a ~30s reservation-call clip and a ~30s pickup-order clip (native <code>&lt;audio controls&gt;</code>, no autoplay, full visible transcripts), plus 2–3 real dashboard screenshots (orders view + reservations view) with meaningful alt text. Three reviewers went further: a public "call this number and try it" demo line would be the cheapest, highest-converting proof possible for a phone-AI product. Screenshots must show only the real Resto-Reso dashboard — no mockups implying OpenTable/Resy/Google sync.</p>
+  </div>
+
+  <div class="card">
+    <h3>2. Zero social proof / faceless company <span class="agree">4/5 reviewers</span></h3>
+    <p>No testimonials, no customer names, no logos, no city, no team, no about. If no customers exist yet, the marketing and owner reviewers agreed an honest founder note ("built in Canada, now onboarding founding restaurants — founding pricing") converts better than silence, which currently reads as "no customers."</p>
+  </div>
+
+  <div class="card">
+    <h3>3. Reservations are under-sold <span class="agree">5/5 reviewers</span></h3>
+    <p>The page is roughly 70–80% pickup/fee-revenge, yet Reservations ($199) and Complete ($249+) are the most expensive tiers — "the least storytelling per dollar of price." There is no reservation problem-narrative (Friday-night phone slammed while the host seats a party, no-shows, per-cover fees) and no walkthrough of how a reservation call goes. A full-service owner feels like the secondary audience. Panel recommendation: keep the pickup-first wedge, but give reservations one dedicated section beat before pricing.</p>
+  </div>
+
+  <div class="card">
+    <h3>4. Hero stat row reads as invented marketing <span class="agree">5/5 reviewers</span></h3>
+    <p>"100% Calls Answered" and "&lt;2 min Avg Handle Time" are product properties dressed as proof metrics from a company showing zero customers — the owner persona noted "my voicemail also answers 100% of calls." The accessibility auditor adds that the stat labels are also the lowest-contrast text on the page (3.36:1). Replace with the quantified wedge ("Delivery apps take 7–15% of pickup. Direct orders through Resto-Reso take 0%"). The unsourced "$200–$600 a seating" claim drew similar skepticism from two reviewers.</p>
+  </div>
+
+  <div class="card">
+    <h3>5. Persuasion arrives after the price ask <span class="agree">3/5 reviewers</span></h3>
+    <p>The calculator and comparison tables — the strongest persuasion assets — sit after/inside the pricing mega-block, so readers hit four price cards before the justification. Move the calculator (or a compact version) above the pricing grid, and flag one tier "Most Popular" to break four-identical-cards choice paralysis.</p>
+  </div>
+
+  <div class="card">
+    <h3>6. No failure-mode reassurance <span class="agree">3/5 reviewers</span></h3>
+    <p>"Escalates to a human when needed" appears once, in How It Works step 3, and never again. Owners' top unspoken objections go unanswered: What happens when the AI gets an order wrong? Whose human, at 11pm? Who eats the food on a prank order, since phone orders are unpaid until pickup? Add 2–3 FAQ entries. The owner persona also asked: does it speak French? A Canadian-flag-waving site never mentions language.</p>
+  </div>
+
+  <div class="card">
+    <h3>7. Mechanical bugs found by multiple reviewers</h3>
+    <p>(a) <strong>Mobile nav:</strong> below 640px, <code>.nav-links</code> is <code>display:none</code> with no hamburger — mobile visitors (the majority for local-business traffic) lose all in-page navigation. (b) <strong>Duplicate pill:</strong> the Reservations pricing card repeats "$0.90 per additional eligible call" verbatim (index.html ~lines 674/679) instead of showing a cost-at-limit figure like its siblings. (c) <strong>Inverted table row:</strong> "Per-cover 'success' fee — ✓ None" pairs a positive checkmark with a fee row in a way that reads backwards at a glance. (d) <strong>No privacy/terms links</strong> in the footer while the form sends PII to Formspree.</p>
+  </div>
+
+  <div class="card">
+    <h3>8. Keep: the calculator and radical pricing honesty <span class="agree">5/5 reviewers</span></h3>
+    <p>All five "best thing" picks converge here: visible math, honest negative-savings state, "$198 at the plan limit," "abandoned calls and spam aren't billed," cancel anytime — and the calculator's accessibility engineering (<code>aria-live</code>, reduced-motion support, focus-visible toggle) is above-average work. Do not touch this in any redesign; extend its patterns to the rest of the page.</p>
+  </div>
+</section>
+
+<section id="splits">
+  <h2>Split decisions</h2>
+
+  <div class="card">
+    <h3>Where should the audio clips live?</h3>
+    <p><strong>The split:</strong> Owner says under the hero, before the problem section ("if the audio is good, I book the demo before I ever reach pricing"); sales says in/replacing the "Natural, Human-Like Voice" feature card with a hero tease; marketing says under the hero or in Direct Pickup for the order clip, beside the Reservations card for the booking clip.</p>
+    <p><strong>Our call:</strong> Do both cheaply — a "▶ Hear a real call" secondary action in the hero (replacing or joining the outline CTA) that jumps to inline players: the order clip in the Direct Pickup section, the reservation clip in the new reservations beat. That satisfies the owner's "hear it before anything else" instinct without crowding the first viewport, and gives the reservation clip double duty as the missing reservation storytelling.</p>
+  </div>
+
+  <div class="card">
+    <h3>Urgency offer (e.g. "book this month, we waive the $150 setup")?</h3>
+    <p><strong>The split:</strong> Sales wants a concrete urgency mechanism — fence-sitters currently pay no cost for waiting. No other reviewer asked for one, and both marketing and the owner flagged the site's honesty as its core brand asset that hype would poison.</p>
+    <p><strong>Our call:</strong> Split the difference. Do add the risk-reversal badge ("No contract — cancel anytime") directly under the demo CTAs — that's pure de-risking and fully on-brand. Treat the setup-fee-waiver offer as a business decision: if used, frame it as founding-restaurant pricing (which doubles as the honest social-proof substitute) rather than a countdown-style discount.</p>
+  </div>
+
+  <div class="card">
+    <h3>Does the hero headline need rework?</h3>
+    <p><strong>The split:</strong> Marketing argues "Never Miss a Call, a Table, or an Order Again" is a generic missed-call headline every AI-phone vendor uses, and the distinctive fee-free-pickup wedge should lead; sales notes it sells three things at once. The designer and owner say the hero passes the 10-second test as-is and the tagline already lands.</p>
+    <p><strong>Our call:</strong> Don't rewrite the hero yet — it demonstrably works for clarity, and higher-leverage fixes come first. Revisit after the proof layer ships; the cheapest improvement is swapping the soft stat row for the quantified wedge line (consensus #4), which promotes the differentiator without touching the H1.</p>
+  </div>
+
+  <div class="card">
+    <h3>How aggressive should the reservations rebalance be?</h3>
+    <p><strong>The split:</strong> Marketing and sales want a full dedicated narrative beat; the accessibility auditor calls the current split "acceptable for the stated pickup-first positioning"; the owner wants operational specifics (party limits, double-bookings, 4pm cancellations).</p>
+    <p><strong>Our call:</strong> One section beat, not a repositioning: a short reservation problem-narrative + the reservation audio clip + the booking-platform comparison moved adjacent, placed before pricing. Keep pickup as the wedge — the coexistence framing ("keep delivery apps for delivery") is the site's best strategic asset.</p>
+  </div>
+</section>
+
+<section id="owner-questions">
+  <h2>Answers to your specific questions</h2>
+  <dl class="owner-q">
+    <dt>Is the message clear?</dt>
+    <dd><strong>Yes — unanimously.</strong> All five reviewers extracted the correct one-sentence pitch from the hero alone, and all five passed it on the 10-second test. Clarity is the page's best attribute; don't fix what isn't broken here.</dd>
+
+    <dt>Does it flow?</dt>
+    <dd><strong>Mostly.</strong> Problem → solution → how → features → pricing → FAQ is logical, but two breaks recur across reviews: the proof beat is missing entirely (the page goes solution → price with no "it works" moment), and the calculator/comparison — the best persuasion — arrives after the price ask. Secondary sag points: two consecutive look-alike dark sections (How It Works + Features), and a pricing mega-block that's a full phone-screen minute of scrolling.</dd>
+
+    <dt>Reservation-vs-order coverage</dt>
+    <dd><strong>Verdict: under-sold, 5/5 agree (severity ranging from "slightly" to "materially").</strong> Pickup gets the hero tagline, a dedicated section, the calculator default, and the closing CTA; reservations get scraps — yet they're the priciest tiers. <strong>Recommendation:</strong> add one dedicated reservations beat before pricing (Friday-night/no-show/per-cover-fee narrative + reservation audio clip + booking-platform table moved adjacent), and fix the inverted "✓ None" per-cover-fee row. Keep the pickup-first wedge otherwise.</dd>
+
+    <dt>Dashboard screenshots?</dt>
+    <dd><strong>Yes — 5/5.</strong> Where: beside the "One Clean Dashboard" feature card and in How It Works step 4 (optionally one wide annotated shot between Features and Pricing, where the proof beat belongs). What to show: real orders view and reservations view together — the phrase "one clean dashboard" appears repeatedly with zero visual evidence. Requirements: meaningful alt text (WCAG 1.1.1), any text in the image also in surrounding copy, and no mockups implying third-party booking integrations.</dd>
+
+    <dt>Audio sample of a reservation and/or order call?</dt>
+    <dd><strong>Yes — 5/5, and it's the #1 fix on the whole report.</strong> Both clips: ~30s pickup order and ~30s reservation (book or modify). Where: "▶ Hear a real call" tease in the hero, order clip in Direct Pickup, reservation clip in the new reservations beat. Format: native <code>&lt;audio controls&gt;</code> (keeps the no-build-step constraint, keyboard-operable), never autoplay (WCAG 1.4.2), full visible transcript per clip (WCAG 1.2.1 — also free SEO text). Three reviewers also endorse a live "call this number and try it" demo line as the strongest possible upgrade if a number can be provisioned.</dd>
+
+    <dt>Biggest thing it's missing</dt>
+    <dd><strong>Proof, in every form.</strong> No audio of the voice, no image of the product, no evidence any restaurant uses it, no faces behind the company. The page makes a persuasive argument to a reader it never earns the trust of — the owner persona's bottom line: "If you won't let me hear it, I assume there's a reason."</dd>
+  </dl>
+</section>
+
+<section id="actions">
+  <h2>Prioritized action table</h2>
+  <div class="table-scroll">
+  <table class="actions">
+    <caption>Impact reflects panel consensus; effort is S/M/L relative to this single-file static site.</caption>
+    <thead>
+      <tr><th>#</th><th>Change</th><th>Impact</th><th>Effort</th><th>Owner note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Record &amp; embed two ~30s call clips (pickup order + reservation) with visible transcripts; "▶ Hear a real call" tease in hero</td><td><span class="badge high">High</span></td><td><span class="badge effort">M</span></td><td>Unanimous #1. Native <code>&lt;audio controls&gt;</code>, no autoplay. S if recordings already exist.</td></tr>
+      <tr><td>2</td><td>Add 2–3 real dashboard screenshots (orders + reservations views) at "One Clean Dashboard" and How It Works step 4</td><td><span class="badge high">High</span></td><td><span class="badge effort">S/M</span></td><td>Real product only — no integration mockups. Meaningful alt text required.</td></tr>
+      <tr><td>3</td><td>Add social proof: one pilot testimonial, or an honest founder note ("now onboarding founding restaurants")</td><td><span class="badge high">High</span></td><td><span class="badge effort">S</span></td><td>Silence currently reads as "no customers." Honesty is on-brand.</td></tr>
+      <tr><td>4</td><td>Fix contrast on the money path: CTA buttons (3.98:1), footer (2.53:1), hero stat labels (3.36:1), fine print (2.35–2.56:1), section tags, placeholders</td><td><span class="badge high">High</span></td><td><span class="badge effort">S</span></td><td>Primary conversion buttons fail WCAG 1.4.3 sitewide. Darken green to ~#2e6b47 or use white text.</td></tr>
+      <tr><td>5</td><td>Add a mobile hamburger menu (nav is <code>display:none</code> below 640px with no replacement)</td><td><span class="badge high">High</span></td><td><span class="badge effort">S</span></td><td>Mobile is the majority of local-business traffic; users currently scroll blind.</td></tr>
+      <tr><td>6</td><td>Add a dedicated reservations beat before pricing (problem narrative + reservation clip + booking-platform table adjacent); fix inverted "✓ None" fee row</td><td><span class="badge med">Med</span></td><td><span class="badge effort">M</span></td><td>The $199/$249 tiers currently carry the least persuasion per dollar of price.</td></tr>
+      <tr><td>7</td><td>Move the calculator (or a compact version) above the pricing cards; flag one tier "Most Popular"</td><td><span class="badge med">Med</span></td><td><span class="badge effort">M</span></td><td>Persuasion before price. Four identical cards = choice paralysis.</td></tr>
+      <tr><td>8</td><td>New FAQ entries: "What if the AI gets an order wrong?", "When does it hand off to a human?", prank/no-show risk on unpaid orders, French-language support</td><td><span class="badge med">Med</span></td><td><span class="badge effort">S</span></td><td>The top unspoken objections. Escalation is currently one clause in step 3.</td></tr>
+      <tr><td>9</td><td>Replace hero stat row with the quantified wedge ("Delivery apps take 7–15% of pickup. Direct orders take 0%"); soften or source "$200–$600 a seating"</td><td><span class="badge med">Med</span></td><td><span class="badge effort">S</span></td><td>Unsourced stats poison the otherwise-honest numbers below them.</td></tr>
+      <tr><td>10</td><td>Structural accessibility: <code>&lt;main&gt;</code> + skip link, <code>aria-hidden</code> on emoji, table <code>&lt;caption&gt;</code>/<code>scope="row"</code>, restore form focus outlines, form status live regions, <code>rel="noopener"</code></td><td><span class="badge med">Med</span></td><td><span class="badge effort">S/M</span></td><td>See accessibility appendix for the itemized list with WCAG criteria.</td></tr>
+      <tr><td>11</td><td>Footer privacy policy + terms links; short accessibility statement</td><td><span class="badge med">Med</span></td><td><span class="badge effort">S</span></td><td>Form sends PII to Formspree with no privacy link — trust and compliance gap.</td></tr>
+      <tr><td>12</td><td>Risk-reversal badge under demo CTAs ("No contract — cancel anytime"); optionally a founding-restaurant setup-fee waiver</td><td><span class="badge med">Med</span></td><td><span class="badge effort">S</span></td><td>Badge: do it. Waiver: business decision — frame as founding pricing, not a discount countdown.</td></tr>
+      <tr><td>13</td><td>Provision a live "try it" demo phone number and put it on the site</td><td><span class="badge high">High</span></td><td><span class="badge effort">L</span></td><td>The strongest proof possible for a phone-AI product. Endorsed by 3 reviewers; business/ops decision.</td></tr>
+      <tr><td>14</td><td>Fix the Reservations card's duplicated "$0.90/additional call" pill (~index.html lines 674/679) — show a cost-at-limit figure like sibling cards</td><td><span class="badge low">Low</span></td><td><span class="badge effort">S</span></td><td>Caught independently by two reviewers.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="a11y">
+  <h2>Accessibility appendix (WCAG 2.2 AA)</h2>
+  <p>Contrast ratios computed from the actual hex values in the CSS. Keyboard/visual checks were source-only. No Critical issues found; the page's fundamentals (labelled inputs, native <code>&lt;details&gt;</code> FAQ, <code>aria-live</code> calculator, reduced-motion support, clean heading hierarchy, no keyboard traps) are unusually good for a hand-built page.</p>
+
+  <h3>Contrast — SC 1.4.3</h3>
+  <ul class="a11y">
+    <li><span class="badge sev-serious">Serious</span> Primary CTA text <code>#082718</code> on <code>#4a8c63</code> (<code>.nav-cta</code>, <code>.btn-primary</code>, calculator CTA) = <strong>3.98:1</strong> at 14.4–16px bold. <span class="sc">Fix: darken green to ~#2e6b47 or use white text; verify any new pair ≥4.5:1.</span></li>
+    <li><span class="badge sev-serious">Serious</span> Footer text/links <code>#475569</code> on <code>#080f1c</code> = <strong>2.53:1</strong>. <span class="sc">Use ≥#8a99ad.</span></li>
+    <li><span class="badge sev-serious">Serious</span> Hero stat labels <code>#64748b</code> on <code>#082718</code> = <strong>3.36:1</strong> at 13px — the proof captions are illegible to low-vision users.</li>
+    <li><span class="badge sev-moderate">Moderate</span> Calculator disclaimer <code>#94a3b8</code> on white = <strong>2.56:1</strong>; <code>.cmp-foot</code> on cream = <strong>2.35:1</strong> — the legally protective fine print is the least readable text on the page.</li>
+    <li><span class="badge sev-moderate">Moderate</span> <code>.section-tag</code> <code>#4a8c63</code> on cream = <strong>3.69:1</strong> (12.5px bold); <code>.cmp-table .them</code> <code>#a86b6b</code> on white = <strong>4.22:1</strong>.</li>
+    <li><span class="badge sev-moderate">Moderate</span> Form placeholders <code>#475569</code> in navy-tinted inputs ≈ <strong>2.1:1</strong> — acceptable only because real labels exist; still lighten.</li>
+  </ul>
+
+  <h3>Keyboard &amp; focus</h3>
+  <ul class="a11y">
+    <li><span class="badge sev-serious">Serious</span> <code>outline: none</code> on form inputs with only a 1px border-color change on focus. <span class="sc">SC 2.4.7 — restore a 2px visible outline.</span></li>
+    <li><span class="badge sev-serious">Serious</span> No skip-to-content link and no <code>&lt;main&gt;</code> landmark; sections sit directly in <code>&lt;body&gt;</code>. <span class="sc">SC 2.4.1.</span></li>
+    <li><span class="badge sev-moderate">Moderate</span> Nav links <code>display:none</code> below 640px with no alternative menu; also affects reflow at 400% zoom. <span class="sc">SC 1.4.10 / 2.4.5.</span></li>
+    <li><span class="badge sev-minor">Minor</span> Scroll-spy sets only inline color on the active nav link. <span class="sc">SC 1.4.1 — add <code>aria-current</code> + a non-color indicator.</span></li>
+  </ul>
+
+  <h3>Forms &amp; status</h3>
+  <ul class="a11y">
+    <li><span class="badge sev-moderate">Moderate</span> Form success swaps <code>display</code> with no <code>role="status"</code> or focus move; error state only mutates the submit button text — invisible to screen readers. <span class="sc">SC 4.1.3 — add live regions + focus management.</span></li>
+    <li><span class="badge sev-minor">Minor</span> Nine <code>target="_blank"</code> links without <code>rel="noopener"</code> or a new-window indication.</li>
+  </ul>
+
+  <h3>Semantics &amp; content</h3>
+  <ul class="a11y">
+    <li><span class="badge sev-moderate">Moderate</span> Comparison tables: empty <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code> row labels (should be <code>&lt;th scope="row"&gt;</code>), titles as <code>&lt;div&gt;</code>s outside the table (should be <code>&lt;caption&gt;</code>). <span class="sc">SC 1.3.1.</span></li>
+    <li><span class="badge sev-moderate">Moderate</span> Decorative emoji (📵, 🥡, ✓…) are bare text nodes announced as noise by screen readers. <span class="sc">SC 1.1.1 — wrap in <code>&lt;span aria-hidden="true"&gt;</code>.</span></li>
+    <li><span class="badge sev-minor">Minor</span> <code>scroll-behavior: smooth</code> not gated by <code>prefers-reduced-motion</code> (the calculator animations correctly are).</li>
+  </ul>
+
+  <h3>For the new media (when added)</h3>
+  <ul class="a11y">
+    <li><span class="badge sev-moderate">Requirement</span> Audio clips: never autoplay (SC 1.4.2), native <code>&lt;audio controls&gt;</code>, full visible transcript per clip (SC 1.2.1). Screenshots: meaningful alt text (SC 1.1.1); text inside images must also exist in copy (SC 1.4.5).</li>
+  </ul>
+</section>
+
+<section id="reviewers">
+  <h2>Full per-reviewer notes</h2>
+
+  <details class="reviewer">
+    <summary>Expert Web Designer / UX — "a well-built stage with nobody on it"</summary>
+    <div class="body">
+      <h4>One-line verdict</h4>
+      <p class="verdict">A polished, cohesive, conversion-literate page that I'd endorse with reservations — it's a well-built stage with nobody on it: zero product imagery, zero social proof, and no mobile menu, so it asks for a demo without ever showing or playing the product.</p>
+      <h4>Answers to the eight questions</h4>
+      <ol>
+        <li><strong>Message:</strong> From the site alone: "An AI phone assistant plus a direct online pickup page that answers every call and takes orders/reservations without delivery-app percentage fees." The hero does this well — "Never Miss a Call, a Table, or an <em>Order</em> Again" is benefit-led, and the tagline "Keep delivery apps for delivery. Take pickup back." is a genuinely good positioning line. Clear and compelling; the only wobble is that "Resto-Reso" plus the reservation/order dual promise takes a beat to parse.</li>
+        <li><strong>Value:</strong> Better quantified than most local-SaaS pages: the 7–15% vs. $0 fee framing, plan cost-at-limit figures ($198/$340), the "$200–$600 a seating" table math, and above all the interactive savings calculator. Strongest claim: the calculator's personalized "$X/month kept, $Y/year" — concrete, honest (it even shows a negative-savings state instead of lying). Weakest: the hero stat strip — "100% Calls Answered" and "&lt;2 min Avg Handle Time" are unsourced numbers styled as proof; a skeptical owner reads them as marketing decoration, and they're the only "evidence" above the fold.</li>
+        <li><strong>Flow:</strong> Problem → Direct Pickup (solution) → How It Works → Features → Pricing → Comparison → FAQ → Contact is mostly logical, but two breaks: (a) the proof step is missing entirely — there is no testimonial, logo, screenshot, or sample anywhere between solution and ask; (b) the "Why Direct" comparison tables (the strongest persuasion) sit <em>after</em> the pricing cards, so the reader hits four price tags before the justification. Attention also sags in the long dark stretch — How It Works and Features are two consecutive navy sections with 13 look-alike cards — and the Pricing section is a mega-block (4 cards + setup box + calculator + value strip + disclaimer + cross-sell) that's a full phone-screen minute of scrolling.</li>
+        <li><strong>Clarity:</strong> Yes — the 10-second test passes. Headline, tagline, one-sentence subhead, and a single gold primary CTA all land in the first viewport, and the visual hierarchy (Playfair display headline, muted subhead, high-contrast button) directs the eye correctly. The consistent green/navy/gold system and alternating light/dark section rhythm make skimming easy.</li>
+        <li><strong>Demo intent:</strong> The calculator is the intent engine — seeing your own number count up next to a "Take Pickup Back" button is the best moment on the page. What kills intent: (a) you're asked to book a demo of a <em>voice product you never hear</em> and a <em>dashboard you never see</em>; (b) the demo CTA dumps users straight into a bare Google Calendar page with no framing of what the demo is (15 min? live call? sales pitch?); (c) no names, faces, or customers anywhere — "Canadian-owned" is claimed in a table cell but the company is otherwise faceless, which matters for a small-business buyer wiring their main phone line to you.</li>
+        <li><strong>Reservation vs order balance:</strong> Heavily orders-first. Hero tagline, the entire Direct Pickup section, the calculator default, the value strip, and the closing "Ready to Take Pickup Back?" are all pickup. Reservations get one feature card, one pricing card, a calculator toggle, one comparison table, and a small cross-sell box — no dedicated narrative section, despite Reservations being the <em>most expensive standalone tier</em> ($199) and the per-cover-fee pain (vs. OpenTable/Resy) being an excellent story. A fine-dining owner who cares mainly about the phone ringing during Friday service would feel like the secondary audience. If direct-pickup-first is deliberate strategy, fine — but reservations deserve at least one full section beat, not table scraps.</li>
+        <li><strong>What's missing:</strong> In priority order: (1) any social proof — even one named pilot restaurant quote, a "trusted by X restaurants in [city]" line, or founder note; (2) product visuals — the copy says "One Clean Dashboard" and "your own pickup page" but never shows either; (3) reassurance about failure modes — human escalation is mentioned once inside step 3, but owners will ask "what happens when the AI gets an order wrong?" and the page doesn't answer; (4) demo expectation-setting near the CTAs; (5) a mobile navigation menu; (6) footer privacy/terms links, which double as trust signals for a company handling call data.</li>
+        <li><strong>Media (screenshots / audio):</strong> Both, emphatically yes — this is the page's biggest gap. (a) Dashboard + pickup-page screenshots: put a real dashboard screenshot beside the "One Clean Dashboard" claim (Features section, or convert Direct Pickup to a split layout with the pickup page on one side). Screenshots convert an abstract claim into a purchasable object and break up the current wall of emoji-icon cards — the page's only "imagery" right now is emoji, which reads template-y. (b) Audio samples: a 20–30s reservation call and a 20–30s pickup-order call. For an AI-voice product, hearing the voice is the single highest-leverage proof asset possible — "Natural, Human-Like Voice" is currently an unverifiable card. Placement: a "▶ Hear a sample call" secondary action in the hero (or replace the outline CTA there) plus inline players next to the voice feature card. A native <code>&lt;audio&gt;</code> element keeps the no-build-step constraint intact.</li>
+      </ol>
+      <h4>Top 3 fixes</h4>
+      <ol>
+        <li>Add proof media: two short sample-call audio clips + dashboard and pickup-page screenshots — the page currently asks for a demo without demonstrating anything; hearing the AI and seeing the dashboard converts the two core claims from assertions into evidence and will move demo bookings more than any copy change — M</li>
+        <li>Add a mobile hamburger menu — at ≤640px <code>.nav-links { display:none }</code> with no replacement, so mobile users (the majority for local-business traffic) lose all in-page navigation to Pricing and FAQ and must scroll blind; also re-check the two 3-column comparison tables and the 100vh hero + 4-stat stack at 320–375px widths — S</li>
+        <li>Restructure the pricing zone: move the calculator (or comparison tables) above the price cards, visually flag one tier as "Most Popular," and fix the Reservations card's duplicate pill — persuasion should precede price; four visually identical cards create choice paralysis; and the Reservations card's green pill repeats "$0.90 per additional eligible call" verbatim from the bullet above it instead of showing a cost-at-limit figure like its siblings (index.html ~line 674 vs 679) — M</li>
+      </ol>
+      <h4>Best thing about the site (keep this)</h4>
+      <p>The savings calculator — savings-first result card, honest negative-savings and custom-pricing states, animated count-up with <code>prefers-reduced-motion</code> respected, <code>aria-live</code> output, a "See calculation" disclosure that builds trust, and a context-aware CTA. It's the most persuasive and best-crafted element on the page; build around it, don't touch it.</p>
+    </div>
+  </details>
+
+  <details class="reviewer">
+    <summary>Marketing Expert / Positioning &amp; Messaging — "an argument, not a demonstration"</summary>
+    <div class="body">
+      <h4>One-line verdict</h4>
+      <p class="verdict">Strong positioning spine and honest, well-quantified economics, but I would not endorse it as-is: the page has zero proof (no testimonials, logos, screenshots, or audio), so the copy makes a persuasive argument to a reader it never earns the trust of.</p>
+      <h4>Answers to the eight questions</h4>
+      <ol>
+        <li><strong>Message:</strong> "Resto-Reso is a 24/7 AI phone assistant plus your own online pickup page, so Canadian restaurants stop missing calls and stop paying delivery-app fees on pickup." That is genuinely extractable from the hero alone, which is good — but it's two messages fused. The tagline "Keep delivery apps for delivery. Take pickup back." is the sharpest line on the page and should be doing more work; the H1 "Never Miss a Call, a Table, or an Order Again" is a competent but generic missed-call headline that dozens of AI-phone vendors use. The distinctive claim is the fee-free direct pickup wedge, and it currently lives in the subhead position rather than leading.</li>
+        <li><strong>Value:</strong> Better quantified than most local-SaaS sites. Strongest claim: the pickup savings calculator with visible math ("100 orders x $38 x 7.5% = $285 vs. Starter at ~$150"), plus the honest negative-case copy when savings don't cover the price — that honesty builds credibility. Also strong: "$198 at the 150-order plan limit" pre-empts the per-order-fee anxiety. Weakest claims: "A table turns $200–$600 a seating" (unsourced and high for the SMB casual segment this pricing targets — a $55/mo buyer is not a $600-cover room) and "thousands gone each month" (vague). The hero stats row is soft: "100% Calls Answered" and "24/7" are product properties dressed as proof metrics, and the fourth "stat" is literally a checkmark. A stats row with no customer-derived numbers signals pre-launch.</li>
+        <li><strong>Flow:</strong> Problem → Direct Pickup solution → How It Works → Features → Pricing → Calculator → Comparison → FAQ → CTA is logical, but two breaks: (a) the proof beat is missing entirely — the page goes from features straight to a price ask with nothing in between establishing that this works in a real restaurant; (b) the calculator and the "Why Direct" comparison sit AFTER pricing, so the value case arrives after the price shock. The calculator is the best persuasion asset on the page and it's buried inside the pricing section at roughly the 60% scroll mark. Attention also drops in the 13-item setup checklist ("Takeout-bag insert assets" is operational detail, not selling copy).</li>
+        <li><strong>Clarity:</strong> Yes — within 10 seconds a busy owner gets "AI answers my phone, customers order pickup direct, no percentage fees." The subhead is one clean sentence, the tagline frames the delivery-app relationship as coexistence (defusing the #1 objection instantly), and the FAQ language is unusually plain and non-weaselly. Clarity is this page's best attribute. The only 10-second confusion risk: "a Table" in the H1 hints at reservations but nothing above the fold confirms reservations are a real product line.</li>
+        <li><strong>Demo intent:</strong> The rational case for a demo is made; the emotional and trust case is not. Drivers: the calculator's animated "$X/month kept in your business," the "cancel anytime / $150 setup / no percentage fees" risk-reducers, the billing fairness copy ("abandoned calls and spam aren't counted" — excellent), and low-friction dual CTAs (calendar link + form). Killers: no evidence any restaurant uses this (no names, no numbers, no quotes, no city), no way to hear the voice — for a product whose core promise is "guests can't tell it from a real person," asking me to book a demo just to hear it is the single biggest conversion leak — and "Resto-Reso does not currently process customer payments online" appears twice with no reframe, reading as a limitation confession rather than "no payment-processing fees, cash flow stays yours."</li>
+        <li><strong>Reservation vs order balance:</strong> Reservations are materially under-sold. Count the real estate: pickup gets a hero tagline, a dedicated section, a calculator default mode, a comparison table, and the closing CTA ("Ready to Take Pickup Back?"); reservations get one feature card, one pricing card, a calculator toggle, one comparison table, and a small cross-sell box. Yet Reservations is the highest-flat-price entry tier ($199) and Complete ($249+) is presumably the target upsell — the page's most expensive products have the least storytelling. There is no reservation problem-narrative (no-shows, the Friday-night phone ringing off the hook while the host seats a party, OpenTable per-cover fees eating the win) and no "how a reservation call actually goes" walkthrough. If direct pickup is deliberately the wedge, fine — but then the Reservations tier needs at least one dedicated beat, because right now a full-service restaurant owner (no takeout business) would bounce, unsure the product is for them. The "vs. Booking Platforms" table also has a copy bug that undermines it: "Per-cover 'success' fee — ✓ None" pairs a positive checkmark with a fee row in a way that reads inverted at a glance.</li>
+        <li><strong>What's missing:</strong> (a) Social proof of any kind — even one named pilot restaurant, one quote, or "answering calls for restaurants in [city] since 2025"; if none exists, an honest founder note ("built in Canada, currently onboarding early partners — founding-restaurant pricing") converts better than silence. (b) A demo of the actual product — audio and screenshots. (c) A "what happens when the AI can't handle it" reassurance beyond one clause ("escalates to a human when needed") — failure-mode fear is the top unspoken objection for AI phone agents and it deserves an FAQ entry. (d) Who is behind this — no about, no team, no address; "Canadian-owned" is claimed in a table but never substantiated. (e) A reservations-specific narrative beat. (f) A "Try it: call this number" live demo line would be the cheapest, highest-proof asset possible for this product category — nothing on the page invites the visitor to simply call the AI.</li>
+        <li><strong>Media (screenshots / audio):</strong> Yes to both, emphatically — they ARE the missing proof layer and require inventing nothing. (a) Audio samples: one ~30-second pickup-order call and one reservation call (book or modify). Place the order call directly under the hero or inside the Direct Pickup section, and the reservation call beside the Reservations pricing card or in a new reservations beat. The entire premise rests on "sounds human"; a play button converts skeptics that no adjective can, and it doubles as the reservation story-teller the page lacks. (b) Dashboard screenshots: the phrase "one clean dashboard" appears repeatedly with zero visual evidence, and "kitchen-ready dashboard" is a claim a screenshot proves in one glance. Put one annotated screenshot (orders + reservations visible together) in the "One Menu, One Dashboard" card area or as a wide image between Features and Pricing — right where the missing proof beat belongs. Both assets also de-risk the demo ask: an owner who has heard the voice and seen the dashboard books a demo to buy, not to investigate.</li>
+      </ol>
+      <h4>Top 3 fixes</h4>
+      <ol>
+        <li>Add a proof layer: two short call recordings (one order, one reservation) plus one annotated dashboard screenshot, inserted between Features and Pricing — this is the difference between an argument and a demonstration, and it fixes the demo-intent gap, the "sounds human" credibility gap, and half the reservation under-sell at once — M</li>
+        <li>Give reservations a dedicated narrative beat (problem line about missed Friday-night booking calls and per-cover fees, the reservation audio clip, and the booking-platform comparison moved adjacent to it), and fix the inverted "✓ None" per-cover fee table row — the $199/$249 tiers currently carry the least persuasion per dollar of price — M</li>
+        <li>Move the savings calculator (or a compact version of it) above the pricing grid, and replace the soft hero stats row with quantified value ("Delivery apps take 7–15% of pickup — direct orders through Resto-Reso take 0%") so the economic wedge is felt before the price is seen — S</li>
+      </ol>
+      <h4>Best thing about the site (keep this)</h4>
+      <p>The "Keep delivery apps for delivery. Take pickup back." wedge and the radical billing honesty around it — visible calculator math, "$198 at the plan limit," "abandoned calls and spam aren't billed," and the negative-case calculator copy that admits when savings won't cover the price. That candor is rare, deeply on-brand for selling to skeptical owners burned by delivery-app fine print, and must survive every redesign.</p>
+    </div>
+  </details>
+
+  <details class="reviewer">
+    <summary>Sales Expert / Conversion &amp; Funnel — "no reason to book <em>now</em> instead of someday"</summary>
+    <div class="body">
+      <h4>One-line verdict</h4>
+      <p class="verdict">Solid objection-handling copy and a frictionless calendar CTA, but I would not endorse it as a demo-generating page yet — it shows zero proof of the product working and gives a skeptical owner no reason to book <em>now</em> instead of "someday."</p>
+      <h4>Answers to the eight questions</h4>
+      <ol>
+        <li><strong>Message:</strong> "An AI phone assistant that answers your restaurant's calls 24/7 to take reservations and pickup orders, plus your own fee-free online pickup page." It's clear, and "Keep delivery apps for delivery. Take pickup back." is a genuinely good hook — but the hero headline tries to sell three things at once (call, table, order), which dilutes the punch for a skimming owner.</li>
+        <li><strong>Value:</strong> Partially quantified. The strongest value claim is the savings calculator with real math ("$X/month with delivery apps vs $Y with Resto-Reso — you keep the difference") plus the annualized figure; that's how you sell to an owner. The weakest is the hero stat row: "100% Calls Answered" and "&lt;2 min Avg Handle Time" read as invented software specs, not results — no customer count, no orders processed, no revenue recovered for a real restaurant. "$200–$600 a seating" is good pain math but it's the <em>only</em> revenue-side number; the whole page sells cost savings and never quantifies recovered revenue from missed calls.</li>
+        <li><strong>Flow:</strong> Problem → Direct Pickup → How It Works → Features → Pricing is logical, and I like that the calculator lives inside the pricing section. Two breaks: (a) there is no proof beat anywhere — the flow goes problem → solution → price → FAQ with no "it works" moment, which is where a sales conversation would die; (b) the pricing section is overloaded (4 cards + setup box + calculator + cross-sell box in one scroll) — attention drops between the setup fee list and the calculator. The dark Features grid is where skimmers glaze over; nothing there is demonstrated, only asserted.</li>
+        <li><strong>Clarity:</strong> Mostly yes. Within 10 seconds an owner gets "AI answers my phone, takes orders and reservations, no percentage fees." The billing model ("completed phone orders," "eligible calls," plan limits) takes real reading — the FAQ handles it well, but a card-by-card skim of pricing could confuse ("For 151–300 orders" as a plan descriptor reads like a restriction, and the Reservations card repeats "$0.90 per additional eligible call" twice — lines 674 and 679 of index.html).</li>
+        <li><strong>Demo intent:</strong> The CTA mechanics are excellent — "Book a Free Demo" is one click into a Google calendar scheduler, repeated in nav, hero, all four pricing cards, calculator result, and footer CTA, and the form success state re-offers the calendar. What kills intent is (a) no proof the voice actually sounds human — "a premium AI voice most guests can't tell from a real person" is exactly the claim every robocall vendor makes, and I'm asked to take it on faith; (b) zero urgency — no offer, no limited onboarding slots, no "waive the $150 setup if you book this month," nothing that penalizes waiting; (c) no risk reversal beyond "cancel anytime" buried in a comparison table. Predicted drop-off: skeptics bail at the "Natural, Human-Like Voice" card, and fence-sitters bail at the form because they can defer with no cost.</li>
+        <li><strong>Reservation vs order balance:</strong> The page is deliberately pickup-first and it shows: reservations get one pricing card, a calculator toggle, half a comparison table, and one feature tile. That's fine for the QSR/takeout buyer, but the Reservations plan is the highest-margin flat product ($199/mo) and its buyer — full-service/fine dining — has to hunt for their story. There's no reservation-side pain section (no-shows, host stand slammed Friday 7pm, per-cover fees eating margin) mirroring the pickup narrative. The $55 order-plan anchor also makes $199 feel steep because nothing between the hero and pricing builds the reservation value case. Under-sold; a short reservations beat before pricing would fix it without breaking the pickup-first positioning.</li>
+        <li><strong>What's missing:</strong> In order of what I'd need to close: (1) a live demo phone number — "Call 1-8XX-XXX-XXXX right now and book a fake table" is the single cheapest, highest-converting proof possible for a phone-AI product and it's absent; (2) any social proof — zero testimonials, logos, case studies, or even "trusted by X Ontario restaurants"; (3) a risk-reversal offer (first-month guarantee, pilot, or setup-fee waiver) surfaced next to the CTAs, not in a table row; (4) FAQ entries for the two objections owners always raise — "what if the AI gets an order wrong?" and "what happens when it can't handle a call?"; (5) any urgency mechanism.</li>
+        <li><strong>Media (screenshots / audio):</strong> Both, and audio is not optional — it IS the product demo. (a) Audio: a 30–45s reservation call clip and a phone-order clip, placed in/replacing the "Natural, Human-Like Voice" feature card and teased in the hero ("▶ Hear a real call"). This converts the biggest objection from a claim into an experience, and it pre-qualifies demos — people who've heard it book warmer. (b) Dashboard screenshots: yes, in How It Works step 4 and beside the "One Clean Dashboard" card — the page currently sells an invisible product; owners buying a system they'll stare at daily want to see it. One caution: screenshots must show only the real Resto-Reso dashboard — no mockups implying OpenTable/Google-booking sync, which the product does not have.</li>
+      </ol>
+      <h4>Top 3 fixes</h4>
+      <ol>
+        <li>Add proof the AI works: embedded audio samples of a reservation call and an order call, plus (ideally) a public "try it live" demo phone line — this is the #1 objection ("will it sound robotic?") and the page currently answers it with an adjective; hearing it is what makes an owner book the demo. Effort: M (record/stage two calls, embed <code>&lt;audio&gt;</code>; demo line is L if provisioning a number).</li>
+        <li>Add risk reversal + urgency at every CTA: a visible "No contract — cancel anytime" badge under the demo buttons, and a concrete offer such as "Book a demo this month and we waive the $150 setup fee" — fence-sitters have no cost to waiting today; a real offer plus de-risking converts the "someday" pile. Effort: S (copy + one styled line; business decision required).</li>
+        <li>Show the product: 2–3 dashboard screenshots (orders view, reservations view) in How It Works and Features — the page sells a dashboard the buyer never sees, and "what do I actually get?" is a silent demo-killer; screenshots also make the $150 setup feel tangible. Effort: M (capture, annotate, optimize images — keep them honest, no third-party integration mockups).</li>
+      </ol>
+      <h4>Best thing about the site (keep this)</h4>
+      <p>The savings calculator with the recommended-plan output and one-click "Take Pickup Back" CTA — it's a self-serve ROI conversation that does exactly what a good salesperson does (quantify the pain in the prospect's own numbers, then ask for the meeting), and the "Keep delivery apps for delivery" framing brilliantly neutralizes the switching-cost objection by not asking the owner to give anything up.</p>
+    </div>
+  </details>
+
+  <details class="reviewer">
+    <summary>Restaurant Owner (Target Buyer) — "closing the tab with a 'maybe later'"</summary>
+    <div class="body">
+      <h4>One-line verdict</h4>
+      <p class="verdict">Not yet — the pitch is clear and the pricing is refreshingly honest, but you're asking me to trust a robot with my phone line without letting me hear a single second of it, so I'm closing the tab with a "maybe later."</p>
+      <h4>Answers to the eight questions</h4>
+      <ol>
+        <li><strong>Message:</strong> "An AI answers my restaurant's phone 24/7, takes reservations and pickup orders, and gives me my own online ordering page so delivery apps stop skimming my pickup." I got that in the first screen — the headline plus "Keep delivery apps for delivery. Take pickup back." actually lands, because that's exactly the resentment I carry. Clear, yes. Compelling, mostly — it just sounds like every other tech pitch until something proves it.</li>
+        <li><strong>Value:</strong> Quantified better than most. The strongest claim is the pricing itself — real dollar figures everywhere, "$198 at the 150-order plan limit," a calculator that shows its math, and "cancel anytime." Nobody hides numbers like that unless they think the numbers are fair. The weakest claims are the hero stats: "100% calls answered" and "&lt;2 min avg handle time" from a company showing me zero customers. Answered isn't the same as handled well — my voicemail also "answers" 100% of calls. And "a table turns $200–$600 a seating" — maybe your tables. Those unattributed numbers read like marketing and slightly poison the honest pricing below them.</li>
+        <li><strong>Flow:</strong> Problem → pickup pitch → how it works → features → pricing → comparison → FAQ is logical, and I followed it. Attention breaks in two spots: right after Features, where I hit a wall of four pricing cards and had to do tier math while standing in my own kitchen mentally; and everywhere proof should be — the page goes problem, solution, price, with no "here's it working at an actual restaurant" beat in between. I kept scrolling looking for a screenshot, a name, a voice — anything real — and never found it. That's where I started drifting.</li>
+        <li><strong>Clarity:</strong> Yes — inside 10 seconds I knew what it was and that it's aimed at a place like mine. The headline, tagline, and four stat chips do the job. Honest credit there.</li>
+        <li><strong>Demo intent:</strong> What drives it: transparent pricing, $150 setup, cancel anytime, live in 48–72 hours, "you're only billed for completed orders." Low risk, low commitment — that's how you talk to owners. What kills it: I cannot hear the thing. You claim "a premium AI voice most guests can't tell from a real person" — that's the whole product, and it's just an adjective on a card. If it stumbles on "no onions on one of the two shawarmas, and can I change my 7:30 to 8 for six people," my regulars hear that, not you. Also: no online payments means every phone order is unpaid until pickup — so who eats the food when a prank caller orders $90 of it? That worry is nowhere on the page. And no testimonials, no restaurant names, no "trusted by" — I'd be guinea pig number one and the site doesn't even pretend otherwise.</li>
+        <li><strong>Reservation vs order balance:</strong> Lopsided. The page is 80% pickup-orders and fee-revenge — which, fine, that's the sharper hook — but the hero promises "a Table" and then reservations get one feature card, one pricing card at a surprising $199 (nearly 4x Starter, with no explanation of why), and a calculator toggle I only noticed because I was looking. I'm a dinner-service place; missed reservation calls on a Friday cost me more than app fees do. If you want the sit-down crowd, the reservation story needs its own moment — what happens with party size limits, double-bookings, a guest who calls to cancel at 4pm. Right now it feels like the side dish.</li>
+        <li><strong>What's missing:</strong> In order of how much it bothers me: (a) any proof a real restaurant uses this — one name, one quote, one number from a real kitchen; (b) the voice — audio or a live number to call; (c) the dashboard I'm apparently going to run my service from — not one picture of it; (d) what happens when the AI fails — "escalates to a human when needed" is one clause in step 3; whose human? mine? at 11pm?; (e) prepayment/no-show protection, since you admit you don't process payments; (f) does it speak French? I'm in Canada, you're waving the Canadian-owned flag in two comparison tables, and language is never mentioned; (g) who is behind this company at all.</li>
+        <li><strong>Media (screenshots / audio):</strong> Yes to both, and audio first — it's not decoration, it's the product demo. Put a 30-second reservation call and a 30-second pickup-order call right under the hero, before the problem section; better yet, a "call this number and talk to it yourself" line, which would be the single most convincing thing this site could do. Dashboard screenshots go in two places: one in the Features section under "One Clean Dashboard" (show me an order arriving), and one in How It Works step 4. If the audio is good, I book the demo before I ever reach pricing. If you won't let me hear it, I assume there's a reason.</li>
+      </ol>
+      <h4>Top 3 fixes</h4>
+      <ol>
+        <li>Add real call audio (one reservation, one pickup order) near the hero — or a live "try it" phone number — the entire purchase hinges on whether this thing sounds human under pressure, and right now that's an unproven adjective — M (S if recordings exist)</li>
+        <li>Add proof of life: even one real restaurant testimonial, pilot-customer quote, or honest "now onboarding our first Toronto restaurants — founding pricing" line — anything beats the current silence, which reads as "no customers" — S</li>
+        <li>Show the dashboard with 2–3 real screenshots (orders view, reservations view) in Features and How It Works — I'm being sold "one clean dashboard" sight unseen, and a picture also proves the product actually exists — S/M</li>
+      </ol>
+      <h4>Best thing about the site (keep this)</h4>
+      <p>The pricing transparency — exact monthly costs, per-order fees, worked "$198 at the plan limit" examples, what doesn't get billed, $150 setup, cancel anytime, and a calculator that shows its arithmetic. That is the most owner-respecting pricing section I've seen from a restaurant tech company, and it's the main reason I'd ever come back to this tab.</p>
+    </div>
+  </details>
+
+  <details class="reviewer">
+    <summary>Accessibility Auditor / WCAG 2.2 AA — "good fundamentals, failing money path"</summary>
+    <div class="body">
+      <h4>One-line verdict</h4>
+      <p class="verdict">Not endorsable at WCAG 2.2 AA yet — the accessibility fundamentals are unusually good for a hand-built page (labelled inputs, aria-live calculator, reduced-motion support), but the primary CTA buttons, footer, and fine-print all fail contrast, and missing landmarks plus a suppressed focus outline on the contact form keep it below the line.</p>
+      <h4>Answers to the eight questions</h4>
+      <ol>
+        <li><strong>Message:</strong> "An AI phone assistant plus a direct online pickup page that answers every restaurant call 24/7 and takes back pickup orders from delivery apps" — the H1 + tagline deliver this clearly, and importantly the message survives a screen-reader linearization: one H1, logical H2 order, no meaning trapped in images.</li>
+        <li><strong>Value:</strong> Yes, and it's quantified better than most SMB sites: the calculator produces a concrete "$X/month kept," pricing shows worked totals ("$198 at the 150-order plan limit"), and the comparison tables anchor 7–15% app fees. Strongest claim: no percentage fees on direct orders, backed by the calculator math. Weakest: the hero stats "100% Calls Answered / &lt;2 min Avg Handle Time" — unsourced numbers, and rendered in the lowest-contrast text on the page (#64748b on navy, 3.36:1), so low-vision users literally can't read the proof points.</li>
+        <li><strong>Flow:</strong> Problem → Direct Pickup solution → How It Works → Features → Pricing/Calculator → Comparison → FAQ → Contact is logical, and anchor nav supports it. Attention (and access) breaks in two places: on mobile the nav links are simply display:none with no hamburger, so the flow map disappears; and there is no skip link or <code>&lt;main&gt;</code> landmark, so a keyboard/screen-reader user must tab through everything linearly to reach pricing (SC 2.4.1).</li>
+        <li><strong>Clarity:</strong> Yes — the H1, tagline, and four hero stats communicate it in seconds for sighted users. A screen-reader user gets it almost as fast, though the decorative emojis (📵🥡📊) are announced as noise before every card heading, which dilutes the 10-second scan.</li>
+        <li><strong>Demo intent:</strong> The savings calculator is the strongest intent driver — and it's genuinely well built accessibly (<code>aria-live="polite"</code> result, visually-hidden radio toggle with <code>:focus-visible</code> styles, <code>aria-describedby</code> help text). What kills intent: the "Book a Free Demo" button itself fails contrast (dark navy text on #4a8c63 = 3.98:1), every demo link opens a new tab with no warning, and the form's success/error states are invisible to screen readers (no status announcement), so a blind owner may submit and hear nothing.</li>
+        <li><strong>Reservation vs order balance:</strong> Ordering dominates roughly 70/30 — hero, calculator default, comparison lead, and FAQ are pickup-first, with reservations covered by one feature card, one pricing tier, a calculator mode, and the booking-platform table. Structurally the reservation content is fine (same semantics), but the reservation calculator mode and the OpenTable/Resy table are discoverable only if you find the toggle; the cross-sell box helps. For a reservations-led buyer the split slightly under-sells; acceptable for the stated pickup-first positioning.</li>
+        <li><strong>What's missing:</strong> (a) A skip-to-content link and <code>&lt;main&gt;</code> landmark; (b) an accessibility statement — increasingly expected for legal cover in Canada (AODA applies to Ontario customers' expectations even for small vendors); (c) privacy policy/terms links in the footer (the form collects PII to Formspree with no privacy link — a trust and compliance gap); (d) any proof media — there is currently not a single <code>&lt;img&gt;</code> on the page, so a screen-reader user and a sighted user get the same zero evidence of the product; (e) visible error messaging on the form beyond native browser validation.</li>
+        <li><strong>Media (screenshots / audio):</strong> Yes to both, with conditions. (a) Dashboard screenshots belong in the "One Clean Dashboard" feature card and/or How It Works step 4 — each needs meaningful alt text describing what's shown ("Dashboard listing today's pickup orders with statuses and a reservations panel"), not "dashboard screenshot" (SC 1.1.1), and text in the screenshot must also exist in surrounding copy (SC 1.4.5). (b) An audio sample of a reservation call and a direct-order call is the single best proof for this product — place it under "Natural, Human-Like Voice" or in the hero. It must: never autoplay (SC 1.4.2), use native <code>&lt;audio controls&gt;</code> (keyboard-operable), and ship with a full visible transcript per clip (SC 1.2.1) — the transcript doubles as SEO text and lets deaf or hard-of-hearing owners evaluate the product at all. If it becomes video, add captions (SC 1.2.2). Do not caption any media with claims of OpenTable/Resy/Google integration — none exists.</li>
+      </ol>
+      <h4>Top 3 fixes</h4>
+      <ol>
+        <li>Fix the contrast failures, starting with the money path — darken the green (e.g. ~#2e6b47) or use white text on the CTA buttons; replace footer, disclaimer/fine-print, hero stat labels, section tags, and form placeholder colors with ≥4.5:1 values. The primary conversion buttons currently fail SC 1.4.3 sitewide — S effort.</li>
+        <li>Add structural access: <code>&lt;main&gt;</code> around the page content, a skip-to-content link as first focusable element, <code>aria-hidden="true"</code> on all decorative emoji icons, <code>&lt;th scope="row"&gt;</code> + <code>&lt;caption&gt;</code> in the comparison tables, and a mobile nav toggle instead of display:none — SC 2.4.1, 1.3.1 — S/M effort.</li>
+        <li>Make the contact form fully non-visual-friendly: remove <code>outline: none</code> from inputs (restore a visible focus indicator, SC 2.4.7), give the success and error states <code>role="status"</code>/<code>aria-live</code> and move focus to them on submit (SC 4.1.3), and add <code>rel="noopener"</code> plus a new-tab indication on <code>target="_blank"</code> demo links — S effort.</li>
+      </ol>
+      <h4>Specialty findings</h4>
+      <p>See the <a href="#a11y">Accessibility appendix</a> above for the complete itemized list with computed contrast ratios, WCAG success criteria, and remediations — including the credits (labelled inputs, native <code>&lt;details&gt;</code> FAQ, no keyboard traps, clean heading hierarchy, reduced-motion-aware calculator animations).</p>
+      <h4>Best thing about the site (keep this)</h4>
+      <p>The savings calculator's accessibility engineering — visually-hidden radio toggle with visible <code>:focus-visible</code> rings, labelled numeric inputs with <code>aria-describedby</code> help, an <code>aria-live="polite"</code> results card, and animations that respect <code>prefers-reduced-motion</code> — is genuinely above-average work; keep that pattern and extend it to the rest of the page.</p>
+    </div>
+  </details>
+</section>
+
+<footer class="page">
+  <p>Generated 2026-07-10 by the site-review skill (five-persona panel, Claude Fable 5). Mobile/visual review was source-only — no live browser was available; contrast ratios are computed from CSS hex values, and keyboard behavior is inferred from source. Recommendations honor the product-accuracy rule: no claims of OpenTable/Resy/Google integration.</p>
+</footer>
+
+</div>
+</body>
+</html>
