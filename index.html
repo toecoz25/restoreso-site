@@ -165,10 +165,10 @@
     .problem-card p { font-size: 0.9rem; color: var(--gray); }
     .problem-card p + p { margin-top: .5rem; }
 
-    /* ── Take Pickup Back (orders positioning) ── */
-    .orders { background: var(--white); }
-    .orders-lead { max-width: 660px; margin: 1.4rem auto 0; font-size: 1.05rem; color: var(--gray); }
-    .orders-close { max-width: 640px; margin: 2.5rem auto 0; text-align: center; font-weight: 600; color: var(--forest); font-size: 1.02rem; }
+    /* ── Take Pickup Back (orders positioning — the "solution" beat) ── */
+    .orders { background: var(--mint); }
+    .orders .problem-card { border-left: none; border-top: 4px solid var(--forest); }
+    .orders-note { max-width: 640px; margin: 2rem auto 0; text-align: center; font-size: 0.9rem; color: var(--gray); font-style: italic; }
 
     /* ── How it works ── */
     .how { background: var(--navy2); color: var(--white); }
@@ -487,8 +487,8 @@
       </div>
       <div class="problem-card">
         <div class="icon">📉</div>
-        <h3>Percentage fees reduce the value of every pickup order</h3>
-        <p>Delivery apps can charge a percentage even when the customer picks up the food. Direct phone and online ordering gives repeat customers another way to order while helping the restaurant keep more of each sale.</p>
+        <h3>Apps take a cut — even on pickup</h3>
+        <p>Delivery apps can charge a percentage even when the customer drives over and picks the food up themselves. That fee comes straight off every order.</p>
       </div>
       <div class="problem-card">
         <div class="icon">💸</div>
@@ -502,8 +502,8 @@
   <section class="orders" id="orders">
     <div class="center">
       <span class="section-tag">Direct Pickup</span>
-      <h2>Keep Delivery Apps for Delivery. Take Pickup Back.</h2>
-      <p class="section-sub">Customers already find you on Google and your website — send them to your own pickup page instead of a delivery app that takes a cut. Keep the apps for delivery.</p>
+      <h2>Your Own Pickup Page — No App in the Middle</h2>
+      <p class="section-sub">Customers already find you on Google and your website — send them to your own pickup page instead of a delivery app that takes a cut.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
@@ -527,6 +527,7 @@
         <p>Your AI phone assistant catches every order call — rush, after close, or holidays.</p>
       </div>
     </div>
+    <p class="orders-note">*Have your own drivers? Your AI phone assistant can take delivery orders too — you just handle the drop-off.</p>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -585,9 +586,9 @@
         <p>Customers place their order online and pay the restaurant at pickup or delivery. Resto-Reso does not currently process customer payments online.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔎</div>
-        <h3>A Direct Google-to-Order Path</h3>
-        <p>Send customers who find you on Google Search and Google Maps to your own pickup page instead of a delivery app.</p>
+        <div class="feature-icon">💬</div>
+        <h3>SMS Confirmations &amp; Manager Alerts</h3>
+        <p>Customers get order and booking texts; managers get pinged when something needs attention.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🗣️</div>
@@ -872,6 +873,10 @@
       <details class="faq-item">
         <summary>Do I need to stop using delivery apps?</summary>
         <div class="faq-a">No. Keep delivery apps where they provide value for delivery and customer discovery. Resto-Reso gives repeat and pickup customers a direct way to order by phone or online.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can it take delivery orders too?</summary>
+        <div class="faq-a">Yes. If you have your own drivers, the AI phone assistant can take delivery orders alongside pickup — you just handle the drop-off. For third-party delivery logistics, keep the delivery apps.</div>
       </details>
       <details class="faq-item">
         <summary>How do customers find my direct pickup page?</summary>
