@@ -220,9 +220,6 @@
     .listen-tx { margin-top: 1.1rem; font-size: .9rem; color: var(--gray); text-align: left; }
     .listen-tx summary { cursor: pointer; font-weight: 600; color: var(--forest); }
     .listen-tx p { margin-top: .6rem; }
-    .listen-soon { border-top-color: var(--gold); }
-    .listen-soon-body { font-size: .9rem; color: var(--gray); text-align: left; }
-    .listen-soon-body a { color: var(--forest); font-weight: 600; }
 
     /* ── How it works ── */
     .how { background: var(--navy2); color: var(--white); }
@@ -662,21 +659,47 @@
           <source src="audio/reservation-call.wav" type="audio/wav">
           Your browser doesn't support audio playback. <a href="audio/reservation-call.wav">Download the sample call</a> instead.
         </audio>
-        <!-- TODO: paste the real call transcript below, then remove `hidden` (WCAG 1.2.1 — prerecorded audio needs a text alternative). -->
-        <details class="listen-tx" hidden>
+        <details class="listen-tx">
           <summary>Read the transcript</summary>
-          <p><!-- transcript goes here --></p>
+          <p><strong>AI assistant:</strong> Hi, thanks for calling Stella Trattoria. This is Annie. What can I help you with?</p>
+          <p><strong>Caller:</strong> Hi, Andy. I'd like to book a reservation, please.</p>
+          <p><strong>AI assistant:</strong> Sure. What date and time were you looking at, and for how many people?</p>
+          <p><strong>Caller:</strong> Uh, what do you have for tomorrow around six thirty for four people?</p>
+          <p><strong>AI assistant:</strong> Let me check what we have for four tomorrow around six thirty. Just a sec. Six thirty tomorrow for four is available. Can I get your name?</p>
+          <p><strong>Caller:</strong> Yes. It's Alex.</p>
+          <p><strong>AI assistant:</strong> Thanks, Alex. And I have your number as four one six. Is that the best one to reach you?</p>
+          <p><strong>Caller:</strong> It is.</p>
+          <p><strong>AI assistant:</strong> Alright, let me get that set up for you. You're all set for four tomorrow at six thirty, Alex. Anything else I can help with tonight?</p>
+          <p><strong>Caller:</strong> No. That's good. Thanks.</p>
+          <p><strong>AI assistant:</strong> Thanks, Alex. We'll see you tomorrow at six thirty. Have a good night.</p>
         </details>
       </div>
-      <div class="listen-card listen-soon">
+      <div class="listen-card">
         <div class="listen-head">
           <div class="icon" aria-hidden="true">🥡</div>
           <div>
             <h3>Pickup order call</h3>
-            <p class="listen-cap">Sample recording coming soon.</p>
+            <p class="listen-cap">A customer phones in a pickup order — taken, totalled and timed.</p>
           </div>
         </div>
-        <p class="listen-soon-body">We're picking a favourite pickup-order call to share here. Can't wait? <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" rel="noopener">Book a demo</a> and call the line yourself — menu, modifiers, scheduled pickup times and all.</p>
+        <audio controls preload="none" aria-label="Sample pickup order phone call">
+          <source src="audio/order-call.wav" type="audio/wav">
+          Your browser doesn't support audio playback. <a href="audio/order-call.wav">Download the sample call</a> instead.
+        </audio>
+        <details class="listen-tx">
+          <summary>Read the transcript</summary>
+          <p><strong>AI assistant:</strong> Hi, thanks for calling Stella Trattoria. This is Annie. What can I help you with?</p>
+          <p><strong>Caller:</strong> Hi, Andy. I'd like to place an order for pickup, please.</p>
+          <p><strong>AI assistant:</strong> What would you like to order?</p>
+          <p><strong>Caller:</strong> I'd like to order a large pepperoni pizza and garlic bread.</p>
+          <p><strong>AI assistant:</strong> Did you want to add a drink or dessert to go with that? We've got tiramisu, cannoli, and a few drinks.</p>
+          <p><strong>Caller:</strong> No. Thanks.</p>
+          <p><strong>AI assistant:</strong> Okay, what's the name for the order?</p>
+          <p><strong>Caller:</strong> It's Ben.</p>
+          <p><strong>AI assistant:</strong> Thanks, Ben. So that's one large pepperoni pizza and a garlic bread for pickup. With tax, your total comes to thirty-one eighty-one. Does that sound right?</p>
+          <p><strong>Caller:</strong> It does.</p>
+          <p><strong>AI assistant:</strong> Your order's in, Ben, and it'll be ready in about twenty minutes. Thanks for ordering from Stella Trattoria. Have a great night!</p>
+        </details>
       </div>
     </div>
   </section>
