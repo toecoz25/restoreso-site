@@ -201,6 +201,29 @@
     .orders.resv .problem-card { border: 1px solid var(--border); border-top: 4px solid var(--forest); }
     .orders-note { max-width: 640px; margin: 2rem auto 0; text-align: center; font-size: 0.9rem; color: var(--gray); font-style: italic; }
 
+    /* ── Sample calls ── */
+    .listen { background: var(--warm); }
+    .listen-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 940px; margin: 3rem auto 0;
+    }
+    .listen-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-top: 4px solid var(--forest); border-radius: var(--radius);
+      padding: 1.8rem; box-shadow: var(--shadow);
+    }
+    .listen-head { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.2rem; text-align: left; }
+    .listen-head .icon { font-size: 2rem; }
+    .listen-card h3 { font-size: 1.05rem; font-weight: 700; }
+    .listen-cap { font-size: .85rem; color: var(--gray); }
+    .listen-card audio { width: 100%; }
+    .listen-tx { margin-top: 1.1rem; font-size: .9rem; color: var(--gray); text-align: left; }
+    .listen-tx summary { cursor: pointer; font-weight: 600; color: var(--forest); }
+    .listen-tx p { margin-top: .6rem; }
+    .listen-soon { border-top-color: var(--gold); }
+    .listen-soon-body { font-size: .9rem; color: var(--gray); text-align: left; }
+    .listen-soon-body a { color: var(--forest); font-weight: 600; }
+
     /* ── How it works ── */
     .how { background: var(--navy2); color: var(--white); }
     .how h2 { color: var(--white); }
@@ -481,6 +504,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#reservations">Reservations</a></li>
       <li><a href="#orders">Direct Pickup</a></li>
+      <li><a href="#sample-calls">Hear It</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -499,11 +523,9 @@
       <div class="hero-actions">
         <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" rel="noopener" class="btn-primary">Book a Free Demo</a>
         <a href="#calculator" class="btn-outline">Calculate My Pickup Savings</a>
+        <a href="#sample-calls" class="btn-outline">▶ Hear a Sample Call</a>
       </div>
       <p class="cta-note">No long-term contract — cancel anytime · Live in 48–72 hours</p>
-      <!-- MEDIA SLOT (hero audio tease): when call recordings are ready, add here:
-           <a href="#reservations" class="btn-outline">▶ Hear a Real Call</a>
-           (or link to whichever section hosts the first audio player) -->
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-num">0%</div>
@@ -585,16 +607,7 @@
         <p>Booking confirmations by SMS, and manager alerts whenever something needs a person's attention.</p>
       </div>
     </div>
-    <!-- MEDIA SLOT (reservation-call audio): when the recording is ready, add here:
-         <div style="max-width:640px;margin:2.5rem auto 0;text-align:center;">
-           <h3 style="font-family:'Playfair Display',serif;margin-bottom:.6rem;">Hear a reservation call</h3>
-           <audio controls preload="none" style="width:100%;">
-             <source src="/audio/reservation-call.mp3" type="audio/mpeg">
-           </audio>
-           <details style="margin-top:.6rem;text-align:left;"><summary>Read the transcript</summary><p>…full transcript…</p></details>
-         </div>
-         Never autoplay; keep the visible transcript (WCAG 1.2.1). -->
-    <p class="orders-note">Also taking pickup orders? The Complete plan combines reservations, AI phone ordering and direct online ordering in one dashboard — <a href="#complete">see the Complete plan</a>.</p>
+    <p class="orders-note">Want to hear it for yourself? <a href="#sample-calls">Listen to a real reservation call</a>.<br>Also taking pickup orders? The Complete plan combines reservations, AI phone ordering and direct online ordering in one dashboard — <a href="#complete">see the Complete plan</a>.</p>
   </section>
 
   <!-- TAKE PICKUP BACK -->
@@ -627,6 +640,45 @@
       </div>
     </div>
     <p class="orders-note">*Have your own drivers? Your AI phone assistant can take delivery orders too — you just handle the drop-off.</p>
+  </section>
+
+  <!-- SAMPLE CALLS -->
+  <section class="listen" id="sample-calls">
+    <div class="center">
+      <span class="section-tag">Hear It in Action</span>
+      <h2>This Is What Your Callers Will Hear</h2>
+      <p class="section-sub">Real sample calls with the AI phone assistant — judge the voice for yourself before you book a demo.</p>
+    </div>
+    <div class="listen-grid">
+      <div class="listen-card">
+        <div class="listen-head">
+          <div class="icon" aria-hidden="true">🗓️</div>
+          <div>
+            <h3>Reservation call</h3>
+            <p class="listen-cap">A guest calls to book a table — answered, booked and confirmed.</p>
+          </div>
+        </div>
+        <audio controls preload="none" aria-label="Sample reservation phone call">
+          <source src="audio/reservation-call.wav" type="audio/wav">
+          Your browser doesn't support audio playback. <a href="audio/reservation-call.wav">Download the sample call</a> instead.
+        </audio>
+        <!-- TODO: paste the real call transcript below, then remove `hidden` (WCAG 1.2.1 — prerecorded audio needs a text alternative). -->
+        <details class="listen-tx" hidden>
+          <summary>Read the transcript</summary>
+          <p><!-- transcript goes here --></p>
+        </details>
+      </div>
+      <div class="listen-card listen-soon">
+        <div class="listen-head">
+          <div class="icon" aria-hidden="true">🥡</div>
+          <div>
+            <h3>Pickup order call</h3>
+            <p class="listen-cap">Sample recording coming soon.</p>
+          </div>
+        </div>
+        <p class="listen-soon-body">We're picking a favourite pickup-order call to share here. Can't wait? <a href="https://calendar.app.google/3PpVg9Rfqhi28Vr1A" target="_blank" rel="noopener">Book a demo</a> and call the line yourself — menu, modifiers, scheduled pickup times and all.</p>
+      </div>
+    </div>
   </section>
 
   <!-- HOW IT WORKS -->
